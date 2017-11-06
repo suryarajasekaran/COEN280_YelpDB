@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/YelpDataset/yelp_business.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/YelpDataset/yelp_checkin.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/YelpDataset/yelp_review.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/YelpDataset/yelp_user.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
