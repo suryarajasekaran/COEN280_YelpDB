@@ -1,3 +1,7 @@
+package helper;
+
+import db.DBConnector;
+
 import java.sql.Connection;
 
 /**

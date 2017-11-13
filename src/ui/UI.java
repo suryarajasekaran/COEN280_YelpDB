@@ -1,3 +1,8 @@
+package ui;
+
+import db.DBConnector;
+import db.DBReader;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
