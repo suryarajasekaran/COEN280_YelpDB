@@ -52,7 +52,7 @@ public class populate {
     }
 
     // connect to Oracle DB
-    public static Connection connect2DB(String databaseURL, String user, String password)
+    public static Connection connect2DB(String databaseURL, String username, String password)
     {
         Connection conn = null;
         try
@@ -61,7 +61,7 @@ public class populate {
             Class.forName("oracle.jdbc.OracleDriver");
 
             // Step 2: Establish the connection to the database
-            conn = DriverManager.getConnection(databaseURL,user,password);
+            conn = DriverManager.getConnection(databaseURL, username, password);
         }
         catch (Exception e)
         {
