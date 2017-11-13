@@ -45,7 +45,7 @@ public class populate {
         JSONObject jsonArr[] = new JSONObject[content.length];
         for (int i = 0; i < content.length; i++) {
             JSONObject jsonObject = new JSONObject(content[i]);
-            System.out.println(new UserReader(jsonObject).getYelping_since());
+            System.out.println(new JsonReaderUser(jsonObject).getYelping_since());
             jsonArr[i] = jsonObject;
         }
         return jsonArr;
@@ -72,42 +72,11 @@ public class populate {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        // connect to DB
-        Connection conn = connect2DB("jdbc:oracle:thin:hr/hr@localhost:1521:orcl", "hr","hr");
 
-        // insert 28 main categories to table ﻿BUSINESS_MAIN_CATEGORIES
-        PopulateMainCategories populateMainCategories = new PopulateMainCategories(conn);
-        populateMainCategories.load();
+        DBWriter dbWriter = new DBWriter(Helper.getDBConnection());
+
+        // insert data into main categories table
+        dbWriter.writeMainCategories();
+
     }
 }
-
-
-
-
-
-   /* // create.sql a Statement from the connection
-    Statement statement = null;
-        try {
-                //statement = conn.createStatement();
-                //statement.executeUpdate("INSERT INTO Customers " + "VALUES (1001, 'Simpson', 'Mr.', 'Springfield', 2001)");
-
-                statement = conn.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT COUNTRY_ID FROM COUNTRIES WHERE REGION_ID=1");
-                while (rs.next()) {
-                String lastName = rs.getString("COUNTRY_ID");
-                System.out.println(lastName + "\n");
-                }
-                } catch (SQLException e) {
-                e.printStackTrace();
-                }
-
-// insert the data
-
-//JSONObject[] output_yelp_business_arr_json = strArr2jsonArr(str2Arr(readFile("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_business.json")));
-//JSONObject[] output_yelp_checkin_arr_json = strArr2jsonArr(str2Arr(readFile("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_checkin.json")));
-//JSONObject[] output_yelp_review_arr_json = strArr2jsonArr(str2Arr(readFile("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_review.json")));
-//JSONObject[] output_yelp_user_arr_json = strArr2jsonArr(str2Arr(readFile("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_user.json")));
-
-
-
-*/

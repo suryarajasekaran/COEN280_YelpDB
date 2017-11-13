@@ -3,17 +3,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Created by SuryaRajasekaran on 11/5/17.
+ * Created by SuryaRajasekaran on 11/13/17.
  */
-public class PopulateMainCategories {
+public class DBWriter {
 
     Connection connection;
 
-    public PopulateMainCategories (Connection connection){
+    public DBWriter(Connection connection){
         this.connection = connection;
     }
 
-    public void load() {
+    public void writeMainCategories() {
 
         String[] queries = new String[28];
 
@@ -46,7 +46,6 @@ public class PopulateMainCategories {
         queries[26] = "Insert into BUSINESS_MAIN_CATEGORIES (MAIN_CATEGORY) VALUES ('Hotels & Travel')";
         queries[27] = "Insert into BUSINESS_MAIN_CATEGORIES (MAIN_CATEGORY) VALUES ('Nurseries & Gardening')";
 
-
         for (int i=0;i<queries.length;i++) {
             Statement statement = null;
             try {
@@ -59,5 +58,4 @@ public class PopulateMainCategories {
         }
 
     }
-
 }

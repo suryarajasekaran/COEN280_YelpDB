@@ -3,11 +3,11 @@ import org.json.JSONObject;
 /**
  * Created by SuryaRajasekaran on 11/5/17.
  */
-public class CheckinReader {
+public class JsonReaderCheckin {
 
     JSONObject jsonObject;
 
-    public CheckinReader(JSONObject jsonObject){
+    public JsonReaderCheckin(JSONObject jsonObject){
         this.jsonObject = jsonObject;
     }
 

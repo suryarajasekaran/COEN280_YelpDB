@@ -3,11 +3,11 @@ import org.json.JSONObject;
 /**
  * Created by SuryaRajasekaran on 11/5/17.
  */
-public class BusinessReader {
+public class JsonReaderBusiness {
 
     JSONObject jsonObject;
 
-    public BusinessReader(JSONObject jsonObject){
+    public JsonReaderBusiness(JSONObject jsonObject){
         this.jsonObject = jsonObject;
     }
 

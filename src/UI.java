@@ -35,7 +35,7 @@ public class UI {
     }
 
     public ArrayList<String> getMainCategories(){
-        DBReaderBusinessMainCategories dbReaderBusinessMainCategories = new DBReaderBusinessMainCategories(this.getDBConnection());
+        DBReader dbReaderBusinessMainCategories = new DBReader(this.getDBConnection());
         ArrayList<String> mainCategories = dbReaderBusinessMainCategories.getMainCategories();
         return mainCategories;
     }
