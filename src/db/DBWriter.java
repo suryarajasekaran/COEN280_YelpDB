@@ -1,5 +1,7 @@
 package db;
 
+import helper.Helper;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,7 +17,7 @@ public class DBWriter {
         this.connection = connection;
     }
 
-    public void writeMainCategories() {
+    public void writeMainCategoriesTable() {
 
         String[] queries = new String[28];
 
@@ -60,4 +62,21 @@ public class DBWriter {
         }
 
     }
+
+    public void writeBusinessTable(String filePath) {
+        System.out.println(Helper.readFile(filePath));
+    }
+
+    public void writeCheckinTable(String filePath) {
+        System.out.println(Helper.readFile(filePath));
+    }
+
+    public void writeReviewTable(String filePath) {
+        System.out.println(Helper.readFile(filePath));
+    }
+
+    public void writeUserTable(String filePath) {
+        System.out.println(Helper.readFile(filePath));
+    }
+
 }

@@ -1,3 +1,5 @@
+package parser.checkin;
+
 import org.json.JSONObject;
 
 /**

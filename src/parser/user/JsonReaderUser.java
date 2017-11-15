@@ -1,3 +1,5 @@
+package parser.user;
+
 import org.json.JSONObject;
 
 /**
