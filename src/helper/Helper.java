@@ -2,7 +2,6 @@ package helper;
 
 import db.DBConnector;
 import org.json.JSONObject;
-import parser.user.JsonReaderUser;
 
 import java.io.File;
 import java.io.FileReader;
@@ -55,7 +54,6 @@ public class Helper {
         JSONObject jsonArr[] = new JSONObject[content.length];
         for (int i = 0; i < content.length; i++) {
             JSONObject jsonObject = new JSONObject(content[i]);
-            System.out.println(new JsonReaderUser(jsonObject).getYelping_since());
             jsonArr[i] = jsonObject;
         }
         return jsonArr;

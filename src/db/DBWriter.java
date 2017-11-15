@@ -1,10 +1,14 @@
 package db;
 
 import helper.Helper;
+import org.json.JSONObject;
+import parser.business.JsonReaderBusiness;
+import parser.user.JsonReaderUser;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Created by SuryaRajasekaran on 11/13/17.
@@ -15,6 +19,31 @@ public class DBWriter {
 
     public DBWriter(Connection connection){
         this.connection = connection;
+    }
+
+    public void cleanUpTables() {
+
+        String[] queries = new String[7];
+
+        queries[0]  = "DELETE FROM BUSINESS_MAIN_CATEGORIES";
+        queries[1]  = "DELETE FROM BUSINESS";
+        queries[2]  = "DELETE FROM USERS";
+        queries[3]  = "DELETE FROM MAIN_CATEGORIES";
+        queries[4]  = "DELETE FROM SUB_CATEGORIES";
+        queries[5]  = "DELETE FROM REVIEWS";
+        queries[6]  = "DELETE FROM ATTRIB";
+
+        for (int i=0;i<queries.length-4;i++) {
+            try {
+                Statement statement = null;
+                statement = this.connection.createStatement();
+                statement.executeUpdate(queries[i]);
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public void writeMainCategoriesTable() {
@@ -55,7 +84,7 @@ public class DBWriter {
             try {
                 statement = this.connection.createStatement();
                 statement.executeUpdate(queries[i]);
-
+                statement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -64,19 +93,98 @@ public class DBWriter {
     }
 
     public void writeBusinessTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
+        for (int i=0; i < jsonObjectArr.length; i++){
+            JsonReaderBusiness jsonReaderBusiness = new JsonReaderBusiness(jsonObjectArr[i]);
+            // ﻿INSERT INTO BUSINESS
+            /*String query = "Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , REV_COUNT , BNAME, STARS) VALUES ("
+                            + "'" + jsonReaderBusiness.getBId() + "',"
+                            + "'" + jsonReaderBusiness.getAddress() + "',"
+                            + "'" + jsonReaderBusiness.getOpCl() + "',"
+                            + "'" + jsonReaderBusiness.getCity() + "',"
+                            + "'" + jsonReaderBusiness.getState() + "',"
+                            + "" + jsonReaderBusiness.getRevCount() + ","
+                            + "'" + jsonReaderBusiness.getBName() + "',"
+                            + "" + jsonReaderBusiness.getStars()+ ""
+                            + ")";
+            try {
+                Statement statement = null;
+                statement = this.connection.createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println(query);
+                e.printStackTrace();
+            }
+            // ﻿INSERT INTO MAIN_CATEGORIES
+            ArrayList<String> mainCategories = jsonReaderBusiness.getMainCategories();
+            for (int j = 0; j < mainCategories.size(); j++) {
+                String query = "Insert into MAIN_CATEGORIES (BID , MCAT) VALUES ("
+                        + "'" + jsonReaderBusiness.getBId() + "',"
+                        + "'" + mainCategories.get(j) + "'"
+                        + ")";
+                try {
+                    Statement statement = null;
+                    statement = this.connection.createStatement();
+                    statement.executeUpdate(query);
+                    statement.close();
+                } catch (SQLException e) {
+                    System.out.println(query);
+                    e.printStackTrace();
+                }
+            }*/
+            // ﻿INSERT INTO SUB_CATEGORIES
+            ArrayList<String> subCategories = jsonReaderBusiness.getSubCategories();
+            for (int j = 0; j < subCategories.size(); j++) {
+                String query = "Insert into SUB_CATEGORIES (BID , SCAT) VALUES ("
+                        + "'" + jsonReaderBusiness.getBId() + "',"
+                        + "'" + subCategories.get(j) + "'"
+                        + ")";
+                try {
+                    Statement statement = null;
+                    statement = this.connection.createStatement();
+                    statement.executeUpdate(query);
+                    statement.close();
+                } catch (SQLException e) {
+                    System.out.println(query);
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
     }
 
     public void writeCheckinTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        //System.out.println(Helper.readFile(filePath));
     }
 
     public void writeReviewTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        //System.out.println(Helper.readFile(filePath));
     }
 
     public void writeUserTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
+        for (int i=0; i < jsonObjectArr.length; i++){
+            JsonReaderUser jsonReaderUser = new JsonReaderUser(jsonObjectArr[i]);
+            String query = "Insert into USERS (REV_COUNT , USER_NAME, USERID, AVG_STARS) VALUES ("
+                    + "" + jsonReaderUser.getRevCount() + ","
+                    + "'" + jsonReaderUser.getUserName() + "',"
+                    + "'" + jsonReaderUser.getUserId() + "',"
+                    + "" + jsonReaderUser.getAvgStars() + ""
+                    + ")";
+            try {
+                Statement statement = null;
+                statement = this.connection.createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println(query);
+                e.printStackTrace();
+            }
+        }
     }
+
+
 
 }

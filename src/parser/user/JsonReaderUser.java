@@ -13,6 +13,29 @@ public class JsonReaderUser {
         this.jsonObject = jsonObject;
     }
 
+    public String getUserName() {
+        return this.processString(this.jsonObject.getString("name"));
+    }
+
+    public String getUserId() {
+        return this.jsonObject.getString("user_id");
+    }
+
+    public Integer getRevCount() {
+        return this.jsonObject.getInt("review_count");
+    }
+
+    public Float getAvgStars() {
+        return this.jsonObject.getFloat("average_stars");
+    }
+
+    public String processString(String string) {
+        return string
+                .replace(",","")
+                .replace("'","");
+    }
+/*
+
     public String getYelping_since() {
         return this.jsonObject.getString("yelping_since");
     }
@@ -33,17 +56,9 @@ public class JsonReaderUser {
         return this.jsonObject.getString("cool");
     }
 
-    public String getReview_count() {
-        return this.jsonObject.getString("review_count");
-    }
 
-    public String getName() {
-        return this.jsonObject.getString("Name");
-    }
 
-    public String getUserId() {
-        return this.jsonObject.getString("UserId");
-    }
+
 
     public String getFriends() {
         return this.jsonObject.getString("Friends");
@@ -53,9 +68,6 @@ public class JsonReaderUser {
         return this.jsonObject.getString("Fans");
     }
 
-    public String getAverageStars() {
-        return this.jsonObject.getString("AverageStars");
-    }
 
     public String getCompliments() {
         return this.jsonObject.getString("Compliments");
@@ -68,5 +80,6 @@ public class JsonReaderUser {
     public String getType() {
         return this.jsonObject.getString("type");
     }
+*/
 
 }
