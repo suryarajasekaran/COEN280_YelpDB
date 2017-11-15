@@ -1,6 +1,8 @@
 package db;
 
 import helper.Helper;
+import org.json.JSONObject;
+import parser.business.JsonReaderBusiness;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -64,19 +66,45 @@ public class DBWriter {
     }
 
     public void writeBusinessTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
+        for (int i=0; i < jsonObjectArr.length; i++){
+            JsonReaderBusiness jsonReaderBusiness = new JsonReaderBusiness(jsonObjectArr[i]);
+            //﻿Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , latitude , longitude, REV_COUNT , BNAME, STARS, BTYPE) VALUES
+            //('vcNAWiLM4dR7D2nwwJ7nCA', '4840 E Indian School Rd\nSte 101\nPhoenix, AZ 85018','true', 'Phoenix', 'AZ', 33.499313000000001, -111.98375799999999, 7,'Eric Goldberg, MD', 3.5, 'business');
+            String query = "Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , REV_COUNT , BNAME, STARS) VALUES ("
+                            + "'" + jsonReaderBusiness.getBId() + "',"
+                            + "'" + jsonReaderBusiness.getAddress() + "',"
+                            + "'" + jsonReaderBusiness.getOpCl() + "',"
+                            + "'" + jsonReaderBusiness.getCity() + "',"
+                            + "'" + jsonReaderBusiness.getState() + "',"
+                            + "'" + jsonReaderBusiness.getRevCount() + "',"
+                            + "'" + jsonReaderBusiness.getBName() + "',"
+                            + "'" + jsonReaderBusiness.getStars() + "',"
+                            + ");";
+
+            Statement statement = null;
+            try {
+                statement = this.connection.createStatement();
+                statement.executeUpdate(query);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
 
     public void writeCheckinTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        //System.out.println(Helper.readFile(filePath));
     }
 
     public void writeReviewTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        //System.out.println(Helper.readFile(filePath));
     }
 
     public void writeUserTable(String filePath) {
-        System.out.println(Helper.readFile(filePath));
+        //System.out.println(Helper.readFile(filePath));
     }
 
 }

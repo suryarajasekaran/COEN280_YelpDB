@@ -18,21 +18,21 @@ public class DBConnector {
     // connect to Oracle DB
     public Connection getConnection()
     {
-        Connection conn = null;
+        Connection connection = null;
         try
         {
             // Step 1: "Load" the JDBC driver
             Class.forName("oracle.jdbc.OracleDriver");
 
             // Step 2: Establish the connection to the database
-            conn = DriverManager.getConnection(this.databaseURL, this.username, this.password);
+            connection = DriverManager.getConnection(this.databaseURL, this.username, this.password);
         }
         catch (Exception e)
         {
             System.err.println("D'oh! Got an exception!");
             System.err.println(e.getMessage());
         }
-        return conn;
+        return connection;
     }
 
 }

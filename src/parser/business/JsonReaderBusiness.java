@@ -13,44 +13,28 @@ public class JsonReaderBusiness {
         this.jsonObject = jsonObject;
     }
 
-    public String getFullAddress() {
+    public String getAddress() {
         return this.jsonObject.getString("full_address");
     }
 
-    public String getHours() {
-        return this.jsonObject.getString("hours");
+    public String getBId() {
+        return this.jsonObject.getString("business_id");
     }
 
-    public String getOpen() {
+    public String getOpCl() {
         return this.jsonObject.getString("open");
-    }
-
-    public String getCategories() {
-        return this.jsonObject.getString("categories");
     }
 
     public String getCity() {
         return this.jsonObject.getString("city");
     }
 
-    public String getBusinessID() {
-        return this.jsonObject.getString("business_id");
-    }
-
-    public String getReviewCount() {
+    public String getRevCount() {
         return this.jsonObject.getString("review_count");
     }
 
-    public String getName() {
+    public String getBName() {
         return this.jsonObject.getString("name");
-    }
-
-    public String getNeighborhoods() {
-        return this.jsonObject.getString("neighborhoods");
-    }
-
-    public String getLongitude() {
-        return this.jsonObject.getString("longitude");
     }
 
     public String getState() {
@@ -60,6 +44,25 @@ public class JsonReaderBusiness {
     public String getStars() {
         return this.jsonObject.getString("stars");
     }
+
+    /*
+    public String getHours() {
+        return this.jsonObject.getString("hours");
+    }
+
+    public String getCategories() {
+        return this.jsonObject.getString("categories");
+    }
+
+
+    public String getNeighborhoods() {
+        return this.jsonObject.getString("neighborhoods");
+    }
+
+    public String getLongitude() {
+        return this.jsonObject.getString("longitude");
+    }
+
 
     public String getLatitude() {
         return this.jsonObject.getString("latitude");
@@ -71,5 +74,5 @@ public class JsonReaderBusiness {
 
     public String getType() {
         return this.jsonObject.getString("type");
-    }
+    }*/
 }
