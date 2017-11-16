@@ -56,18 +56,25 @@ public class DBReader {
         return outArrayListStr;
     }
 
-    public ArrayList<String> getAttributes(){
+    public ArrayList<String> getAttributes(ArrayList<String> mainCategories, ArrayList<String> subCategories, String searchFor){
         Statement statement = null;
         ArrayList<String> outArrayListStr = new ArrayList<String>();
-        try {
-            statement = this.connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT MAIN_CATEGORY FROM BUSINESS_MAIN_CATEGORIES");
-            while (resultSet.next()) {
-                String mainCategory = resultSet.getString("MAIN_CATEGORY");
-                outArrayListStr.add(mainCategory);
+        if (mainCategories != null) {
+            try {
+                statement = this.connection.createStatement();
+                String query = this.generateQuery4Attributes(mainCategories, subCategories, searchFor);
+                if (query.isEmpty() || query.equals("")){
+
+                } else {
+                    ResultSet resultSet = statement.executeQuery(query);
+                    while (resultSet.next()) {
+                        String subCategory = resultSet.getString("ATTR");
+                        outArrayListStr.add(subCategory);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return outArrayListStr;
     }
@@ -104,5 +111,48 @@ public class DBReader {
         }
         System.out.print(outString);
         return outString;
+    }
+
+    public String generateQuery4Attributes(ArrayList<String> mainCategories, ArrayList<String> subCategories, String searchFor){
+        String query = "";
+        if (subCategories.size() == 0 || subCategories.isEmpty()){
+            if (searchFor.equals("AND")){
+                String section = "";
+                for (int i = 0; i<mainCategories.size(); i++){
+                    String subSection = "SELECT DISTINCT(A.ATTR) from ATTRIB A where A.Bid in (select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = " + "'"+mainCategories.get(i)+"'";
+                    if (i!=0){
+                        section = section + " INTERSECT " + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+                query = "select distinct(ATTR) FROM attrib A, MAIN_CATEGORIES M WHERE M.MCAT IN ( "+section+" ) and M.BID = A.BID";
+            } else {
+                String section = "";
+                for (int i = 0; i<mainCategories.size(); i++){
+                    String subSection = "'"+mainCategories.get(i)+"'";
+                    if (i!=0){
+                        section = section + "," + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+                query = "select distinct(ATTR) FROM attrib A, MAIN_CATEGORIES M WHERE M.MCAT IN ( "+section+" ) and M.BID = A.BID";
+            }
+        } else {
+            String section = "";
+            for (int i = 0; i<mainCategories.size(); i++){
+                for (int j = 0; j<subCategories.size(); j++){
+                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S WHERE M.MCAT = '"+mainCategories.get(i)+"' AND S.SCAT = '"+subCategories.get(j)+"' AND  M.BID = S.BID";
+                    if (j!=0){
+                        section = section + (searchFor.equals("AND")?" INTERSECT ":" UNION ") + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+            }
+            query = "SELECT DISTINCT(A.ATTR) from attrib A where A.Bid in (" + section + ")";
+        }
+        return query;
     }
 }

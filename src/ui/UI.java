@@ -16,6 +16,7 @@ public class UI {
 
     ArrayList<String> mainCategories;
     ArrayList<String> subCategories;
+    ArrayList<String> attributes;
     String searchFor;
 
     ArrayList<String> selectedMainCategories;
@@ -24,11 +25,12 @@ public class UI {
     JPanel mainCategoriesJP;
     JPanel subCategoriesJP;
     JPanel attributesJP;
+    JPanel outputJP;
 
     public UI() {
         this.mainCategories = getMainCategories();
         this.subCategories = null;
-        this.searchFor = "OR";
+        this.searchFor = "AND";
         this.mainCategoriesJP = new JPanel();
         this.subCategoriesJP = new JPanel();
         this.attributesJP = new JPanel();
@@ -38,22 +40,32 @@ public class UI {
     }
 
     public ArrayList<String> getMainCategories(){
-        DBReader dbReaderBusinessMainCategories = new DBReader(Helper.getDBConnection());
-        ArrayList<String> mainCategories = dbReaderBusinessMainCategories.getMainCategories();
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<String> mainCategories = dbReader.getMainCategories();
         return mainCategories;
     }
 
     public ArrayList<String> getSubCategories(){
-        DBReader dbReaderBusinessMainCategories = new DBReader(Helper.getDBConnection());
-        ArrayList<String> subCategories = dbReaderBusinessMainCategories.getSubCategories(this.selectedMainCategories, this.searchFor);
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<String> subCategories = dbReader.getSubCategories(this.selectedMainCategories, this.searchFor);
         return subCategories;
+    }
+
+    public ArrayList<String> getAttributes() {
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<String> attributes = dbReader.getAttributes(this.selectedMainCategories, this.selectedSubCategories, this.searchFor);
+        return attributes;
     }
 
     public void createAndShowGUI() {
         // create and set up the window.
         JFrame frame = new JFrame("Yelp Tool");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(1500,700));
+        frame.setPreferredSize(new Dimension(1500,1000));
+
+        // add main panel
+        //JPanel main = new JPanel();
+        //main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 
         // add panel for display
         JPanel display = new JPanel();
@@ -67,6 +79,9 @@ public class UI {
 
         // add panel for attributes categories
         display.add(new JScrollPane(attributesJP));
+
+        // add panel for attributes categories
+        display.add(new JScrollPane(outputJP));
 
         // load data
         loadData();
@@ -124,11 +139,11 @@ public class UI {
                         if (jCheckBox.isSelected()){
                             System.out.println("selected "+jCheckBox.getText());
                             selectedSubCategories.add(jCheckBox.getText());
-                            //loadAttributes();
+                            loadAttributes();
                         } else {
                             System.out.println("unselected "+jCheckBox.getText());
                             selectedSubCategories.remove(jCheckBox.getText());
-                            //loadAttributes();
+                            loadAttributes();
                         }
                     }
                 });
@@ -140,7 +155,32 @@ public class UI {
     }
 
     public void loadAttributes(){
-        this.attributesJP.validate();
-        this.attributesJP.repaint();
+        this.attributesJP.removeAll();
+        this.attributesJP.setLayout(new BoxLayout(this.attributesJP, BoxLayout.Y_AXIS));
+        JLabel attributesJLabel = new JLabel("Attributes");
+        this.attributesJP.add(attributesJLabel);
+        this.attributes = this.getAttributes();
+        if (this.attributes != null){
+            for(int i = 0; i < this.attributes.size(); i++) {
+                JCheckBox jCheckBox = new JCheckBox(this.attributes.get(i));
+                jCheckBox.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (jCheckBox.isSelected()){
+                            System.out.println("selected "+jCheckBox.getText());
+                            selectedAttributes.add(jCheckBox.getText());
+                            //loadAttributes();
+                        } else {
+                            System.out.println("unselected "+jCheckBox.getText());
+                            selectedAttributes.remove(jCheckBox.getText());
+                            //loadAttributes();
+                        }
+                    }
+                });
+                this.attributesJP.add(jCheckBox);
+            }
+            this.attributesJP.validate();
+            this.attributesJP.repaint();
+        }
     }
 }
