@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java" afterPath="$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,22 +31,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBWriter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DBWriter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-979">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="192">
+              <caret line="161" column="49" lean-forward="false" selection-start-line="161" selection-start-column="49" selection-end-line="161" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#403#404#0" expanded="true" />
+                <element signature="e#447#448#0" expanded="true" />
                 <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
                 <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
-                <marker date="1510809490000" expanded="true" signature="4935:5642" ph=" INSERT statement (BUSINESS)" />
-                <marker date="1510809490000" expanded="true" signature="6211:6357" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510809490000" expanded="true" signature="6211:6413" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510809490000" expanded="true" signature="6211:6417" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510809490000" expanded="true" signature="7032:7236" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510809490000" expanded="true" signature="7840:8033" ph=" INSERT statement (ATTRIB)" />
-                <marker date="1510809490000" expanded="true" signature="8996:9340" ph=" INSERT statement (USERS)" />
+                <marker date="1510812137000" expanded="true" signature="4935:5642" ph=" INSERT statement (BUSINESS)" />
+                <marker date="1510812137000" expanded="true" signature="6211:6357" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510812137000" expanded="true" signature="6211:6413" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510812137000" expanded="true" signature="6211:6417" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510812137000" expanded="true" signature="7032:7236" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510812137000" expanded="true" signature="7840:8033" ph=" INSERT statement (ATTRIB)" />
+                <marker date="1510812137000" expanded="true" signature="8996:9340" ph=" INSERT statement (USERS)" />
               </folding>
             </state>
           </provider>
@@ -61,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonReaderBusiness.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JsonReaderBusiness.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="128" column="100" lean-forward="false" selection-start-line="128" selection-start-column="100" selection-end-line="128" selection-end-column="100" />
+            <state relative-caret-position="481">
+              <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#JsonReaderBusiness#0;class#JsonReaderBusiness#0" expanded="false" />
@@ -74,8 +77,8 @@
                 <element signature="method#getSubCategories#0;class#JsonReaderBusiness#0" expanded="false" />
                 <element signature="e#3399#3407#0" expanded="true" />
                 <element signature="method#processString#0;class#JsonReaderBusiness#0" expanded="false" />
-                <element signature="e#4131#4139#0" expanded="true" />
-                <element signature="e#4392#4400#0" expanded="true" />
+                <element signature="e#4150#4158#0" expanded="true" />
+                <element signature="e#4411#4419#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,8 +152,8 @@
         <option value="$PROJECT_DIR$/src/dbScripts/temp.sql" />
         <option value="$PROJECT_DIR$/src/ui/UI.java" />
         <option value="$PROJECT_DIR$/src/db/DBReader.java" />
-        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
         <option value="$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java" />
+        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
       </list>
     </option>
   </component>
@@ -229,7 +232,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="helper" />
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="COEN280_YelpDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="COEN280_YelpDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="business" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -577,11 +602,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.3590844" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.369814" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -591,16 +617,16 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.48855507" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.48569384" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.4828326" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.6409156" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.63018596" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.4828326" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.47711015" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23319027" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -655,13 +681,19 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/db/DBWriter.java</url>
-          <line>20</line>
+          <url>file://$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java</url>
+          <line>125</line>
           <properties />
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java</url>
+          <line>119</line>
+          <properties />
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -882,14 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_business.json">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="199">
@@ -907,29 +931,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/Helper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-979">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
-            <marker date="1510809490000" expanded="true" signature="4935:5642" ph=" INSERT statement (BUSINESS)" />
-            <marker date="1510809490000" expanded="true" signature="6211:6357" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510809490000" expanded="true" signature="6211:6413" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510809490000" expanded="true" signature="6211:6417" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510809490000" expanded="true" signature="7032:7236" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510809490000" expanded="true" signature="7840:8033" ph=" INSERT statement (ATTRIB)" />
-            <marker date="1510809490000" expanded="true" signature="8996:9340" ph=" INSERT statement (USERS)" />
-          </folding>
+        <state relative-caret-position="140">
+          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="128" column="100" lean-forward="false" selection-start-line="128" selection-start-column="100" selection-end-line="128" selection-end-column="100" />
+        <state relative-caret-position="481">
+          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#JsonReaderBusiness#0;class#JsonReaderBusiness#0" expanded="false" />
@@ -938,8 +951,29 @@
             <element signature="method#getSubCategories#0;class#JsonReaderBusiness#0" expanded="false" />
             <element signature="e#3399#3407#0" expanded="true" />
             <element signature="method#processString#0;class#JsonReaderBusiness#0" expanded="false" />
-            <element signature="e#4131#4139#0" expanded="true" />
-            <element signature="e#4392#4400#0" expanded="true" />
+            <element signature="e#4150#4158#0" expanded="true" />
+            <element signature="e#4411#4419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="161" column="49" lean-forward="false" selection-start-line="161" selection-start-column="49" selection-end-line="161" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#403#404#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
+            <marker date="1510812137000" expanded="true" signature="4935:5642" ph=" INSERT statement (BUSINESS)" />
+            <marker date="1510812137000" expanded="true" signature="6211:6357" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510812137000" expanded="true" signature="6211:6413" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510812137000" expanded="true" signature="6211:6417" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510812137000" expanded="true" signature="7032:7236" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510812137000" expanded="true" signature="7840:8033" ph=" INSERT statement (ATTRIB)" />
+            <marker date="1510812137000" expanded="true" signature="8996:9340" ph=" INSERT statement (USERS)" />
           </folding>
         </state>
       </provider>

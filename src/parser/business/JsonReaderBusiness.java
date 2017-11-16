@@ -123,10 +123,11 @@ public class JsonReaderBusiness {
             String key = (String)keys.next();
             if (jsonObject.get(key) instanceof JSONObject) {
                 ArrayList<String> subArrayList = new ArrayList<String>();
-                subArrayList = this.processAttributes(new JSONObject(jsonObject.get(key)), key.replace(" ", "_"));
+                subArrayList = this.processAttributes(jsonObject.getJSONObject(key), key.replace(" ", "_"));
                 arrayList.addAll(subArrayList);
-            } else if (jsonObject.get(key) instanceof Boolean) {
-                arrayList.add(prefix + "_" + key.replace(" ", "_") + "_" + jsonObject.get(key).toString().toUpperCase());
+            } else {
+                String startString = ((prefix.isEmpty()||prefix.equals(""))?"":prefix+"_");
+                arrayList.add(startString + key.replace(" ", "_") + "_" + jsonObject.get(key).toString().toUpperCase());
             }
         }
         return arrayList;
