@@ -110,6 +110,21 @@ public class JsonReaderBusiness {
         return this.processAttributes(jsonObject, "");
     }
 
+    public ArrayList<Hours> getHours() {
+        ArrayList<Hours> arrayList = new ArrayList<Hours>();
+        JSONObject jsonObject = this.jsonObject.getJSONObject("hours");
+        Iterator<?> keys = jsonObject.keys();
+
+        while( keys.hasNext() ) {
+            String key = (String)keys.next();
+            if (jsonObject.get(key) instanceof JSONObject) {
+                Hours hours = new Hours(jsonObject.getJSONObject(key), key);
+                arrayList.add(hours);
+            }
+        }
+        return arrayList;
+    }
+
     public String processString(String string) {
         return string
                 .replace(",","")
@@ -134,9 +149,7 @@ public class JsonReaderBusiness {
     }
 
     /*
-    public String getHours() {
-        return this.jsonObject.getString("hours");
-    }
+
 
 
 

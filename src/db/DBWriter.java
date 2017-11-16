@@ -8,7 +8,6 @@ import parser.user.JsonReaderUser;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  * Created by SuryaRajasekaran on 11/13/17.
@@ -149,7 +148,7 @@ public class DBWriter {
                     System.out.println(query);
                     e.printStackTrace();
                 }
-            }*/
+            }
             // ﻿INSERT INTO ATTRIBUTES
             ArrayList<String> attributes = jsonReaderBusiness.getAttributes();
             for (int j = 0; j < attributes.size(); j++) {
@@ -167,9 +166,40 @@ public class DBWriter {
                     e.printStackTrace();
                 }
             }
-
+            // ﻿INSERT INTO LOCATON
+            String query = "Insert into LOCATON (BID , LOC) VALUES ("
+                    + "'" + jsonReaderBusiness.getBId() + "',"
+                    + "'" + jsonReaderBusiness.getCity() + ", " + jsonReaderBusiness.getState() + "'"
+                    + ")";
+            try {
+                Statement statement = null;
+                statement = this.connection.createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println(query);
+                e.printStackTrace();
+            }
+            // INSERT INTO HOURS
+            ArrayList<Hours> hours = jsonReaderBusiness.getHours();
+            for (int j = 0; j < hours.size(); j++) {
+                String query = "Insert into HOURS (BID, WORKDAY, OPENHRS, CLOSEHRS) VALUES ("
+                        + "'" + jsonReaderBusiness.getBId() + "',"
+                        + "'" + hours.get(j).getWorkDay() + "',"
+                        + "" + hours.get(j).getOpenHours() + ","
+                        + "" + hours.get(j).getCloseHours() + ""
+                        + ")";
+                try {
+                    Statement statement = null;
+                    statement = this.connection.createStatement();
+                    statement.executeUpdate(query);
+                    statement.close();
+                } catch (SQLException e) {
+                    System.out.println(query);
+                    e.printStackTrace();
+                }
+            }*/
         }
-
     }
 
     public void writeCheckinTable(String filePath) {
