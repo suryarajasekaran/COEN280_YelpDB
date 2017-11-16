@@ -33,16 +33,21 @@ public class DBReader {
         return outArrayListStr;
     }
 
-    public ArrayList<String> getSubCategories(ArrayList<String> mainCategories){
+    public ArrayList<String> getSubCategories(ArrayList<String> mainCategories, String searchFor){
         Statement statement = null;
         ArrayList<String> outArrayListStr = new ArrayList<String>();
         if (mainCategories != null) {
             try {
                 statement = this.connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(this.generateQuery4SubCategories(mainCategories));
-                while (resultSet.next()) {
-                    String subCategory = resultSet.getString("SCAT");
-                    outArrayListStr.add(subCategory);
+                String query = this.generateQuery4SubCategories(mainCategories, searchFor);
+                if (query.isEmpty() || query.equals("")){
+
+                } else {
+                    ResultSet resultSet = statement.executeQuery(query);
+                    while (resultSet.next()) {
+                        String subCategory = resultSet.getString("SCAT");
+                        outArrayListStr.add(subCategory);
+                    }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -67,16 +72,40 @@ public class DBReader {
         return outArrayListStr;
     }
 
-    public String generateQuery4SubCategories(ArrayList<String> mainCategories){
+    public String generateQuery4SubCategories(ArrayList<String> mainCategories, String searchFor){
         String outString = "";
-        for(int i=0; i<mainCategories.size(); i++){
-            String subSection = "select distinct(SCAT) FROM SUB_CATEGORIES S, MAIN_CATEGORIES M WHERE M.MCAT = '"+mainCategories.get(i)+"' and M.BID = S.BID";
-            if (i !=0 ){
-                outString = outString + " intersect " + subSection;
+
+        // ﻿select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = 'Doctors' Intersect select DISTINCT( M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = 'Dentists');
+        if (searchFor.equals("AND")) {
+            String section = "";
+            for(int i=0; i<mainCategories.size(); i++){
+                String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = '" + mainCategories.get(i) + "'";
+                if (i != 0) {
+                    section = section + " intersect " + subSection;
+                } else {
+                    section = subSection;
+                }
+            }
+            if (section.isEmpty() || section.equals("")){
             } else {
-                outString = subSection;
+                outString = "SELECT DISTINCT(S.SCAT) from SUB_CATEGORIES S where S.Bid in ("+section+")";
+            }
+
+        } else {
+            String section = "";
+            for(int i=0; i<mainCategories.size(); i++){
+                if (i != 0) {
+                    section = section + "," + "'"  + mainCategories.get(i) + "'";
+                } else {
+                    section = "'" + mainCategories.get(i) + "'";
+                }
+            }
+            if (section.isEmpty() || section.equals("")){
+            } else {
+                outString = "select distinct(SCAT) FROM SUB_CATEGORIES S, MAIN_CATEGORIES M WHERE M.MCAT IN ( " + section + ") and M.BID = S.BID";
             }
         }
+        System.out.print(outString);
         return outString;
     }
 

@@ -16,6 +16,8 @@ public class UI {
 
     ArrayList<String> mainCategories;
     ArrayList<String> subCategories;
+    String searchFor;
+
     ArrayList<String> selectedMainCategories;
     ArrayList<String> selectedSubCategories;
     ArrayList<String> selectedAttributes;
@@ -26,6 +28,7 @@ public class UI {
     public UI() {
         this.mainCategories = getMainCategories();
         this.subCategories = null;
+        this.searchFor = "OR";
         this.mainCategoriesJP = new JPanel();
         this.subCategoriesJP = new JPanel();
         this.attributesJP = new JPanel();
@@ -42,7 +45,7 @@ public class UI {
 
     public ArrayList<String> getSubCategories(){
         DBReader dbReaderBusinessMainCategories = new DBReader(Helper.getDBConnection());
-        ArrayList<String> subCategories = dbReaderBusinessMainCategories.getSubCategories(this.selectedMainCategories);
+        ArrayList<String> subCategories = dbReaderBusinessMainCategories.getSubCategories(this.selectedMainCategories, this.searchFor);
         return subCategories;
     }
 
