@@ -1,13 +1,12 @@
 package ui;
 
-import db.DBConnector;
 import db.DBReader;
+import helper.Helper;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 public class UI {
 
     ArrayList<String> mainCategories;
+    ArrayList<String> subCategories;
     ArrayList<String> selectedMainCategories;
     ArrayList<String> selectedSubCategories;
     ArrayList<String> selectedAttributes;
@@ -25,6 +25,7 @@ public class UI {
 
     public UI() {
         this.mainCategories = getMainCategories();
+        this.subCategories = null;
         this.mainCategoriesJP = new JPanel();
         this.subCategoriesJP = new JPanel();
         this.attributesJP = new JPanel();
@@ -33,27 +34,23 @@ public class UI {
         this.selectedAttributes = new ArrayList<String>();
     }
 
-    public Connection getDBConnection(){
-        DBConnector dbConnector = new DBConnector("jdbc:oracle:thin:hr/hr@localhost:1521:orcl", "hr","hr");
-        Connection connection = dbConnector.getConnection();
-        return connection;
-    }
-
     public ArrayList<String> getMainCategories(){
-        DBReader dbReaderBusinessMainCategories = new DBReader(this.getDBConnection());
+        DBReader dbReaderBusinessMainCategories = new DBReader(Helper.getDBConnection());
         ArrayList<String> mainCategories = dbReaderBusinessMainCategories.getMainCategories();
         return mainCategories;
     }
 
     public ArrayList<String> getSubCategories(){
-        return null;
+        DBReader dbReaderBusinessMainCategories = new DBReader(Helper.getDBConnection());
+        ArrayList<String> subCategories = dbReaderBusinessMainCategories.getSubCategories(this.selectedMainCategories);
+        return subCategories;
     }
 
     public void createAndShowGUI() {
         // create and set up the window.
         JFrame frame = new JFrame("Yelp Tool");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(1500,200));
+        frame.setPreferredSize(new Dimension(1500,700));
 
         // add panel for display
         JPanel display = new JPanel();
@@ -114,26 +111,29 @@ public class UI {
         this.subCategoriesJP.setLayout(new BoxLayout(this.subCategoriesJP, BoxLayout.Y_AXIS));
         JLabel subCategoriesJLabel = new JLabel("Sub Categories");
         this.subCategoriesJP.add(subCategoriesJLabel);
-        for(int i = 0; i < this.selectedMainCategories.size(); i++) {
-            JCheckBox jCheckBox = new JCheckBox(this.selectedMainCategories.get(i));
-            jCheckBox.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (jCheckBox.isSelected()){
-                        System.out.println("selected "+jCheckBox.getText());
-                        //selectedMainCategories.add(jCheckBox.getText());
-                        //loadSubCategories();
-                    } else {
-                        System.out.println("unselected "+jCheckBox.getText());
-                        //selectedMainCategories.remove(jCheckBox.getText());
-                        //loadSubCategories();
+        this.subCategories = this.getSubCategories();
+        if (this.subCategories != null){
+            for(int i = 0; i < this.subCategories.size(); i++) {
+                JCheckBox jCheckBox = new JCheckBox(this.subCategories.get(i));
+                jCheckBox.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (jCheckBox.isSelected()){
+                            System.out.println("selected "+jCheckBox.getText());
+                            selectedSubCategories.add(jCheckBox.getText());
+                            //loadAttributes();
+                        } else {
+                            System.out.println("unselected "+jCheckBox.getText());
+                            selectedSubCategories.remove(jCheckBox.getText());
+                            //loadAttributes();
+                        }
                     }
-                }
-            });
-            this.subCategoriesJP.add(jCheckBox);
-        }
-        this.subCategoriesJP.validate();
-        this.subCategoriesJP.repaint();
+                });
+                this.subCategoriesJP.add(jCheckBox);
+            }
+            this.subCategoriesJP.validate();
+            this.subCategoriesJP.repaint();
+            }
     }
 
     public void loadAttributes(){

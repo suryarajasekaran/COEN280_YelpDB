@@ -1,0 +1,275 @@
+﻿﻿CREATE TABLE BUSINESS (
+BID             VARCHAR(25)       PRIMARY KEY,
+ADDRESS         VARCHAR(250),
+OP_CL           VARCHAR(5),
+CITY            VARCHAR(25),
+STATE           VARCHAR(2),
+latitude        FLOAT(10),
+longitude       FLOAT(10),
+REV_COUNT       NUMBER(5),
+BNAME           VARCHAR(100),
+STARS           NUMBER(5),
+BTYPE           VARCHAR(10)
+);
+
+CREATE OR REPLACE TYPE VOTES AS OBJECT
+( COOL       NUMBER(5),
+  FUNNY      NUMBER(5),
+  USEFUL     NUMBER(5)
+);
+
+CREATE TABLE USERS (
+YELP_SINCE  DATE,
+VOTES       VOTES,
+REV_COUNT   NUMBER(5),
+USER_NAME   VARCHAR(50),
+USERID      VARCHAR(25) PRIMARY KEY,
+FAN         NUMBER(5),
+AVG_STARS   FLOAT(5),
+UTYPE       VARCHAR(10)
+);
+
+CREATE TABLE REVIEWS (
+BID         VARCHAR(25),
+VOTES       VOTES,
+USERID      VARCHAR(25),
+RID         VARCHAR(25) PRIMARY KEY,
+STARS       NUMBER(5),
+REVIEW_DATE DATE,
+TEXT        CLOB,
+RTYPE       VARCHAR(10),
+FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE,
+FOREIGN KEY (USERID) REFERENCES USERS (USERID) ON DELETE CASCADE
+);
+
+CREATE TABLE MAIN_CATEGORIES (
+BID          VARCHAR(25),
+MCAT         VARCHAR(50),
+FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE
+);
+
+CREATE TABLE SUB_CATEGORIES (
+BID          VARCHAR(25),
+SCAT         VARCHAR(50),
+FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE
+);
+
+CREATE TABLE HOURS (
+BID             VARCHAR(25),
+SU_O            DATE,
+SU_C            DATE,
+MO_O            DATE,
+MO_C            DATE,
+TU_O            DATE,
+TU_C            DATE,
+WE_O            DATE,
+WE_C            DATE,
+TH_O            DATE,
+TH_C            DATE,
+FR_O            DATE,
+FR_C            DATE,
+SA_O            DATE,
+SA_C            DATE
+);
+
+CREATE TABLE ATTRIB (
+BID     VARCHAR(25),
+ATTR    VARCHAR(50),
+ATTR_VALUE  VARCHAR(50),
+FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE
+);
+
+Insertion :
+
+Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , latitude , longitude, REV_COUNT , BNAME, STARS, BTYPE) VALUES
+ ('vcNAWiLM4dR7D2nwwJ7nCA', '4840 E Indian School Rd\nSte 101\nPhoenix, AZ 85018','true', 'Phoenix', 'AZ', 33.499313000000001, -111.98375799999999, 7,'Eric Goldberg, MD', 3.5, 'business');
+
+Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , latitude , longitude, REV_COUNT , BNAME, STARS, BTYPE) VALUES
+ ('JwUE5GmEO-sH1FuwJgKBlQ', '6162 US Highway 51\nDe Forest, WI 53532','true', 'De Forest', 'WI', 43.238892999999997, -89.335843999999994, 26,'Pine Cone Restaurant', 4.0, 'business');
+
+Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , latitude , longitude, REV_COUNT , BNAME, STARS, BTYPE) VALUES
+ ('m9haUi2_1lHR2eAKBhKwDg', '5210 N Central Ave\nPhoenix, AZ 85012','true', 'Phoenix', 'AZ', 33.513539000000002,  -112.074195, 371,'Federal Pizza', 4.0, 'business');
+
+select b.BID, c.BID from BUSINESS b, ATTRIB c;
+select * FROM USERS;
+select * from REVIEWS;
+SELECT * FROM MAIN_CATEGORIES
+SELECT * FROM SUB_CATEGORIES
+SELECT * FROM ATTRIB
+select * from BUSINESS
+
+Insert into USERS (YELP_SINCE , REV_COUNT , USER_NAME, USERID , FAN , AVG_STARS, UTYPE) VALUES
+ (to_date('2012-02','yyyy/mm'), 6,'Lee', 'qtrmBGNqCvupHMHL_bKFgQ', 0, 3.8300000000000001, 'user');
+
+ Insert into USERS (YELP_SINCE , REV_COUNT , USER_NAME, USERID , FAN , AVG_STARS, UTYPE) VALUES
+ (to_date('2010-09','yyyy/mm'), 22,'Jasmine', '0vscrHoajVRa1Yk19XWdwA', 1, 5.0, 'user');
+
+Insert into USERS (YELP_SINCE , REV_COUNT , USER_NAME, USERID , FAN , AVG_STARS, UTYPE) VALUES
+ (to_date('2006-12','yyyy/mm'), 267,'Lily', 'Xqd0DzHaiyRqVH3WRG7hzg', 21, 3.71, 'user');
+
+Insert into USERS (YELP_SINCE , REV_COUNT , USER_NAME, USERID , FAN , AVG_STARS, UTYPE) VALUES
+ (to_date('2009-04','yyyy/mm'), 13,'Daniel', 'H1kH6QZV7Le4zqTRNxoZow', 0, 1.9099999999999999, 'user');
+
+Insert into USERS (REV_COUNT , USER_NAME, USERID , FAN , AVG_STARS, UTYPE) VALUES
+ ( 6,'Lee', 'qtrmBGNqCvupHMHL_bKFgQ', 0, 3.8300000000000001, 'user');
+
+ Insert into USERS ( VOTES, REV_COUNT , USER_NAME, USERID , FAN , AVG_STARS, UTYPE) VALUES
+ (VOTES(11, 5, 20), 22,'Jasmine', '0vscrHoajVRa1Yk19XWdw5', 1, 5.0, 'user');
+
+Insert into REVIEWS (BID , VOTES , USERID , RID, STARS , REVIEW_DATE , TEXT, RTYPE) VALUES
+ ('vcNAWiLM4dR7D2nwwJ7nCA',VOTES(1,0,2),'Xqd0DzHaiyRqVH3WRG7hzg', '15SdjuK7DmYqUAj6rjGowg',5, TO_DATE('2007/05/17', 'yyyy/mm/dd'), 'dr. goldberg offers everything i look for in a general practitioner.  hes nice and easy to talk to without being patronizing; hes always on time in seeing his patients hes affiliated with a top-notch hospital (nyu) which my parents have explained to me is very important in case something happens and you need surgery; and you can get referrals to see specialists without having to see him first.  really, what more do you need?  im sitting here trying to think of any complaints i have about him, but im really drawing a blank.','review');
+
+ Insert into REVIEWS (BID , VOTES , USERID , RID, STARS , REVIEW_DATE , TEXT, RTYPE) VALUES
+ ('vcNAWiLM4dR7D2nwwJ7nCA',VOTES(0,0,2),'H1kH6QZV7Le4zqTRNxoZow', 'RF6UnRTtG7tWMcrO2GEoAg',2, TO_DATE('2010/03/22 21:02:44', 'yyyy/mm/dd hh24:mi:ss'), 'Unfortunately, the frustration of being Dr. Goldbergs patient is a repeat of the experience Ive had with so many other doctors in NYC -- good doctor, terrible staff.  It seems that his staff simply never answers the phone.  It usually takes 2 hours of repeated calling to get an answer.  Who has time for that or wants to deal with it?  I have run into this problem with many other doctors and I just dont get it.  You have office workers, you have patients with medical needs, why isnt anyone answering the phone?  Its incomprehensible and not work the aggravation.  Its with regret that I feel that I have to give Dr. Goldberg 2 stars','review');
+
+insert after business inserts
+Insert into REVIEWS (BID , VOTES , USERID , RID, STARS , REVIEW_DATE , TEXT, RTYPE) VALUES
+ ('m9haUi2_1lHR2eAKBhKwDg',VOTES(0,0,0),'0vscrHoajVRa1Yk19XWdwA', 'yuU08vL1jbsnQcRx43wCjg',5, to_DATE('2014-06-30','yyyy/mm/dd') ,'Mondays and Tuesdays are super radical.  $20 for two pitchers of beer (or a bottle of wine) and a pizza.  Too good to pass up','review');
+
+INSERT INTO MAIN_CATEGORIES VALUES ('m9haUi2_1lHR2eAKBhKwDg','Restaurants');
+INSERT INTO MAIN_CATEGORIES VALUES ('vcNAWiLM4dR7D2nwwJ7nCA','Doctors');
+INSERT INTO MAIN_CATEGORIES VALUES ('vcNAWiLM4dR7D2nwwJ7nCA','Hospitals');
+INSERT INTO MAIN_CATEGORIES VALUES ('JwUE5GmEO-sH1FuwJgKBlQ','Restaurants');
+
+INSERT INTO SUB_CATEGORIES VALUES ('vcNAWiLM4dR7D2nwwJ7nCA','Health & Medical');
+INSERT INTO SUB_CATEGORIES VALUES ('m9haUi2_1lHR2eAKBhKwDg','Pizza');
+INSERT INTO SUB_CATEGORIES VALUES ('m9haUi2_1lHR2eAKBhKwDg','Italian');
+INSERT INTO SUB_CATEGORIES VALUES ('JwUE5GmEO-sH1FuwJgKBlQ','Mexican');
+
+DROP TABLE ATTRIB;
+
+INSERT INTO ATTRIB VALUES ('vcNAWiLM4dR7D2nwwJ7nCA','By Appointment Only','true');
+INSERT INTO ATTRIB VALUES ('JwUE5GmEO-sH1FuwJgKBlQ','Take-out','true');
+INSERT INTO ATTRIB VALUES ('m9haUi2_1lHR2eAKBhKwDg','Take-out','true');
+INSERT INTO ATTRIB VALUES ('vcNAWiLM4dR7D2nwwJ7nCA','Wi-Fi','free');
+
+
+selections :
+main category :
+SELECT distinct(MCAT) FROM MAIN_CATEGORIES;
+
+sub : OR
+SET ESCAPE ON;
+select distinct(SCAT)
+FROM SUB_CATEGORIES S, MAIN_CATEGORIES M
+WHERE M.MCAT IN ('Hotels \& Travel','Home Services')
+and M.BID = S.BID;
+
+sub : AND
+select distinct(SCAT)
+FROM SUB_CATEGORIES S, MAIN_CATEGORIES M
+WHERE M.MCAT = 'Hotels \& Travel'
+and M.BID = S.BID
+intersect
+select distinct(SCAT)
+FROM SUB_CATEGORIES S, MAIN_CATEGORIES M
+WHERE M.MCAT = 'Home Services'
+and M.BID = S.BID;
+
+CREATE INDEX SUB_CATEGORIES_BID ON SUB_CATEGORIES (BID);
+CREATE INDEX MAIN_CATEGORIES_BID ON MAIN_CATEGORIES (BID);
+
+attrib : AND
+select distinct(ATTR)
+FROM SUB_CATEGORIES S, MAIN_CATEGORIES M
+WHERE M.MCAT IN ('Doctors','Restaurants')
+and M.BID = S.BID;
+
+attrib : OR
+
+Location :
+
+DROP TABLE ATTRIB CASCADE CONSTRAINTS;
+DROP TABLE REVIEWS CASCADE CONSTRAINTS;
+DROP TABLE SUB_CATEGORIES  CASCADE CONSTRAINTS;
+DROP TABLE MAIN_CATEGORIES CASCADE CONSTRAINTS;
+DROP TABLE USERS CASCADE CONSTRAINTS;
+DROP TABLE BUSINESS CASCADE CONSTRAINTS;
+DROP TABLE BUSINESS_MAIN_CATEGORIES CASCADE CONSTRAINTS;
+
+SELECT COUNT(BID) from BUSINESS; WHERE BID='BRaQrgYVR17bd_zr-wNSlQ';
+DELETE FROM SUB_CATEGORIES;
+
+select a.value, s.username, s.sid, s.serial# from v$sesstat a, v$statname b, v$session s where a.statistic# = b.statistic#  and s.sid=a.sid and b.name = 'opened cursors current' and s.username is not null;
+select  sid ,sql_text, count(*) as "OPEN CURSORS", USER_NAME from v$open_cursor where sid in ($SID);
+show parameter cursor
+
+ALTER SYSTEM SET open_cursors = 800 SCOPE=BOTH;
+
+
+﻿SET ESCAPE ON;
+
+CREATE OR REPLACE TYPE VOTES AS OBJECT (
+    COOL       NUMBER(5),
+    FUNNY      NUMBER(5),
+    USEFUL     NUMBER(5)
+);
+
+CREATE TABLE BUSINESS_MAIN_CATEGORIES (
+    MAIN_CATEGORY VARCHAR(30)
+);
+
+CREATE TABLE BUSINESS (
+    BID             VARCHAR(25)       PRIMARY KEY,
+    ADDRESS         VARCHAR(250),
+    OP_CL           VARCHAR(5),
+    CITY            VARCHAR(25),
+    STATE           VARCHAR(5),
+    latitude        FLOAT(10),
+    longitude       FLOAT(10),
+    REV_COUNT       NUMBER(5),
+    BNAME           VARCHAR(100),
+    STARS           FLOAT(5),
+    BTYPE           VARCHAR(10)
+);
+
+CREATE TABLE USERS (
+    REV_COUNT   NUMBER(5),
+    USER_NAME   VARCHAR(50),
+    USERID      VARCHAR(25) PRIMARY KEY,
+    AVG_STARS   FLOAT(5)
+);
+
+CREATE TABLE MAIN_CATEGORIES (
+    BID          VARCHAR(25),
+    MCAT         VARCHAR(50),
+    FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE
+);
+
+CREATE TABLE SUB_CATEGORIES (
+    BID          VARCHAR(25),
+    SCAT         VARCHAR(50),
+    FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE
+);
+
+CREATE TABLE ATTRIB (
+    BID     VARCHAR(25),
+    ATTR    VARCHAR(50),
+    ATTR_VALUE  VARCHAR(50),
+    FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE
+);
+
+CREATE TABLE REVIEWS (
+    BID         VARCHAR(25),
+    VOTES       VOTES,
+    USERID      VARCHAR(25),
+    RID         VARCHAR(25) PRIMARY KEY,
+    STARS       NUMBER(5),
+    REVIEW_DATE DATE,
+    TEXT        CLOB,
+    RTYPE       VARCHAR(10),
+    FOREIGN KEY (BID) REFERENCES BUSINESS (BID) ON DELETE CASCADE,
+    FOREIGN KEY (USERID) REFERENCES USERS (USERID) ON DELETE CASCADE
+);
+
+
+
+SELECT * FROM BUSINESS_MAIN_CATEGORIES;
+
+﻿SELECT COUNT(BID) from BUSINESS;
+
+SELECT COUNT(USERID) from USERS;
+
+SELECT COUNT(MAIN_CATEGORY) from BUSINESS_MAIN_CATEGORIES;
+
+SELECT COUNT(*) from main_categories;
