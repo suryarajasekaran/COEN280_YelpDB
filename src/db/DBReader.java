@@ -74,8 +74,6 @@ public class DBReader {
 
     public String generateQuery4SubCategories(ArrayList<String> mainCategories, String searchFor){
         String outString = "";
-
-        // ﻿select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = 'Doctors' Intersect select DISTINCT( M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = 'Dentists');
         if (searchFor.equals("AND")) {
             String section = "";
             for(int i=0; i<mainCategories.size(); i++){
@@ -90,7 +88,6 @@ public class DBReader {
             } else {
                 outString = "SELECT DISTINCT(S.SCAT) from SUB_CATEGORIES S where S.Bid in ("+section+")";
             }
-
         } else {
             String section = "";
             for(int i=0; i<mainCategories.size(); i++){
@@ -108,5 +105,4 @@ public class DBReader {
         System.out.print(outString);
         return outString;
     }
-
 }

@@ -132,13 +132,30 @@ public class DBWriter {
                     System.out.println(query);
                     e.printStackTrace();
                 }
-            }*/
+            }
             // ﻿INSERT INTO SUB_CATEGORIES
             ArrayList<String> subCategories = jsonReaderBusiness.getSubCategories();
             for (int j = 0; j < subCategories.size(); j++) {
                 String query = "Insert into SUB_CATEGORIES (BID , SCAT) VALUES ("
                         + "'" + jsonReaderBusiness.getBId() + "',"
                         + "'" + subCategories.get(j) + "'"
+                        + ")";
+                try {
+                    Statement statement = null;
+                    statement = this.connection.createStatement();
+                    statement.executeUpdate(query);
+                    statement.close();
+                } catch (SQLException e) {
+                    System.out.println(query);
+                    e.printStackTrace();
+                }
+            }*/
+            // ﻿INSERT INTO ATTRIBUTES
+            ArrayList<String> attributes = jsonReaderBusiness.getAttributes();
+            for (int j = 0; j < attributes.size(); j++) {
+                String query = "Insert into ATTRIB (BID , ATTR) VALUES ("
+                        + "'" + jsonReaderBusiness.getBId() + "',"
+                        + "'" + attributes.get(j) + "'"
                         + ")";
                 try {
                     Statement statement = null;

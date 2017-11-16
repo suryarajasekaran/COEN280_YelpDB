@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Created by SuryaRajasekaran on 11/5/17.
@@ -104,10 +105,31 @@ public class JsonReaderBusiness {
         return arrayList;
     }
 
+    public ArrayList<String> getAttributes() {
+        JSONObject jsonObject = this.jsonObject.getJSONObject("attributes");
+        return this.processAttributes(jsonObject);
+    }
+
     public String processString(String string) {
         return string
                 .replace(",","")
                 .replace("'","");
+    }
+
+    public ArrayList<String> processAttributes(JSONObject jsonObject){
+        ArrayList<String> arrayList = new ArrayList<String>();
+        Iterator<?> keys = jsonObject.keys();
+        while( keys.hasNext() ) {
+            String key = (String)keys.next();
+            if (jsonObject.get(key) instanceof JSONObject) {
+                ArrayList<String> subArrayList = new ArrayList<String>();
+                subArrayList = this.processAttributes(new JSONObject(jsonObject.get(key)));
+                arrayList.addAll(subArrayList);
+            } else if (jsonObject.get(key) instanceof Boolean) {
+                arrayList.add(key.replace(" ", "_")+"_"+jsonObject.get(key).toString().toUpperCase());
+            }
+        }
+        return arrayList;
     }
 
     /*
