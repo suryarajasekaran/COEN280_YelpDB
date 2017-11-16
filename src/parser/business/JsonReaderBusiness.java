@@ -107,7 +107,7 @@ public class JsonReaderBusiness {
 
     public ArrayList<String> getAttributes() {
         JSONObject jsonObject = this.jsonObject.getJSONObject("attributes");
-        return this.processAttributes(jsonObject);
+        return this.processAttributes(jsonObject, "");
     }
 
     public String processString(String string) {
@@ -116,17 +116,17 @@ public class JsonReaderBusiness {
                 .replace("'","");
     }
 
-    public ArrayList<String> processAttributes(JSONObject jsonObject){
+    public ArrayList<String> processAttributes(JSONObject jsonObject, String prefix){
         ArrayList<String> arrayList = new ArrayList<String>();
         Iterator<?> keys = jsonObject.keys();
         while( keys.hasNext() ) {
             String key = (String)keys.next();
             if (jsonObject.get(key) instanceof JSONObject) {
                 ArrayList<String> subArrayList = new ArrayList<String>();
-                subArrayList = this.processAttributes(new JSONObject(jsonObject.get(key)));
+                subArrayList = this.processAttributes(new JSONObject(jsonObject.get(key)), key.replace(" ", "_"));
                 arrayList.addAll(subArrayList);
             } else if (jsonObject.get(key) instanceof Boolean) {
-                arrayList.add(key.replace(" ", "_")+"_"+jsonObject.get(key).toString().toUpperCase());
+                arrayList.add(prefix + "_" + key.replace(" ", "_") + "_" + jsonObject.get(key).toString().toUpperCase());
             }
         }
         return arrayList;
