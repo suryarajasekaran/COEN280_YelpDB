@@ -28,7 +28,7 @@ public class JsonReaderCheckin {
         Iterator<?> keys = this.getCheckinInfo().keys();
         while( keys.hasNext() ) {
             String key = (String)keys.next();
-            count = count + jsonObject.getInt(key);
+            count = count + this.getCheckinInfo().getInt(key);
         }
         return count;
     }
