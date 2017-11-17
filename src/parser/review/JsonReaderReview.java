@@ -13,35 +13,35 @@ public class JsonReaderReview {
         this.jsonObject = jsonObject;
     }
 
-    public String getVotes() {
-        return this.jsonObject.getString("Votes");
+    public JSONObject getVotes() {
+        return this.jsonObject.getJSONObject("votes");
     }
 
-    public String getUseful() {
-        return this.jsonObject.getString("useful");
+    public Integer getVotesUseful() {
+        return this.getVotes().getInt("useful");
     }
 
-    public String getFunny() {
-        return this.jsonObject.getString("funny");
+    public Integer getVotesFunny() {
+        return this.getVotes().getInt("useful");
     }
 
-    public String getCool() {
-        return this.jsonObject.getString("cool");
+    public Integer getVotesCool() {
+        return this.getVotes().getInt("useful");
     }
 
     public String getUserId() {
         return this.jsonObject.getString("user_id");
     }
 
-    public String getReviewId() {
+    public String getRId() {
         return this.jsonObject.getString("review_id");
     }
 
-    public String getStars() {
-        return this.jsonObject.getString("stars");
+    public Integer getStars() {
+        return this.jsonObject.getInt("stars");
     }
 
-    public String getDate() {
+    public String getReviewDate() {
         return this.jsonObject.getString("date");
     }
 
@@ -51,6 +51,10 @@ public class JsonReaderReview {
 
     public String getType() {
         return this.jsonObject.getString("type");
+    }
+
+    public String getBId() {
+        return this.jsonObject.getString("business_id");
     }
 
 }

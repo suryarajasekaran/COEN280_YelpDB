@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import parser.business.Hours;
 import parser.business.JsonReaderBusiness;
 import parser.checkin.JsonReaderCheckin;
+import parser.review.JsonReaderReview;
 import parser.user.JsonReaderUser;
 
 import java.sql.Connection;
@@ -227,7 +228,30 @@ public class DBWriter {
     }
 
     public void writeReviewTable(String filePath) {
-        //System.out.println(Helper.readFile(filePath));
+        JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
+        for (int i=0; i < jsonObjectArr.length; i++){
+            JsonReaderReview jsonReaderReview = new JsonReaderReview(jsonObjectArr[i]);
+            String query = "Insert into REVIEWS (BID , VOTES_COOL, VOTES_FUNNY, VOTES_USEFUL, USERID, RID, STARS, REVIEW_DATE, TEXT) VALUES ("
+                    + "" + jsonReaderReview.getBId() + ","
+                    + "" + jsonReaderReview.getVotesCool() + ","
+                    + "" + jsonReaderReview.getVotesFunny() + ","
+                    + "" + jsonReaderReview.getVotesUseful() + ","
+                    + "" + jsonReaderReview.getUserId() + ","
+                    + "" + jsonReaderReview.getRId() + ","
+                    + "" + jsonReaderReview.getStars() + ","
+                    + "" + jsonReaderReview.getReviewDate() + ","
+                    + "" + jsonReaderReview.getText() + ""
+                    + ")";
+            try {
+                Statement statement = null;
+                statement = this.connection.createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println(query);
+                e.printStackTrace();
+            }
+        }
     }
 
     public void writeUserTable(String filePath) {

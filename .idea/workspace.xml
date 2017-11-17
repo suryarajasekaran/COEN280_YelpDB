@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/checkin/JsonReaderCheckin.java" afterPath="$PROJECT_DIR$/src/parser/checkin/JsonReaderCheckin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/DBWriter.java" afterPath="$PROJECT_DIR$/src/db/DBWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dbScripts/createdb.sql" afterPath="$PROJECT_DIR$/src/dbScripts/createdb.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" afterPath="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,51 +32,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBWriter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DBWriter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="208" column="51" lean-forward="false" selection-start-line="208" selection-start-column="51" selection-end-line="208" selection-end-column="51" />
+            <state relative-caret-position="175">
+              <caret line="230" column="8" lean-forward="false" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
                 <element signature="method#writeBusinessTable#0;class#DBWriter#0" expanded="false" />
                 <element signature="method#writeCheckinTable#0;class#DBWriter#0" expanded="false" />
-                <marker date="1510935033000" expanded="true" signature="5019:5726" ph=" INSERT statement (BUSINESS)" />
-                <marker date="1510935033000" expanded="true" signature="6288:6434" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510935033000" expanded="true" signature="6288:6490" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510935033000" expanded="true" signature="6288:6494" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510935033000" expanded="true" signature="7102:7306" ph=" INSERT statement (MAIN_CATEGORIES)" />
-                <marker date="1510935033000" expanded="true" signature="7901:8094" ph=" INSERT statement (ATTRIB)" />
-                <marker date="1510935033000" expanded="true" signature="8545:8776" ph=" INSERT statement (LOCATON)" />
-                <marker date="1510935033000" expanded="true" signature="9299:9651" ph=" INSERT statement (HOURS)" />
-                <marker date="1510935033000" expanded="true" signature="10391:10530" ph=" INSERT statement (USERS)" />
-                <marker date="1510935033000" expanded="true" signature="10391:10599" ph=" INSERT statement (CHECKIN)" />
-                <marker date="1510935033000" expanded="true" signature="11393:11737" ph=" INSERT statement (USERS)" />
+                <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
+                <marker date="1510936374000" expanded="true" signature="5058:5765" ph=" INSERT statement (BUSINESS)" />
+                <marker date="1510936374000" expanded="true" signature="6327:6473" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510936374000" expanded="true" signature="6327:6529" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510936374000" expanded="true" signature="6327:6533" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510936374000" expanded="true" signature="7141:7345" ph=" INSERT statement (MAIN_CATEGORIES)" />
+                <marker date="1510936374000" expanded="true" signature="7940:8133" ph=" INSERT statement (ATTRIB)" />
+                <marker date="1510936374000" expanded="true" signature="8584:8815" ph=" INSERT statement (LOCATON)" />
+                <marker date="1510936374000" expanded="true" signature="9338:9690" ph=" INSERT statement (HOURS)" />
+                <marker date="1510936374000" expanded="true" signature="10430:10569" ph=" INSERT statement (USERS)" />
+                <marker date="1510936374000" expanded="true" signature="10430:10638" ph=" INSERT statement (CHECKIN)" />
+                <marker date="1510936374000" expanded="true" signature="11324:11521" ph=" INSERT statement (REVIEWS)" />
+                <marker date="1510936374000" expanded="true" signature="11324:12027" ph=" INSERT statement (REVIEWS)" />
+                <marker date="1510936374000" expanded="true" signature="12705:13049" ph=" INSERT statement (USERS)" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="175" column="42" lean-forward="true" selection-start-line="175" selection-start-column="42" selection-end-line="175" selection-end-column="42" />
-              <folding>
-                <element signature="method#createAndShowGUI#0;class#UI#0" expanded="false" />
-                <element signature="method#loadData#0;class#UI#0" expanded="false" />
-                <element signature="method#loadSubCategories#0;class#UI#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JsonReaderCheckin.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JsonReaderCheckin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/parser/checkin/JsonReaderCheckin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+            <state relative-caret-position="240">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,65 +76,22 @@
       <file leaf-file-name="createdb.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dbScripts/createdb.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+            <state relative-caret-position="277">
+              <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonReaderBusiness.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/parser/business/JsonReaderBusiness.java">
+      <file leaf-file-name="Helper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper/Helper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="137" column="45" lean-forward="true" selection-start-line="137" selection-start-column="12" selection-end-line="137" selection-end-column="45" />
+            <state relative-caret-position="270">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#JsonReaderBusiness#0;class#JsonReaderBusiness#0" expanded="false" />
-                <element signature="method#getMainCategories#0;class#JsonReaderBusiness#0" expanded="false" />
-                <element signature="e#2964#2972#0" expanded="true" />
-                <element signature="method#getSubCategories#0;class#JsonReaderBusiness#0" expanded="false" />
-                <element signature="e#3399#3407#0" expanded="true" />
-                <element signature="e#3959#3966#0" expanded="true" />
-                <element signature="method#processString#0;class#JsonReaderBusiness#0" expanded="false" />
-                <element signature="e#4684#4692#0" expanded="true" />
-                <element signature="e#4945#4953#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yelp_user.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_user.json">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="60">
-              <caret line="1" column="296" lean-forward="false" selection-start-line="1" selection-start-column="283" selection-end-line="1" selection-end-column="296" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="yelp_checkin.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_checkin.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-              <folding>
-                <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="e#1177#1185#0" expanded="true" />
-                <element signature="e#2137#2145#0" expanded="true" />
-                <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
-                <marker date="1510832342000" expanded="true" signature="634:684" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <element signature="method#getDBConnection#0;class#Helper#0" expanded="false" />
+                <element signature="method#readFile#0;class#Helper#0" expanded="false" />
+                <element signature="method#strArr2jsonArr#0;class#Helper#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -175,6 +122,7 @@
       <find>getDBConnection</find>
       <find>main</find>
       <find>date</find>
+      <find>REVIEW</find>
     </findStrings>
     <replaceStrings>
       <replace>&amp;amp;</replace>
@@ -226,9 +174,10 @@
         <option value="$PROJECT_DIR$/src/dbScripts/deleteindex.sql" />
         <option value="$PROJECT_DIR$/src/dbScripts/temp.sql" />
         <option value="$PROJECT_DIR$/src/populate.java" />
-        <option value="$PROJECT_DIR$/src/dbScripts/createdb.sql" />
-        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
         <option value="$PROJECT_DIR$/src/parser/checkin/JsonReaderCheckin.java" />
+        <option value="$PROJECT_DIR$/src/dbScripts/createdb.sql" />
+        <option value="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" />
+        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
       </list>
     </option>
   </component>
@@ -347,7 +296,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="checkin" />
+              <option name="myItemId" value="review" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -369,7 +318,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="business" />
+              <option name="myItemId" value="checkin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -740,7 +689,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.39484978" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.54291844" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -757,9 +706,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.6051502" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3566265" sideWeight="0.6051502" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.4599428" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.45708156" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23319027" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -829,16 +778,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/populate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="54" column="73" lean-forward="false" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/populate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -957,14 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dbScripts/olddropdb.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1055,16 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/populate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_user.json">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="60">
@@ -1107,38 +1028,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dbScripts/createdb.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="208" column="51" lean-forward="false" selection-start-line="208" selection-start-column="51" selection-end-line="208" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeBusinessTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeCheckinTable#0;class#DBWriter#0" expanded="false" />
-            <marker date="1510935033000" expanded="true" signature="5019:5726" ph=" INSERT statement (BUSINESS)" />
-            <marker date="1510935033000" expanded="true" signature="6288:6434" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510935033000" expanded="true" signature="6288:6490" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510935033000" expanded="true" signature="6288:6494" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510935033000" expanded="true" signature="7102:7306" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510935033000" expanded="true" signature="7901:8094" ph=" INSERT statement (ATTRIB)" />
-            <marker date="1510935033000" expanded="true" signature="8545:8776" ph=" INSERT statement (LOCATON)" />
-            <marker date="1510935033000" expanded="true" signature="9299:9651" ph=" INSERT statement (HOURS)" />
-            <marker date="1510935033000" expanded="true" signature="10391:10530" ph=" INSERT statement (USERS)" />
-            <marker date="1510935033000" expanded="true" signature="10391:10599" ph=" INSERT statement (CHECKIN)" />
-            <marker date="1510935033000" expanded="true" signature="11393:11737" ph=" INSERT statement (USERS)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -1151,12 +1040,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/checkin/JsonReaderCheckin.java">
+    <entry file="file://$PROJECT_DIR$/src/helper/Helper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+        <state relative-caret-position="270">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="method#getDBConnection#0;class#Helper#0" expanded="false" />
+            <element signature="method#readFile#0;class#Helper#0" expanded="false" />
+            <element signature="method#strArr2jsonArr#0;class#Helper#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/populate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dbScripts/createdb.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/checkin/JsonReaderCheckin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/review/JsonReaderReview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="57" column="5" lean-forward="false" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="e#1116#1117#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="230" column="8" lean-forward="false" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeBusinessTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeCheckinTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
+            <marker date="1510936374000" expanded="true" signature="5058:5765" ph=" INSERT statement (BUSINESS)" />
+            <marker date="1510936374000" expanded="true" signature="6327:6473" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510936374000" expanded="true" signature="6327:6529" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510936374000" expanded="true" signature="6327:6533" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510936374000" expanded="true" signature="7141:7345" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510936374000" expanded="true" signature="7940:8133" ph=" INSERT statement (ATTRIB)" />
+            <marker date="1510936374000" expanded="true" signature="8584:8815" ph=" INSERT statement (LOCATON)" />
+            <marker date="1510936374000" expanded="true" signature="9338:9690" ph=" INSERT statement (HOURS)" />
+            <marker date="1510936374000" expanded="true" signature="10430:10569" ph=" INSERT statement (USERS)" />
+            <marker date="1510936374000" expanded="true" signature="10430:10638" ph=" INSERT statement (CHECKIN)" />
+            <marker date="1510936374000" expanded="true" signature="11324:11521" ph=" INSERT statement (REVIEWS)" />
+            <marker date="1510936374000" expanded="true" signature="11324:12027" ph=" INSERT statement (REVIEWS)" />
+            <marker date="1510936374000" expanded="true" signature="12705:13049" ph=" INSERT statement (USERS)" />
           </folding>
         </state>
       </provider>
