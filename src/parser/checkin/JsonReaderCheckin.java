@@ -2,6 +2,8 @@ package parser.checkin;
 
 import org.json.JSONObject;
 
+import java.util.Iterator;
+
 /**
  * Created by SuryaRajasekaran on 11/5/17.
  */
@@ -17,9 +19,17 @@ public class JsonReaderCheckin {
         return this.jsonObject.getString("business_id");
     }
 
-    public String getType() {
-        return this.jsonObject.getString("type");
+    public JSONObject getCheckinInfo() {
+        return this.jsonObject.getJSONObject("checkin_info");
     }
 
-
+    public Integer getCheckinCount(){
+        Integer count = 0;
+        Iterator<?> keys = jsonObject.keys();
+        while( keys.hasNext() ) {
+            String key = (String)keys.next();
+            count = count + jsonObject.getInt(key);
+        }
+        return count;
+    }
 }

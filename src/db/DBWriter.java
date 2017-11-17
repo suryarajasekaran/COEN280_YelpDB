@@ -2,12 +2,15 @@ package db;
 
 import helper.Helper;
 import org.json.JSONObject;
+import parser.business.Hours;
 import parser.business.JsonReaderBusiness;
+import parser.checkin.JsonReaderCheckin;
 import parser.user.JsonReaderUser;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Created by SuryaRajasekaran on 11/13/17.
@@ -93,10 +96,11 @@ public class DBWriter {
 
     public void writeBusinessTable(String filePath) {
         JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
+        String query;
         for (int i=0; i < jsonObjectArr.length; i++){
             JsonReaderBusiness jsonReaderBusiness = new JsonReaderBusiness(jsonObjectArr[i]);
             // ﻿INSERT INTO BUSINESS
-            /*String query = "Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , REV_COUNT , BNAME, STARS) VALUES ("
+            query = "Insert into BUSINESS (BID , ADDRESS , OP_CL , CITY, STATE , REV_COUNT , BNAME, STARS) VALUES ("
                             + "'" + jsonReaderBusiness.getBId() + "',"
                             + "'" + jsonReaderBusiness.getAddress() + "',"
                             + "'" + jsonReaderBusiness.getOpCl() + "',"
@@ -118,7 +122,7 @@ public class DBWriter {
             // ﻿INSERT INTO MAIN_CATEGORIES
             ArrayList<String> mainCategories = jsonReaderBusiness.getMainCategories();
             for (int j = 0; j < mainCategories.size(); j++) {
-                String query = "Insert into MAIN_CATEGORIES (BID , MCAT) VALUES ("
+                query = "Insert into MAIN_CATEGORIES (BID , MCAT) VALUES ("
                         + "'" + jsonReaderBusiness.getBId() + "',"
                         + "'" + mainCategories.get(j) + "'"
                         + ")";
@@ -135,7 +139,7 @@ public class DBWriter {
             // ﻿INSERT INTO SUB_CATEGORIES
             ArrayList<String> subCategories = jsonReaderBusiness.getSubCategories();
             for (int j = 0; j < subCategories.size(); j++) {
-                String query = "Insert into SUB_CATEGORIES (BID , SCAT) VALUES ("
+                query = "Insert into SUB_CATEGORIES (BID , SCAT) VALUES ("
                         + "'" + jsonReaderBusiness.getBId() + "',"
                         + "'" + subCategories.get(j) + "'"
                         + ")";
@@ -152,7 +156,7 @@ public class DBWriter {
             // ﻿INSERT INTO ATTRIBUTES
             ArrayList<String> attributes = jsonReaderBusiness.getAttributes();
             for (int j = 0; j < attributes.size(); j++) {
-                String query = "Insert into ATTRIB (BID , ATTR) VALUES ("
+                query = "Insert into ATTRIB (BID , ATTR) VALUES ("
                         + "'" + jsonReaderBusiness.getBId() + "',"
                         + "'" + attributes.get(j) + "'"
                         + ")";
@@ -167,7 +171,7 @@ public class DBWriter {
                 }
             }
             // ﻿INSERT INTO LOCATON
-            String query = "Insert into LOCATON (BID , LOC) VALUES ("
+            query = "Insert into LOCATON (BID , LOC) VALUES ("
                     + "'" + jsonReaderBusiness.getBId() + "',"
                     + "'" + jsonReaderBusiness.getCity() + ", " + jsonReaderBusiness.getState() + "'"
                     + ")";
@@ -183,7 +187,7 @@ public class DBWriter {
             // INSERT INTO HOURS
             ArrayList<Hours> hours = jsonReaderBusiness.getHours();
             for (int j = 0; j < hours.size(); j++) {
-                String query = "Insert into HOURS (BID, WORKDAY, OPENHRS, CLOSEHRS) VALUES ("
+                query = "Insert into HOURS (BID, WORKDAY, OPENHRS, CLOSEHRS) VALUES ("
                         + "'" + jsonReaderBusiness.getBId() + "',"
                         + "'" + hours.get(j).getWorkDay() + "',"
                         + "" + hours.get(j).getOpenHours() + ","
@@ -198,12 +202,28 @@ public class DBWriter {
                     System.out.println(query);
                     e.printStackTrace();
                 }
-            }*/
+            }
         }
     }
 
     public void writeCheckinTable(String filePath) {
-        //System.out.println(Helper.readFile(filePath));
+        JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
+        for (int i=0; i < jsonObjectArr.length; i++){
+            JsonReaderCheckin jsonReaderCheckin = new JsonReaderCheckin(jsonObjectArr[i]);
+            String query = "Insert into CHECKIN (BID , CHKINCOUNT) VALUES ("
+                    + "" + jsonReaderCheckin.getBusinessId() + ","
+                    + "" + jsonReaderCheckin.getCheckinCount() + ""
+                    + ")";
+            try {
+                Statement statement = null;
+                statement = this.connection.createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println(query);
+                e.printStackTrace();
+            }
+        }
     }
 
     public void writeReviewTable(String filePath) {

@@ -273,3 +273,1049 @@ SELECT COUNT(USERID) from USERS;
 SELECT COUNT(MAIN_CATEGORY) from BUSINESS_MAIN_CATEGORIES;
 
 SELECT COUNT(*) from main_categories;
+
+
+NEW.sql :
+
+﻿selections :
+main category :
+SELECT distinct(MCAT) FROM MAIN_CATEGORIES;
+
+TO GET sub : OR
+select distinct(SCAT)
+FROM SUB_CATEGORIES S, MAIN_CATEGORIES M
+WHERE M.MCAT IN ( 'Doctors' ,'Dentists')
+and M.BID = S.BID;
+
+TO GET sub : AND
+SELECT DISTINCT(S.SCAT) from SUB_CATEGORIES S
+where S.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors'
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists');
+
+TO GET attrib : Main only : OR
+select distinct(ATTR)
+FROM attrib A, MAIN_CATEGORIES M
+WHERE M.MCAT IN ( 'Doctors' ,'Dentists')
+and M.BID = A.BID;
+
+TO GET attrib : Main only : AND
+SELECT DISTINCT(A.ATTR) from ATTRIB A
+where A.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists'
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors');
+
+TO GET attrib : OR (2 MC, TWO SC)
+SELECT DISTINCT(A.ATTR) from attrib A
+where A.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian'
+AND  M.BID = S.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Vegetarian'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+
+TO GET attrib : AND (2 MC, 2 SC)
+SELECT DISTINCT(A.ATTR) from attrib A
+where A.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Cafes' AND S.SCAT = 'Fondue'
+AND  M.BID = S.BID
+INTERSECT
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Cafes' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Fondue'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+=====================
+
+example :
+SELECT DISTINCT(A.ATTR) from attrib A
+where A.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Bakeries'
+AND  M.BID = S.BID
+INTERSECT
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Specialty Food'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Chocolatiers & Shops'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Cafes' AND S.SCAT = 'Bakeries'
+AND M.BID=S.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Cafes' AND S.SCAT = 'Specialty Food'
+AND M.BID=S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Cafes' AND S.SCAT = 'Chocolatiers & Shops'
+AND M.BID=S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Bakeries'
+AND M.BID=S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Specialty Food'
+AND M.BID=S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Chocolatiers & Shops'
+AND M.BID=S.BID
+);
+
+
+
+
+
+
+B.ADDRESS , B.CITY,B.STATE,B.STARS
+BUSINESS FROM ATTRIB :
+BUSINESS FROM SUB :
+BUSINESS FROM MAIN :
+
+business : Main only : OR
+select distinct(B.BID),B.BNAME
+FROM BUSINESS B, MAIN_CATEGORIES M
+WHERE M.MCAT IN ( 'Doctors' ,'Dentists')
+and M.BID = B.BID;
+
+BUSINESS : Main only : AND
+SELECT distinct(B.BID),B.BNAME from BUSINESS B
+where B.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists'
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors');
+
+BUSINESS : OR (2 MC, TWO SC)
+SELECT DISTINCT(B.BID),B.BNAME from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian'
+AND  M.BID = S.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Vegetarian'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American(Traditional)'
+AND M.BID=S.BID
+);
+
+business : AND (2 MC, 2 SC)
+SELECT DISTINCT(B.BID),B.BNAME from BUSINESS B
+where b.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Doctors' AND S.SCAT = 'Cosmetic Surgeons'
+AND  M.BID = S.BID
+INTERSECT
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Doctors' AND S.SCAT = 'Family Practice'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Dentists' AND S.SCAT = 'Cosmetic Surgeons'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Dentists' AND S.SCAT = 'Family Practice'
+AND M.BID=S.BID
+);
+
+BUSINESS : OR (2 MC, TWO SC,1 Attr)
+SELECT DISTINCT(B.BID),B.BNAME from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+);
+
+business : AND (2 MC, 2 SC, 1 attrib)
+SELECT DISTINCT(B.BID),B.BNAME from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+);
+
+REVIEWS :
+
+
+
+LOCATION FROM MAIN OR:
+SELECT DISTINCT(l.loc)
+FROM LOCATON L, MAIN_CATEGORIES M
+WHERE M.MCAT IN ( 'Doctors' ,'Dentists')
+and M.BID = L.BID;
+
+LOCATION FROM MAIN AND :
+SELECT DISTINCT(l.LOC) from LOCATON L
+where L.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists'
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors');
+
+LOCATION FROM SUB OR :
+SELECT DISTINCT(l.LOC) from LOCATON L
+where L.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Doctors' AND S.SCAT = 'Cosmetic Surgeons'
+AND  M.BID = S.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Doctors' AND S.SCAT = 'Family Practice'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Dentists' AND S.SCAT = 'Cosmetic Surgeons'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Dentists' AND S.SCAT = 'Family Practice'
+AND M.BID=S.BID
+);
+
+LOCATON FROM SUB  : AND (2 MC, 2 SC)
+SELECT DISTINCT(L.LOC) from LOCATON L
+where L.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Doctors' AND S.SCAT = 'Cosmetic Surgeons'
+AND  M.BID = S.BID
+INTERSECT
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Doctors' AND S.SCAT = 'Family Practice'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Dentists' AND S.SCAT = 'Cosmetic Surgeons'
+AND M.BID = S.BID
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Dentists' AND S.SCAT = 'Family Practice'
+AND M.BID=S.BID
+);
+
+LOCATION FROM ATTRIB :
+
+
+main category :
+SELECT distinct(l.loc)
+FROM MAIN_CATEGORIES M, locaton l
+where M.MCAT = 'Dentists'
+and m.bid = l.bid;
+
+
+
+
+attrib : AND (2 MC, one SC)
+SELECT DISTINCT(A.ATTR) from attrib A
+where A.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Doctors' AND S.SCAT = 'Cosmetic Surgeons'
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Dentists' AND S.SCAT = 'Cosmetic Surgeons' );
+
+
+NEW2.SQL
+
+﻿
+========================
+LOCATION IN STARTING :
+select distinct(LOC) from locaton
+
+TO GET location with main : OR
+select distinct(l.loc)
+from locaton L, main_Categories M
+where m.mcat in ('Restaurants','Food')
+and l.bid = m.bid;
+
+TO GET location with main : AND
+SELECT DISTINCT(l.loc) from locaton L
+where l.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors'
+Intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists');
+
+TO GET Location WITH  MAIN AND SC selected with : OR
+SELECT DISTINCT(L.loc) from locaton l
+where l.bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian'
+AND  M.BID = S.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Vegetarian'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+
+Location : MAIN AND SC selected with AND
+SELECT DISTINCT(l.loc) from locaton l
+where l.bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Cafes' AND S.SCAT = 'Fondue'
+AND  M.BID = S.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Cafes' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Fondue'
+AND M.BID = S.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+
+TO GET LOcation WITH MAIN,SC,ATTRIB with OR
+select distinct (l.loc)
+from BUSINESS B, LOCATON L
+WHERE B.BID = L.BID
+AND B.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+));
+
+location  : OR (2 MC, 2 SC, 1 attrib)
+select distinct (l.loc)
+from BUSINESS B, LOCATON L
+WHERE B.BID = L.BID
+AND B.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+));
+
+===================================
+
+DAY HOURS:
+WHERE H.BID = '4DDbIvNtzfhLRwz-EOLFDA' OR H.BID = 'AjE4uM-VaGP3QPCjSjIEaw' OR H.BID ='AX56yxldIb7TPBHMaPqOmg' OR H.BID ='X7lGjrkrAkwtMOQbN-S3tA';
+CREATE INDEX HOURS_BID ON HOURS (BID);
+CREATE INDEX HOURS_OPEN ON HOURS (OPENHRS);
+CREATE INDEX HOURS_CLOSE ON HOURS (CLOSEHRS);
+oKuvHNucsBVMAkmNdSASSw OPEN 8 , CLOSE 17, 4
+ve79IOyqrV98sV1kQhMygg OPEN 8   CLOSE 17
+
+=======================
+
+starting :
+SELECT DISTINCT(H.WORKDAY)
+FROM HOURS H
+
+SELECT DISTINCT(H.OPENHRS)
+FROM HOURS H
+order by H.OPENHRS
+
+SELECT DISTINCT(H.CLOSEHRS)
+FROM HOURS H
+order by H.closehrs
+
+main OR :
+SELECT DISTINCT(H.WORKDAY)
+FROM HOURS H, main_Categories m
+where M.MCAT in ('Doctors','Dentists')
+and h.bid = m.bid;
+
+SELECT DISTINCT(H.OPENHRS)
+FROM HOURS H, main_Categories m
+where M.MCAT in ('Doctors','Dentists')
+and h.bid = m.bid
+order by H.OPENHRS;
+
+SELECT DISTINCT(h.closehrs)
+FROM HOURS H, main_Categories m
+where M.MCAT in ('Doctors','Dentists')
+and h.bid = m.bid
+order by H.closehrs;
+
+main AND :
+SELECT DISTINCT(H.WORKDAY) from HOURS H
+where H.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors'
+Intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists');
+
+SELECT DISTINCT(H.OPENHRS) from HOURS H
+where H.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors'
+Intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists');
+
+SELECT DISTINCT(H.CLOSEHRS) from HOURS H
+where H.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors'
+Intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists');
+
+to get days// hours when MC and SC given with OR :
+sELECT DISTINCT(H.WORKDAY) from HOURS H
+where H.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian'
+AND  M.BID = S.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Vegetarian'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+
+SAME FOR CLOSE AND OPEN
+
+MC SC AND :
+sELECT DISTINCT(H.WORKDAY) from HOURS H
+where H.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian'
+AND  M.BID = S.BID
+INTERSECT
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+INTERSECT
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Vegetarian'
+AND M.BID = S.BID
+INTERSECT
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+
+SAME FOR CLOSE AND OPEN
+
+to get days date when MC SC ATTR with AND :
+
+select distinct (H.WORKDAY)
+from HOURS H
+WHERE H.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+));
+
+MC SC ATTR OR : to get days date when MC SC ATTR with OR :
+
+select distinct (H.WORKDAY)
+from HOURS H
+WHERE H.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+));
+
+
+MC SC ATTR LOC OR :
+
+select distinct (H.WORKDAY)
+from HOURS H
+WHERE H.BID IN (
+SELECT DISTINCT(L.BID) FROM LOCATON L , business b
+WHERE b.city = 'Pheonix'
+and b.bid = l.bid
+and L.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+)));
+
+MC SC ATTR LOC AND :
+select distinct (H.WORKDAY)
+from HOURS H
+WHERE H.BID IN (
+SELECT DISTINCT(L.BID) FROM LOCATON L , business b
+WHERE b.city = 'Pheonix'
+and b.bid = l.bid
+and L.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+)));
+
+
+NEW3.SQL :
+
+﻿BUSINESS :
+
+GET BUSINESS WHEN main GIVEN  FOR OR :
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B, MAIN_cATEGORIES M
+WHERE M.MCAT in ('Doctors','Dentists')
+AND B.BID = M.BID;
+
+GET BUSINESS WHEN main GIVEN  FOR AND :
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid in (select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Doctors'
+Intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M
+WHERE M.MCAT = 'Dentists');
+
+to get BUSINESS when MC and SC given with OR :
+sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian'
+AND  M.BID = S.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Vegetarian'
+AND M.BID = S.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+
+
+to get BUSINESS when MC and SC given with AND :
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian'
+AND  M.BID = S.BID
+INTERSECT
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (Traditional)'
+AND M.BID = S.BID
+INTERSECT
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Vegetarian'
+AND M.BID = S.BID
+INTERSECT
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (Traditional)'
+AND M.BID=S.BID
+);
+
+
+to get BUSINESS when MC SC ATTR with AND :
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid IN (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+);
+
+TO GET BUSINESS WHEN MC SC ATTR WITH OR :
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid IN (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+);
+
+
+
+GET BUSINESS WHEN MC SC ATTR LOC WITH OR :
+
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid IN (
+SELECT DISTINCT(L.BID) FROM LOCATON L , business b
+WHERE b.city = 'Pheonix'
+and b.bid = l.bid
+and L.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+)));
+
+GET BUSINESS WHEN MC SC ATTR LOC AND :
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid IN (
+SELECT DISTINCT(L.BID) FROM LOCATON L , business b
+WHERE b.city = 'Pheonix'
+and b.bid = l.bid
+and L.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'Vegetarian' AND A.ATTR = 'Caters_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restarants' AND S.SCAT = 'American(Traditional)' AND A.ATTR = 'Caters_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+)));
+
+
+to get business when MC SC ATTR LOC DAYS HOURS when OR
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid IN (
+select distinct (H.BID)
+from HOURS H
+WHERE h.workday = 'Monday' AND H.OPENHRS = '1100' AND H.CLOSEHRS = '2000'
+and H.BID IN (
+SELECT DISTINCT(L.BID) FROM LOCATON L , business b
+WHERE b.city = 'Madison'
+and b.bid = l.bid
+and L.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Fondue' AND A.ATTR = 'Waiter_Service_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (New)' AND A.ATTR = 'Waiter_Service_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Fondue' AND A.ATTR = 'Waiter_Service_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+UNION
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (New)' AND A.ATTR = 'Waiter_Service_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+))));
+
+
+to get business when MC SC ATTR LOC DAYS HOURS when AND
+SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT
+FROM BUSINESS B
+where B.Bid IN (
+select distinct (H.BID)
+from HOURS H
+WHERE h.workday = 'Monday' AND H.OPENHRS = '0' AND H.CLOSEHRS = '2000'
+and H.BID IN (
+SELECT DISTINCT(L.BID) FROM LOCATON L , business b
+WHERE b.city = 'Madison'
+and b.bid = l.bid
+and L.BID IN (
+SELECT DISTINCT(B.BID) from BUSINESS B
+where B.Bid in (
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'Fondue' AND A.ATTR = 'Waiter_Service_TRUE'
+AND  M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT(M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Food' AND S.SCAT = 'American (New)' AND A.ATTR = 'Waiter_Service_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'Fondue' AND A.ATTR = 'Waiter_Service_TRUE'
+AND M.BID = S.BID
+AND M.BID = A.BID
+intersect
+select DISTINCT( M.BID)
+FROM MAIN_CATEGORIES M, sub_categories S,attrib A
+WHERE M.MCAT = 'Restaurants' AND S.SCAT = 'American (New)' AND A.ATTR = 'Waiter_Service_TRUE'
+AND M.BID=S.BID
+AND M.BID = A.BID
+))));
+
+
+Review POPUP : for final B
+
+select R.review_Date, r.stars, r.text, r.userid, u.user_name
+from business b, reviews r, users u
+where r.userid = u.userid
+and b.bid = r.bid
+
+

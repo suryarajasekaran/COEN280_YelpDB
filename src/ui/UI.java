@@ -30,7 +30,7 @@ public class UI {
     public UI() {
         this.mainCategories = getMainCategories();
         this.subCategories = null;
-        this.searchFor = "AND";
+        this.searchFor = "OR";
         this.mainCategoriesJP = new JPanel();
         this.subCategoriesJP = new JPanel();
         this.attributesJP = new JPanel();
