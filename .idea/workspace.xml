@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/DBReader.java" afterPath="$PROJECT_DIR$/src/db/DBReader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/UI.java" afterPath="$PROJECT_DIR$/src/ui/UI.java" />
     </list>
@@ -31,34 +32,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="160" column="0" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+            <state relative-caret-position="281">
+              <caret line="111" column="35" lean-forward="false" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
               <folding>
                 <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
                 <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
+                <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
                 <element signature="method#getLocation#0;class#UI#0" expanded="false" />
+                <element signature="method#getDay#0;class#UI#0" expanded="false" />
+                <element signature="method#createAndShowGUI#0;class#UI#0" expanded="false" />
+                <element signature="e#5720#5721#0" expanded="true" />
+                <element signature="e#5800#5801#0" expanded="true" />
+                <element signature="e#6035#6036#0" expanded="true" />
+                <element signature="e#6117#6118#0" expanded="true" />
+                <element signature="e#6347#6348#0" expanded="true" />
+                <element signature="e#6425#6426#0" expanded="true" />
+                <element signature="method#loadData#0;class#UI#0" expanded="false" />
+                <element signature="method#loadSubCategories#0;class#UI#0" expanded="false" />
+                <element signature="method#loadAttributes#0;class#UI#0" expanded="false" />
+                <element signature="method#loadLocation#0;class#UI#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="229" column="110" lean-forward="false" selection-start-line="229" selection-start-column="110" selection-end-line="229" selection-end-column="110" />
+            <state relative-caret-position="195">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
                 <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="e#1177#1185#0" expanded="true" />
-                <element signature="e#2137#2145#0" expanded="true" />
-                <element signature="e#3184#3192#0" expanded="true" />
+                <element signature="e#1178#1186#0" expanded="true" />
+                <element signature="method#getAttributes#0;class#DBReader#0" expanded="false" />
+                <element signature="e#2138#2146#0" expanded="true" />
+                <element signature="method#getLocation#0;class#DBReader#0" expanded="false" />
+                <element signature="e#3185#3193#0" expanded="true" />
+                <element signature="method#getDay#0;class#DBReader#0" expanded="false" />
+                <element signature="e#4251#4259#0" expanded="true" />
+                <element signature="method#getFrom#0;class#DBReader#0" expanded="false" />
+                <element signature="e#5339#5347#0" expanded="true" />
+                <element signature="method#getTo#0;class#DBReader#0" expanded="false" />
+                <element signature="e#6444#6452#0" expanded="true" />
                 <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4Attributes#0;class#DBReader#0" expanded="false" />
-                <marker date="1510952382000" expanded="true" signature="634:684" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <element signature="method#generateQuery4Location#0;class#DBReader#0" expanded="false" />
+                <element signature="method#generateQuery4Day#0;class#DBReader#0" expanded="false" />
+                <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
+                <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
+                <marker date="1510959371000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
               </folding>
             </state>
           </provider>
@@ -85,17 +111,21 @@
       <find>getMain</find>
       <find>getMainCategories</find>
       <find>this.mainCategories</find>
-      <find>this.mainCategories</find>
       <find>getDBConnection</find>
       <find>main</find>
       <find>date</find>
       <find>REVIEW</find>
+      <find>WORKDAY</find>
+      <find>loadLoca</find>
+      <find>loadDay();</find>
     </findStrings>
     <replaceStrings>
       <replace>&amp;amp;</replace>
       <replace>')</replace>
       <replace>MAIN_CATEGORY</replace>
       <replace>this.queries[</replace>
+      <replace>﻿OPENHRS</replace>
+      <replace>CLOSEHRS</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -145,8 +175,8 @@
         <option value="$PROJECT_DIR$/src/dbScripts/temp2.sql" />
         <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
         <option value="$PROJECT_DIR$/src/populate.java" />
-        <option value="$PROJECT_DIR$/src/ui/UI.java" />
         <option value="$PROJECT_DIR$/src/db/DBReader.java" />
+        <option value="$PROJECT_DIR$/src/ui/UI.java" />
       </list>
     </option>
   </component>
@@ -589,6 +619,15 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
@@ -596,7 +635,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.50858366" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.3483548" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -606,19 +645,20 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.4914163" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.48855507" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.48569384" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3566265" sideWeight="0.65522176" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.48569384" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3566265" sideWeight="0.6516452" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.4828326" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23891273" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -626,7 +666,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -965,31 +1004,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
+    <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="160" column="0" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
+            <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
+            <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
+            <element signature="e#1178#1186#0" expanded="true" />
+            <element signature="method#getAttributes#0;class#DBReader#0" expanded="false" />
+            <element signature="e#2138#2146#0" expanded="true" />
+            <element signature="method#getLocation#0;class#DBReader#0" expanded="false" />
+            <element signature="e#3185#3193#0" expanded="true" />
+            <element signature="method#getDay#0;class#DBReader#0" expanded="false" />
+            <element signature="e#4251#4259#0" expanded="true" />
+            <element signature="method#getFrom#0;class#DBReader#0" expanded="false" />
+            <element signature="e#5339#5347#0" expanded="true" />
+            <element signature="method#getTo#0;class#DBReader#0" expanded="false" />
+            <element signature="e#6444#6452#0" expanded="true" />
+            <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
+            <element signature="method#generateQuery4Attributes#0;class#DBReader#0" expanded="false" />
+            <element signature="method#generateQuery4Location#0;class#DBReader#0" expanded="false" />
+            <element signature="method#generateQuery4Day#0;class#DBReader#0" expanded="false" />
+            <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
+            <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
+            <marker date="1510959371000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
+    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="229" column="110" lean-forward="false" selection-start-line="229" selection-start-column="110" selection-end-line="229" selection-end-column="110" />
+        <state relative-caret-position="281">
+          <caret line="111" column="35" lean-forward="false" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
           <folding>
-            <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
-            <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
-            <element signature="e#1177#1185#0" expanded="true" />
-            <element signature="e#2137#2145#0" expanded="true" />
-            <element signature="e#3184#3192#0" expanded="true" />
-            <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
-            <element signature="method#generateQuery4Attributes#0;class#DBReader#0" expanded="false" />
-            <marker date="1510952382000" expanded="true" signature="634:684" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
+            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
+            <element signature="method#getDay#0;class#UI#0" expanded="false" />
+            <element signature="method#createAndShowGUI#0;class#UI#0" expanded="false" />
+            <element signature="e#5720#5721#0" expanded="true" />
+            <element signature="e#5800#5801#0" expanded="true" />
+            <element signature="e#6035#6036#0" expanded="true" />
+            <element signature="e#6117#6118#0" expanded="true" />
+            <element signature="e#6347#6348#0" expanded="true" />
+            <element signature="e#6425#6426#0" expanded="true" />
+            <element signature="method#loadData#0;class#UI#0" expanded="false" />
+            <element signature="method#loadSubCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#loadAttributes#0;class#UI#0" expanded="false" />
+            <element signature="method#loadLocation#0;class#UI#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -21,6 +21,12 @@ public class UI {
     String selectedSearchFor;
     Boolean isSelectedLocation;
     String selectedLocation;
+    Boolean isSelectedDay;
+    String selectedDay;
+    Boolean isSelectedFrom;
+    String selectedFrom;
+    Boolean isSelectedTo;
+    String selectedTo;
     ArrayList<String> selectedMainCategories;
     ArrayList<String> selectedSubCategories;
     ArrayList<String> selectedAttributes;
@@ -55,6 +61,7 @@ public class UI {
         this.searchB = new JButton();
 
         this.isSelectedLocation = Boolean.FALSE;
+        this.isSelectedDay = Boolean.FALSE;
         this.selectedMainCategories = new ArrayList<String>();
         this.selectedSubCategories = new ArrayList<String>();
         this.selectedAttributes = new ArrayList<String>();
@@ -84,6 +91,23 @@ public class UI {
         return location;
     }
 
+    public ArrayList<String> getDay() {
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<String> day = dbReader.getDay(this.selectedMainCategories, this.selectedSubCategories, this.selectedAttributes, this.selectedLocation, this.selectedSearchFor);
+        return day;
+    }
+
+    public ArrayList<String> getFrom() {
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<String> from = dbReader.getFrom(this.selectedMainCategories, this.selectedSubCategories, this.selectedAttributes, this.selectedLocation, this.selectedDay, this.selectedSearchFor);
+        return from;
+    }
+
+    public ArrayList<String> getTo() {
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<String> to = dbReader.getTo(this.selectedMainCategories, this.selectedSubCategories, this.selectedAttributes, this.selectedLocation, this.selectedDay, this.selectedFrom, this.selectedSearchFor);
+        return to;
+    }
 
     public void createAndShowGUI() {
         // create and set up the window.
@@ -128,8 +152,32 @@ public class UI {
             }
         });
         controls.add(locationCB);
+
+        dayCB = new JComboBox(this.getDay().toArray());
+        dayCB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedDay = dayCB.getSelectedItem().toString();
+            }
+        });
         controls.add(dayCB);
+
+        fromCB = new JComboBox(this.getFrom().toArray());
+        fromCB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedFrom = fromCB.getSelectedItem().toString();
+            }
+        });
         controls.add(fromCB);
+
+        toCB = new JComboBox(this.getTo().toArray());
+        toCB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedTo = toCB.getSelectedItem().toString();
+            }
+        });
         controls.add(toCB);
 
         searchForCB = new JComboBox<>(this.searchForOptions);
@@ -139,6 +187,9 @@ public class UI {
                 selectedSearchFor = searchForCB.getSelectedItem().toString();
                 loadSubCategories();
                 loadLocation();
+                loadDay();
+                loadFrom();
+                loadTo();
             }
         });
         controls.add(searchForCB);
@@ -179,11 +230,17 @@ public class UI {
                         selectedMainCategories.add(jCheckBox.getText());
                         loadSubCategories();
                         loadLocation();
+                        loadDay();
+                        loadFrom();
+                        loadTo();
                     } else {
                         System.out.println("unselected "+jCheckBox.getText());
                         selectedMainCategories.remove(jCheckBox.getText());
                         loadSubCategories();
                         loadLocation();
+                        loadDay();
+                        loadFrom();
+                        loadTo();
                     }
                 }
             });
@@ -212,11 +269,17 @@ public class UI {
                             selectedSubCategories.add(jCheckBox.getText());
                             loadAttributes();
                             loadLocation();
+                            loadDay();
+                            loadFrom();
+                            loadTo();
                         } else {
                             System.out.println("unselected "+jCheckBox.getText());
                             selectedSubCategories.remove(jCheckBox.getText());
                             loadAttributes();
                             loadLocation();
+                            loadDay();
+                            loadFrom();
+                            loadTo();
                         }
                     }
                 });
@@ -244,11 +307,17 @@ public class UI {
                                 System.out.println("selected "+jCheckBox.getText());
                                 selectedAttributes.add(jCheckBox.getText());
                                 loadLocation();
+                                loadDay();
+                                loadFrom();
+                                loadTo();
                                 //loadAttributes();
                             } else {
                                 System.out.println("unselected "+jCheckBox.getText());
                                 selectedAttributes.remove(jCheckBox.getText());
                                 loadLocation();
+                                loadDay();
+                                loadFrom();
+                                loadTo();
                                 //loadAttributes();
                             }
                         }
@@ -266,6 +335,19 @@ public class UI {
         this.locationCB.setModel(model);
     }
 
+    public void loadDay() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(this.getDay().toArray());
+        this.dayCB.setModel(model);
+    }
 
+    public void loadFrom() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(this.getFrom().toArray());
+        this.fromCB.setModel(model);
+    }
+
+    public void loadTo() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel(this.getTo().toArray());
+        this.toCB.setModel(model);
+    }
 
 }

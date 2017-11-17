@@ -17,6 +17,7 @@ public class DBReader {
         this.connection = connection;
     }
 
+
     public ArrayList<String> getMainCategories(){
         Statement statement = null;
         ArrayList<String> outArrayListStr = new ArrayList<String>();
@@ -103,6 +104,80 @@ public class DBReader {
         }
         return outArrayListStr;
     }
+
+    public ArrayList<String> getDay(ArrayList<String> mainCategories, ArrayList<String> subCategories, ArrayList<String> attributes, String location, String searchFor){
+        Statement statement = null;
+        ArrayList<String> outArrayListStr = new ArrayList<String>();
+        if (mainCategories != null) {
+            try {
+                statement = this.connection.createStatement();
+                String query = this.generateQuery4Day(mainCategories, subCategories, attributes, location, searchFor);
+                if (query.isEmpty() || query.equals("")){
+
+                } else {
+                    System.out.print(query);
+                    ResultSet resultSet = statement.executeQuery(query);
+                    while (resultSet.next()) {
+                        String subCategory = resultSet.getString("WORKDAY");
+                        outArrayListStr.add(subCategory);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return outArrayListStr;
+    }
+
+    public ArrayList<String> getFrom(ArrayList<String> mainCategories, ArrayList<String> subCategories, ArrayList<String> attributes, String location, String day, String searchFor){
+        Statement statement = null;
+        ArrayList<String> outArrayListStr = new ArrayList<String>();
+        if (mainCategories != null) {
+            try {
+                statement = this.connection.createStatement();
+                String query = this.generateQuery4From(mainCategories, subCategories, attributes, location, day, searchFor);
+                if (query.isEmpty() || query.equals("")){
+
+                } else {
+                    System.out.print(query);
+                    ResultSet resultSet = statement.executeQuery(query);
+                    while (resultSet.next()) {
+                        String subCategory = resultSet.getString("OPENHRS");
+                        outArrayListStr.add(subCategory);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return outArrayListStr;
+    }
+
+    public ArrayList<String> getTo(ArrayList<String> mainCategories, ArrayList<String> subCategories, ArrayList<String> attributes, String location, String day, String from, String searchFor){
+        Statement statement = null;
+        ArrayList<String> outArrayListStr = new ArrayList<String>();
+        if (mainCategories != null) {
+            try {
+                statement = this.connection.createStatement();
+                String query = this.generateQuery4To(mainCategories, subCategories, attributes, location, day, from, searchFor);
+                if (query.isEmpty() || query.equals("")){
+
+                } else {
+                    System.out.print(query);
+                    ResultSet resultSet = statement.executeQuery(query);
+                    while (resultSet.next()) {
+                        String subCategory = resultSet.getString("CLOSEHRS");
+                        outArrayListStr.add(subCategory);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return outArrayListStr;
+    }
+
+
 
     public String generateQuery4SubCategories(ArrayList<String> mainCategories, String searchFor){
         String outString = "";
@@ -237,6 +312,186 @@ public class DBReader {
                 }
             }
             query = "select distinct (l.loc) from BUSINESS B, LOCATON L WHERE B.BID = L.BID AND B.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
+        }
+        return query;
+    }
+
+    public String generateQuery4Day(ArrayList<String> mainCategories, ArrayList<String> subCategories, ArrayList<String> attributes, String location, String searchFor) {
+        String query = "";
+
+        if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
+            query = "SELECT DISTINCT(H.WORKDAY) FROM HOURS H";
+        } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
+            if (searchFor.equals("AND")) {
+                String section = "";
+                for (int i = 0; i < mainCategories.size(); i++) {
+                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = '"+mainCategories.get(i)+"'";
+                    if ( !section.equals("") ) {
+                        section = section + " Intersect " + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+                query = "SELECT DISTINCT(H.WORKDAY) from HOURS H where H.Bid in ( " + section + ")";
+            } else {
+                String section = "";
+                for (int i = 0; i < mainCategories.size(); i++) {
+                    if ( !section.equals("") ) {
+                        section = section + "," + "'" + mainCategories.get(i) + "'";
+                    } else {
+                        section = "'" + mainCategories.get(i) + "'";
+                    }
+                }
+                query = "SELECT DISTINCT(H.WORKDAY) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid";
+            }
+        } else if (attributes.size() == 0 || attributes.isEmpty()) {
+            String section = "";
+            for (int i = 0; i<mainCategories.size(); i++){
+                for (int j = 0; j<subCategories.size(); j++){
+                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S WHERE M.MCAT = '"+mainCategories.get(i)+"' AND S.SCAT = '"+subCategories.get(j)+"' AND  M.BID = S.BID";
+                    if ( !section.equals("") ){
+                        section = section + (searchFor.equals("AND")?" INTERSECT ":" UNION ") + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+            }
+            query = "SELECT DISTINCT(H.WORKDAY) from HOURS H where H.Bid in ( " + section + " )";
+        } else {
+            String section = "";
+            for (int i = 0; i<mainCategories.size(); i++){
+                for (int j = 0; j<subCategories.size(); j++){
+                    for (int k = 0; k<attributes.size(); k++) {
+                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
+                        if ( !section.equals("") ) {
+                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
+                        } else {
+                            section = subSection;
+                        }
+                    }
+                }
+            }
+            query = "select distinct (H.WORKDAY) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
+        }
+        return query;
+    }
+
+    public String generateQuery4From(ArrayList<String> mainCategories, ArrayList<String> subCategories, ArrayList<String> attributes, String location, String day, String searchFor) {
+        String query = "";
+
+        if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
+            query = "SELECT DISTINCT(H.OPENHRS) FROM HOURS H";
+        } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
+            if (searchFor.equals("AND")) {
+                String section = "";
+                for (int i = 0; i < mainCategories.size(); i++) {
+                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = '"+mainCategories.get(i)+"'";
+                    if ( !section.equals("") ) {
+                        section = section + " Intersect " + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+                query = "SELECT DISTINCT(H.OPENHRS) from HOURS H where H.Bid in ( " + section + ")";
+            } else {
+                String section = "";
+                for (int i = 0; i < mainCategories.size(); i++) {
+                    if ( !section.equals("") ) {
+                        section = section + "," + "'" + mainCategories.get(i) + "'";
+                    } else {
+                        section = "'" + mainCategories.get(i) + "'";
+                    }
+                }
+                query = "SELECT DISTINCT(H.OPENHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid";
+            }
+        } else if (attributes.size() == 0 || attributes.isEmpty()) {
+            String section = "";
+            for (int i = 0; i<mainCategories.size(); i++){
+                for (int j = 0; j<subCategories.size(); j++){
+                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S WHERE M.MCAT = '"+mainCategories.get(i)+"' AND S.SCAT = '"+subCategories.get(j)+"' AND  M.BID = S.BID";
+                    if ( !section.equals("") ){
+                        section = section + (searchFor.equals("AND")?" INTERSECT ":" UNION ") + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+            }
+            query = "SELECT DISTINCT(H.OPENHRS) from HOURS H where H.Bid in ( " + section + " )";
+        } else {
+            String section = "";
+            for (int i = 0; i<mainCategories.size(); i++){
+                for (int j = 0; j<subCategories.size(); j++){
+                    for (int k = 0; k<attributes.size(); k++) {
+                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
+                        if ( !section.equals("") ) {
+                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
+                        } else {
+                            section = subSection;
+                        }
+                    }
+                }
+            }
+            query = "select distinct (H.OPENHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
+        }
+        return query;
+    }
+
+    public String generateQuery4To(ArrayList<String> mainCategories, ArrayList<String> subCategories, ArrayList<String> attributes, String location, String day, String from, String searchFor) {
+        String query = "";
+
+        if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
+            query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H";
+        } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
+            if (searchFor.equals("AND")) {
+                String section = "";
+                for (int i = 0; i < mainCategories.size(); i++) {
+                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = '"+mainCategories.get(i)+"'";
+                    if ( !section.equals("") ) {
+                        section = section + " Intersect " + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+                query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + ")";
+            } else {
+                String section = "";
+                for (int i = 0; i < mainCategories.size(); i++) {
+                    if ( !section.equals("") ) {
+                        section = section + "," + "'" + mainCategories.get(i) + "'";
+                    } else {
+                        section = "'" + mainCategories.get(i) + "'";
+                    }
+                }
+                query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid";
+            }
+        } else if (attributes.size() == 0 || attributes.isEmpty()) {
+            String section = "";
+            for (int i = 0; i<mainCategories.size(); i++){
+                for (int j = 0; j<subCategories.size(); j++){
+                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S WHERE M.MCAT = '"+mainCategories.get(i)+"' AND S.SCAT = '"+subCategories.get(j)+"' AND  M.BID = S.BID";
+                    if ( !section.equals("") ){
+                        section = section + (searchFor.equals("AND")?" INTERSECT ":" UNION ") + subSection;
+                    } else {
+                        section = subSection;
+                    }
+                }
+            }
+            query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + " )";
+        } else {
+            String section = "";
+            for (int i = 0; i<mainCategories.size(); i++){
+                for (int j = 0; j<subCategories.size(); j++){
+                    for (int k = 0; k<attributes.size(); k++) {
+                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
+                        if ( !section.equals("") ) {
+                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
+                        } else {
+                            section = subSection;
+                        }
+                    }
+                }
+            }
+            query = "select distinct (H.CLOSEHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
         }
         return query;
     }
