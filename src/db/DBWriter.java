@@ -212,7 +212,7 @@ public class DBWriter {
         for (int i=0; i < jsonObjectArr.length; i++){
             JsonReaderCheckin jsonReaderCheckin = new JsonReaderCheckin(jsonObjectArr[i]);
             String query = "Insert into CHECKIN (BID , CHKINCOUNT) VALUES ("
-                    + "" + jsonReaderCheckin.getBusinessId() + ","
+                    + "'" + jsonReaderCheckin.getBusinessId() + "',"
                     + "" + jsonReaderCheckin.getCheckinCount() + ""
                     + ")";
             try {
@@ -242,7 +242,8 @@ public class DBWriter {
                     + "" + jsonReaderReview.getReviewDate() + ","
                     + "" + jsonReaderReview.getText() + ""
                     + ")";
-            try {
+            System.out.println(query);
+            /*try {
                 Statement statement = null;
                 statement = this.connection.createStatement();
                 statement.executeUpdate(query);
@@ -250,7 +251,7 @@ public class DBWriter {
             } catch (SQLException e) {
                 System.out.println(query);
                 e.printStackTrace();
-            }
+            }*/
         }
     }
 

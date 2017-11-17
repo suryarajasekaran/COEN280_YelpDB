@@ -23,10 +23,10 @@ public class populate {
         //dbWriter.writeBusinessTable("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_business.json");
 
         // insert data into checkin table
-        dbWriter.writeCheckinTable("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_checkin.json");
+        //dbWriter.writeCheckinTable("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_checkin.json");
 
         // insert data into review table
-        //dbWriter.writeReviewTable("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_review.json");
+        dbWriter.writeReviewTable("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_review.json");
 
         // insert data into user table
         //dbWriter.writeUserTable("/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_user.json");
