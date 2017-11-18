@@ -32,6 +32,7 @@ public class UI {
     ArrayList<String> selectedMainCategories;
     ArrayList<String> selectedSubCategories;
     ArrayList<String> selectedAttributes;
+    String selectedReviewBId;
 
     JPanel mainCategoriesJP;
     JPanel subCategoriesJP;
@@ -114,6 +115,17 @@ public class UI {
     public String[][] getSearch() {
         DBReader dbReader = new DBReader(Helper.getDBConnection());
         ArrayList<ArrayList<String>> search = dbReader.getSearch(this.selectedMainCategories, this.selectedSubCategories, this.selectedAttributes, this.selectedLocation, this.selectedDay, this.selectedFrom, this.selectedTo, this.selectedSearchFor);
+        String[][] array = new String[search.size()][];
+        for (int i = 0; i < search.size(); i++) {
+            ArrayList<String> row = search.get(i);
+            array[i] = row.toArray(new String[row.size()]);
+        }
+        return array;
+    }
+
+    public String[][] getReviews() {
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<ArrayList<String>> search = dbReader.getReviews(this.selectedReviewBId);
         String[][] array = new String[search.size()][];
         for (int i = 0; i < search.size(); i++) {
             ArrayList<String> row = search.get(i);
@@ -379,7 +391,7 @@ public class UI {
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {
                 popupReviews(table.getValueAt(table.getSelectedRow(), 0).toString());
-                System.out.println(table.getValueAt(table.getSelectedRow(), 0).toString());
+                selectedReviewBId = table.getValueAt(table.getSelectedRow(), 0).toString();
             }
         });
         this.outputJP.removeAll();
@@ -391,21 +403,12 @@ public class UI {
     }
 
     public void popupReviews(String BId) {
-        //headers for the table
         String[] columns = new String[] {
                 "Date", "Stars", "Text", "UserId", "UserName"
         };
-
-        //actual data for the table in a 2d array
-        Object[][] data = new Object[][] {
-                {1, "John", 40.0, false },
-                {2, "Rambo", 70.0, false },
-                {3, "Zorro", 60.0, true },
-        };
-        //create table with data
+        String[][] data = this.getReviews();
         JTable table = new JTable(data, columns);
 
-        //create the pop-up
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frameReviews = new JFrame("Reviews");

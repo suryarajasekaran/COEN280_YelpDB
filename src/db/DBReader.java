@@ -217,6 +217,39 @@ public class DBReader {
         return outArrayListStr;
     }
 
+    public ArrayList<ArrayList<String>> getReviews(String bId){
+        Statement statement = null;
+        ArrayList<ArrayList<String>> outArrayListStr = new ArrayList<ArrayList<String>>();
+            try {
+                statement = this.connection.createStatement();
+                String query = this.generateQuery4Reviews(bId);
+                if (query.isEmpty() || query.equals("")){
+
+                } else {
+                    System.out.println(query);
+                    ResultSet resultSet = statement.executeQuery(query);
+                    while (resultSet.next()) {
+                        ArrayList<String> subArrayListStr = new ArrayList<String>();
+                        //﻿R., r.stars, r.text, r.userid, u.user_name
+                        String reviewDate = resultSet.getString("REVIEW_DATE");
+                        String stars = Integer.toString(resultSet.getInt("STARS"));
+                        String text = resultSet.getString("TEXT");
+                        String userid = resultSet.getString("USERID");
+                        String username = resultSet.getString("USER_NAME");
+                        subArrayListStr.add(reviewDate);
+                        subArrayListStr.add(stars);
+                        subArrayListStr.add(text);
+                        subArrayListStr.add(userid);
+                        subArrayListStr.add(username);
+                        outArrayListStr.add(subArrayListStr);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        return outArrayListStr;
+    }
+
 
     public String generateQuery4SubCategories(ArrayList<String> mainCategories, String searchFor){
         String outString = "";
@@ -642,110 +675,8 @@ public class DBReader {
         return query;
     }
 
-    public String generateQuery4Reviews(ArrayList<String> mainCategories, ArrayList<String> subCategories, ArrayList<String> attributes, String location, String day, String from, String to, String searchFor) {
-        String query = "";
-
-        if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
-            // query = ""
-        } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
-            if (searchFor.equals("AND")) {
-                String section = "";
-                for (int i = 0; i < mainCategories.size(); i++) {
-                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M WHERE M.MCAT = '"+mainCategories.get(i)+"'";
-                    if ( !section.equals("") ) {
-                        section = section + " Intersect " + subSection;
-                    } else {
-                        section = subSection;
-                    }
-                }
-                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.Bid in ( " + section + ")";
-            } else {
-                String section = "";
-                for (int i = 0; i < mainCategories.size(); i++) {
-                    if ( !section.equals("") ) {
-                        section = section + "," + "'" + mainCategories.get(i) + "'";
-                    } else {
-                        section = "'" + mainCategories.get(i) + "'";
-                    }
-                }
-                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, MAIN_cATEGORIES M, CHECKIN C  where B.BID = C.BID and m.mcat in ( " + section + " ) AND B.BID = M.BID";
-            }
-        } else if (attributes.size() == 0 || attributes.isEmpty()) {
-            String section = "";
-            for (int i = 0; i<mainCategories.size(); i++){
-                for (int j = 0; j<subCategories.size(); j++){
-                    String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S WHERE M.MCAT = '"+mainCategories.get(i)+"' AND S.SCAT = '"+subCategories.get(j)+"' AND  M.BID = S.BID";
-                    if ( !section.equals("") ){
-                        section = section + (searchFor.equals("AND")?" INTERSECT ":" UNION ") + subSection;
-                    } else {
-                        section = subSection;
-                    }
-                }
-            }
-            query = "sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.Bid in (" + section + " )";
-        } else if (location == "" || location.equals("") ||location.isEmpty()) {
-            String section = "";
-            for (int i = 0; i < mainCategories.size(); i++) {
-                for (int j = 0; j < subCategories.size(); j++) {
-                    for (int k = 0; k < attributes.size(); k++) {
-                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
-                        if (!section.equals("")) {
-                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
-                        } else {
-                            section = subSection;
-                        }
-                    }
-                }
-            }
-            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE b.city = '" +location+ "' and b.bid = l.bid and L.BID IN (" + section + " ))";
-        } else if (day == "" || day.equals("") || day.isEmpty()) {
-            String section = "";
-            for (int i = 0; i < mainCategories.size(); i++) {
-                for (int j = 0; j < subCategories.size(); j++) {
-                    for (int k = 0; k < attributes.size(); k++) {
-                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
-                        if (!section.equals("")) {
-                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
-                        } else {
-                            section = subSection;
-                        }
-                    }
-                }
-            }
-            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (select distinct (H.BID) from HOURS H WHERE h.workday = '"+day+"' and H.BID IN SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE b.city = '"+location+"' and b.bid = l.bid and L.BID IN (" + section + " ))";
-        } else if (from == "" || from.equals("") ||from.isEmpty()){
-            String section = "";
-            for (int i = 0; i < mainCategories.size(); i++) {
-                for (int j = 0; j < subCategories.size(); j++) {
-                    for (int k = 0; k < attributes.size(); k++) {
-                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
-                        if (!section.equals("")) {
-                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
-                        } else {
-                            section = subSection;
-                        }
-                    }
-                }
-            }
-            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (select distinct (H.BID) from HOURS H WHERE h.workday = '"+day+"' AND H.OPENHRS >='"+from+"'and H.BID IN SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE b.city = '"+location+"' and b.bid = l.bid and L.BID IN (" + section + " ))";
-        } else {
-            //if (to == "" || to.equals("") ||to.isEmpty())
-            String section = "";
-            for (int i = 0; i < mainCategories.size(); i++) {
-                for (int j = 0; j < subCategories.size(); j++) {
-                    for (int k = 0; k < attributes.size(); k++) {
-                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
-                        if (!section.equals("")) {
-                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
-                        } else {
-                            section = subSection;
-                        }
-                    }
-                }
-            }
-            //query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (select distinct (H.BID) from HOURS H WHERE h.workday = '" + day + "' AND H.OPENHRS >='" + from + "'OR H.CLOSEHRS <= '"+to+"'and H.BID IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE b.city = '" + location + "' and b.bid = l.bid and L.BID IN (" + section + " )))";
-            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (select distinct (H.BID) from HOURS H WHERE h.workday = '" + day + "' AND H.OPENHRS >='" + from + "'AND H.CLOSEHRS <= '"+to+"'and H.BID IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE b.city = '" + location + "' and b.bid = l.bid and L.BID IN (" + section + " )))";
-        }
+    public String generateQuery4Reviews(String bId) {
+        String query = "select R.review_Date, r.stars, r.text, r.userid, u.user_name from business b, reviews r, users u where r.userid = u.userid and b.bid = r.bid and b.bid = '" + bId + "'";
         return query;
     }
 
