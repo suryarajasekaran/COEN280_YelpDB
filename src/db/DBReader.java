@@ -332,7 +332,7 @@ public class DBReader {
         String query = "";
 
         if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
-            query = "select distinct(LOC) from locaton";
+            query = "select distinct(LOC) from locaton order by LOC";
         } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
             if (searchFor.equals("AND")) {
                 String section = "";
@@ -392,7 +392,7 @@ public class DBReader {
         String query = "";
 
         if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
-            query = "SELECT DISTINCT(H.WORKDAY) FROM HOURS H";
+            query = "SELECT DISTINCT(H.WORKDAY) FROM HOURS H order by H.WORKDAY";
         } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
             if (searchFor.equals("AND")) {
                 String section = "";
@@ -452,7 +452,7 @@ public class DBReader {
         String query = "";
 
         if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
-            query = "SELECT DISTINCT(H.OPENHRS) FROM HOURS H";
+            query = "SELECT DISTINCT(H.OPENHRS) FROM HOURS H order by H.OPENHRS";
         } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
             if (searchFor.equals("AND")) {
                 String section = "";

@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dbScripts/tempScripts/deleteindex.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/db/DBReaderOld.java" afterPath="$PROJECT_DIR$/src/db/testDb/DBReaderOld.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/db/Test.java" afterPath="$PROJECT_DIR$/src/db/testDb/Test.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/dbScripts/deletedb.sql" afterPath="$PROJECT_DIR$/src/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/dbScripts/deleteindex.sql" afterPath="$PROJECT_DIR$/src/dbScripts/tempScripts/deletedb.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/dbScripts/oldcreatedb.sql" afterPath="$PROJECT_DIR$/src/dbScripts/tempScripts/oldcreatedb.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/dbScripts/olddeletedb.sql" afterPath="$PROJECT_DIR$/src/dbScripts/tempScripts/olddeletedb.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/dbScripts/olddropdb.sql" afterPath="$PROJECT_DIR$/src/dbScripts/tempScripts/olddropdb.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/dbScripts/temp.sql" afterPath="$PROJECT_DIR$/src/dbScripts/tempScripts/temp.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/dbScripts/temp2.sql" afterPath="$PROJECT_DIR$/src/dbScripts/tempScripts/temp2.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dbScripts/dropdb.sql" afterPath="$PROJECT_DIR$/src/dbScripts/dropdb.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/DBReader.java" afterPath="$PROJECT_DIR$/src/db/DBReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/populate.java" afterPath="$PROJECT_DIR$/src/populate.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,13 +19,27 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="hw3.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hw3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+              <folding>
+                <element signature="e#278#279#0" expanded="true" />
+                <element signature="e#331#332#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="664" column="184" lean-forward="false" selection-start-line="664" selection-start-column="184" selection-end-line="664" selection-end-column="184" />
+            <state relative-caret-position="217">
+              <caret line="334" column="64" lean-forward="false" selection-start-line="334" selection-start-column="64" selection-end-line="334" selection-end-column="64" />
               <folding>
                 <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
+                <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
                 <element signature="e#1201#1209#0" expanded="true" />
                 <element signature="method#getAttributes#0;class#DBReader#0" expanded="false" />
                 <element signature="e#2161#2169#0" expanded="true" />
@@ -55,13 +59,13 @@
                 <element signature="e#10165#10173#0" expanded="true" />
                 <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4Attributes#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4Location#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4Day#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
+                <element signature="method#generateQuery4Search#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
-                <marker date="1511012739000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-                <marker date="1511012739000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <marker date="1511030221000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <marker date="1511030221000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
               </folding>
             </state>
           </provider>
@@ -169,15 +173,15 @@
         <option value="$PROJECT_DIR$/src/helper/StreamGobbler.java" />
         <option value="$PROJECT_DIR$/src/helper/Helper.java" />
         <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
-        <option value="$PROJECT_DIR$/src/populate.java" />
         <option value="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" />
         <option value="$PROJECT_DIR$/src/ui/UI.java" />
         <option value="$PROJECT_DIR$/src/db/DBReaderOld.java" />
         <option value="$PROJECT_DIR$/src/db/Test.java" />
-        <option value="$PROJECT_DIR$/src/db/DBReader.java" />
         <option value="$PROJECT_DIR$/src/db/testDb/DBReaderOld.java" />
         <option value="$PROJECT_DIR$/src/README.md" />
         <option value="$PROJECT_DIR$/src/dbScripts/dropdb.sql" />
+        <option value="$PROJECT_DIR$/src/populate.java" />
+        <option value="$PROJECT_DIR$/src/db/DBReader.java" />
       </list>
     </option>
   </component>
@@ -244,7 +248,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dbScripts" />
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -911,17 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hw3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding>
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dbScripts/tempScripts/temp2.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -1036,16 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/populate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dbScripts/tempScripts/deletedb.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1127,12 +1110,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/populate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hw3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="664" column="184" lean-forward="false" selection-start-line="664" selection-start-column="184" selection-end-line="664" selection-end-column="184" />
+        <state relative-caret-position="217">
+          <caret line="334" column="64" lean-forward="false" selection-start-line="334" selection-start-column="64" selection-end-line="334" selection-end-column="64" />
           <folding>
             <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
+            <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
             <element signature="e#1201#1209#0" expanded="true" />
             <element signature="method#getAttributes#0;class#DBReader#0" expanded="false" />
             <element signature="e#2161#2169#0" expanded="true" />
@@ -1152,13 +1157,13 @@
             <element signature="e#10165#10173#0" expanded="true" />
             <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4Attributes#0;class#DBReader#0" expanded="false" />
-            <element signature="method#generateQuery4Location#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4Day#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
+            <element signature="method#generateQuery4Search#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
-            <marker date="1511012739000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-            <marker date="1511012739000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+            <marker date="1511030221000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+            <marker date="1511030221000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
           </folding>
         </state>
       </provider>
