@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/DBReader.java" afterPath="$PROJECT_DIR$/src/db/DBReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/UI.java" afterPath="$PROJECT_DIR$/src/ui/UI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="157">
-              <caret line="278" column="54" lean-forward="false" selection-start-line="278" selection-start-column="54" selection-end-line="278" selection-end-column="54" />
+              <caret line="291" column="54" lean-forward="false" selection-start-line="291" selection-start-column="54" selection-end-line="291" selection-end-column="54" />
               <folding>
                 <element signature="method#UI#0;class#UI#0" expanded="false" />
                 <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
@@ -35,43 +34,7 @@
                 <element signature="method#getTo#0;class#UI#0" expanded="false" />
                 <element signature="method#getReviews#0;class#UI#0" expanded="false" />
                 <element signature="e#6593#6601#0" expanded="true" />
-                <marker date="1511033688000" expanded="false" signature="17562:18372" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="657" column="142" lean-forward="false" selection-start-line="657" selection-start-column="142" selection-end-line="657" selection-end-column="142" />
-              <folding>
-                <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="e#1201#1209#0" expanded="true" />
-                <element signature="method#getAttributes#0;class#DBReader#0" expanded="false" />
-                <element signature="e#2161#2169#0" expanded="true" />
-                <element signature="method#getLocation#0;class#DBReader#0" expanded="false" />
-                <element signature="e#3208#3216#0" expanded="true" />
-                <element signature="method#getDay#0;class#DBReader#0" expanded="false" />
-                <element signature="e#4274#4282#0" expanded="true" />
-                <element signature="method#getFrom#0;class#DBReader#0" expanded="false" />
-                <element signature="e#5362#5370#0" expanded="true" />
-                <element signature="method#getTo#0;class#DBReader#0" expanded="false" />
-                <element signature="e#6467#6475#0" expanded="true" />
-                <element signature="e#7614#7633#0" expanded="true" />
-                <element signature="e#8217#8225#0" expanded="true" />
-                <element signature="method#getReviews#0;class#DBReader#0" expanded="false" />
-                <element signature="e#9673#9692#0" expanded="true" />
-                <element signature="e#10165#10173#0" expanded="true" />
-                <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4Attributes#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
-                <marker date="1511034079000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-                <marker date="1511034079000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <marker date="1511034765000" expanded="false" signature="18818:19628" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -89,7 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>MAIN_CATEGORTY</find>
       <find>DBConnec</find>
       <find>queries[</find>
       <find>getMain</find>
@@ -119,6 +81,7 @@
       <find>order</find>
       <find>CREATE</find>
       <find>selected</find>
+      <find>select distinct (H.WORKDAY) from HOURS H</find>
     </findStrings>
     <replaceStrings>
       <replace>&amp;amp;</replace>
@@ -1056,26 +1019,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="278" column="54" lean-forward="false" selection-start-line="278" selection-start-column="54" selection-end-line="278" selection-end-column="54" />
-          <folding>
-            <element signature="method#UI#0;class#UI#0" expanded="false" />
-            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
-            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
-            <element signature="method#getDay#0;class#UI#0" expanded="false" />
-            <element signature="method#getFrom#0;class#UI#0" expanded="false" />
-            <element signature="method#getTo#0;class#UI#0" expanded="false" />
-            <element signature="method#getReviews#0;class#UI#0" expanded="false" />
-            <element signature="e#6593#6601#0" expanded="true" />
-            <marker date="1511033688000" expanded="false" signature="17562:18372" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dbScripts/tempScripts/deletedb.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1180,8 +1123,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="657" column="142" lean-forward="false" selection-start-line="657" selection-start-column="142" selection-end-line="657" selection-end-column="142" />
+        <state relative-caret-position="69">
+          <caret line="644" column="18" lean-forward="false" selection-start-line="644" selection-start-column="18" selection-end-line="644" selection-end-column="18" />
           <folding>
             <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
             <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
@@ -1208,6 +1151,26 @@
             <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
             <marker date="1511034079000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
             <marker date="1511034079000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="291" column="54" lean-forward="false" selection-start-line="291" selection-start-column="54" selection-end-line="291" selection-end-column="54" />
+          <folding>
+            <element signature="method#UI#0;class#UI#0" expanded="false" />
+            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
+            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
+            <element signature="method#getDay#0;class#UI#0" expanded="false" />
+            <element signature="method#getFrom#0;class#UI#0" expanded="false" />
+            <element signature="method#getTo#0;class#UI#0" expanded="false" />
+            <element signature="method#getReviews#0;class#UI#0" expanded="false" />
+            <element signature="e#6593#6601#0" expanded="true" />
+            <marker date="1511034765000" expanded="false" signature="18818:19628" ph="{...}" />
           </folding>
         </state>
       </provider>

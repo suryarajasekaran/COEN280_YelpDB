@@ -269,6 +269,19 @@ public class UI {
     }
 
     public void loadData(){
+        this.selectedMainCategories = new ArrayList<String>();
+        this.selectedSubCategories = new ArrayList<String>();
+        this.selectedAttributes = new ArrayList<>();
+        this.selectedLocation = "";
+        this.selectedDay = "";
+        this.selectedFrom = "";
+        this.selectedTo = "";
+        this.selectedReviewBId = "";
+        loadLocation();
+        loadDay();
+        loadFrom();
+        loadTo();
+
         this.mainCategoriesJP.validate();
         this.mainCategoriesJP.repaint();
         this.mainCategoriesJP.setLayout(new BoxLayout(this.mainCategoriesJP, BoxLayout.Y_AXIS));
@@ -309,6 +322,18 @@ public class UI {
     }
 
     public void loadSubCategories(){
+        this.selectedSubCategories = new ArrayList<String>();
+        this.selectedAttributes = new ArrayList<>();
+        this.selectedLocation = "";
+        this.selectedDay = "";
+        this.selectedFrom = "";
+        this.selectedTo = "";
+        this.selectedReviewBId = "";
+        loadLocation();
+        loadDay();
+        loadFrom();
+        loadTo();
+
         this.attributesJP.removeAll();
         this.attributesJP.validate();
         this.attributesJP.repaint();
@@ -351,6 +376,17 @@ public class UI {
     }
 
     public void loadAttributes(){
+
+        this.selectedAttributes = new ArrayList<>();
+        this.selectedLocation = "";
+        this.selectedDay = "";
+        this.selectedFrom = "";
+        this.selectedTo = "";
+        this.selectedReviewBId = "";
+        loadLocation();
+        loadDay();
+        loadFrom();
+        loadTo();
         this.attributesJP.removeAll();
         this.attributesJP.setLayout(new BoxLayout(this.attributesJP, BoxLayout.Y_AXIS));
         JLabel attributesJLabel = new JLabel("Attributes");
@@ -395,6 +431,7 @@ public class UI {
         arrayList.add(0, "");
         DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.locationCB.setModel(model);
+        this.selectedLocation = "";
     }
 
     public void loadDay() {
@@ -402,6 +439,7 @@ public class UI {
         arrayList.add(0, "");
         DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.dayCB.setModel(model);
+        this.selectedDay = "";
     }
 
     public void loadFrom() {
@@ -409,6 +447,7 @@ public class UI {
         arrayList.add(0, "");
         DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.fromCB.setModel(model);
+        this.selectedFrom = "";
     }
 
     public void loadTo() {
@@ -416,6 +455,7 @@ public class UI {
         arrayList.add(0, "");
         DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.toCB.setModel(model);
+        this.selectedTo = "";
     }
 
     public void loadSearch() {
@@ -437,6 +477,7 @@ public class UI {
         this.outputJP.add(new JScrollPane(table));
         this.outputJP.validate();
         this.outputJP.repaint();
+        this.selectedReviewBId = "";
     }
 
     public void popupReviews(String BId) {
