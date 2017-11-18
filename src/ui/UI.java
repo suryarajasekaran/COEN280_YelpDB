@@ -168,7 +168,13 @@ public class UI {
         controls.setLayout(new BoxLayout(controls, BoxLayout.X_AXIS));
 
         // add combobox for controls
-        locationCB = new JComboBox(this.getLocation().toArray());
+        JPanel locationControlBox = new JPanel();
+        locationControlBox.setLayout(new BoxLayout(locationControlBox, BoxLayout.Y_AXIS));
+        locationControlBox.add(new JTextField("Location"));
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList = this.getLocation();
+        arrayList.add(0, "");
+        locationCB = new JComboBox(arrayList.toArray());
         locationCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -176,35 +182,57 @@ public class UI {
                 // load days
             }
         });
-        controls.add(locationCB);
+        locationControlBox.add(locationCB);
+        controls.add(locationControlBox);
 
-        dayCB = new JComboBox(this.getDay().toArray());
+        JPanel dayControlBox = new JPanel();
+        dayControlBox.setLayout(new BoxLayout(dayControlBox, BoxLayout.Y_AXIS));
+        dayControlBox.add(new JTextField("Day"));
+        arrayList = this.getDay();
+        arrayList.add(0, "");
+        dayCB = new JComboBox(arrayList.toArray());
         dayCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedDay = dayCB.getSelectedItem().toString();
             }
         });
-        controls.add(dayCB);
+        dayControlBox.add(dayCB);
+        controls.add(dayControlBox);
 
-        fromCB = new JComboBox(this.getFrom().toArray());
+        JPanel fromControlBox = new JPanel();
+        fromControlBox.setLayout(new BoxLayout(fromControlBox, BoxLayout.Y_AXIS));
+        fromControlBox.add(new JTextField("From"));
+        arrayList = this.getFrom();
+        arrayList.add(0, "");
+        fromCB = new JComboBox(arrayList.toArray());
         fromCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedFrom = fromCB.getSelectedItem().toString();
             }
         });
-        controls.add(fromCB);
+        fromControlBox.add(fromCB);
+        controls.add(fromControlBox);
 
-        toCB = new JComboBox(this.getTo().toArray());
+        JPanel toControlBox = new JPanel();
+        toControlBox.setLayout(new BoxLayout(toControlBox, BoxLayout.Y_AXIS));
+        toControlBox.add(new JTextField("To"));
+        arrayList = this.getTo();
+        arrayList.add(0, "");
+        toCB = new JComboBox(arrayList.toArray());
         toCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedTo = toCB.getSelectedItem().toString();
             }
         });
-        controls.add(toCB);
+        toControlBox.add(toCB);
+        controls.add(toControlBox);
 
+        JPanel searchForControlBox = new JPanel();
+        searchForControlBox.setLayout(new BoxLayout(searchForControlBox, BoxLayout.Y_AXIS));
+        searchForControlBox.add(new JTextField("Search Condition"));
         searchForCB = new JComboBox<>(this.searchForOptions);
         searchForCB.addActionListener(new ActionListener() {
             @Override
@@ -217,7 +245,8 @@ public class UI {
                 loadTo();
             }
         });
-        controls.add(searchForCB);
+        searchForControlBox.add(searchForCB);
+        controls.add(searchForControlBox);
 
         // add button for search
         searchB.setText("search");
@@ -362,22 +391,30 @@ public class UI {
     }
 
     public void loadLocation() {
-        DefaultComboBoxModel model = new DefaultComboBoxModel(this.getLocation().toArray());
+        ArrayList<String> arrayList = this.getLocation();
+        arrayList.add(0, "");
+        DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.locationCB.setModel(model);
     }
 
     public void loadDay() {
-        DefaultComboBoxModel model = new DefaultComboBoxModel(this.getDay().toArray());
+        ArrayList<String> arrayList = this.getDay();
+        arrayList.add(0, "");
+        DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.dayCB.setModel(model);
     }
 
     public void loadFrom() {
-        DefaultComboBoxModel model = new DefaultComboBoxModel(this.getFrom().toArray());
+        ArrayList<String> arrayList = this.getFrom();
+        arrayList.add(0, "");
+        DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.fromCB.setModel(model);
     }
 
     public void loadTo() {
-        DefaultComboBoxModel model = new DefaultComboBoxModel(this.getTo().toArray());
+        ArrayList<String> arrayList = this.getTo();
+        arrayList.add(0, "");
+        DefaultComboBoxModel model = new DefaultComboBoxModel(arrayList.toArray());
         this.toCB.setModel(model);
     }
 
