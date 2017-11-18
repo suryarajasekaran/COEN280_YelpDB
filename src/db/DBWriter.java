@@ -267,7 +267,6 @@ public class DBWriter {
                     + "TO_DATE( '" + jsonReaderReview.getReviewDate() + "','yyyy-mm-dd'),"
                     + "'" + jsonReaderReview.getText() + "'"
                     + ")";
-            System.out.println(query);
             try {
                 Statement statement = null;
                 statement = this.connection.createStatement();
