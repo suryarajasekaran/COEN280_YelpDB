@@ -46,7 +46,7 @@ public class JsonReaderReview {
     }
 
     public String getText() {
-        return this.jsonObject.getString("text");
+        return this.processString(this.jsonObject.getString("text"));
     }
 
     public String getType() {
@@ -55,6 +55,13 @@ public class JsonReaderReview {
 
     public String getBId() {
         return this.jsonObject.getString("business_id");
+    }
+
+
+    public String processString(String string) {
+        return string
+                .replace(",","")
+                .replace("'","");
     }
 
 }

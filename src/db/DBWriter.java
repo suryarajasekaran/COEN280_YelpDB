@@ -232,18 +232,18 @@ public class DBWriter {
         for (int i=0; i < jsonObjectArr.length; i++){
             JsonReaderReview jsonReaderReview = new JsonReaderReview(jsonObjectArr[i]);
             String query = "Insert into REVIEWS (BID , VOTES_COOL, VOTES_FUNNY, VOTES_USEFUL, USERID, RID, STARS, REVIEW_DATE, TEXT) VALUES ("
-                    + "" + jsonReaderReview.getBId() + ","
+                    + "'" + jsonReaderReview.getBId() + "',"
                     + "" + jsonReaderReview.getVotesCool() + ","
                     + "" + jsonReaderReview.getVotesFunny() + ","
                     + "" + jsonReaderReview.getVotesUseful() + ","
-                    + "" + jsonReaderReview.getUserId() + ","
-                    + "" + jsonReaderReview.getRId() + ","
+                    + "'" + jsonReaderReview.getUserId() + "',"
+                    + "'" + jsonReaderReview.getRId() + "',"
                     + "" + jsonReaderReview.getStars() + ","
-                    + "" + jsonReaderReview.getReviewDate() + ","
-                    + "" + jsonReaderReview.getText() + ""
+                    + "TO_DATE( '" + jsonReaderReview.getReviewDate() + "','yyyy-mm-dd'),"
+                    + "'" + jsonReaderReview.getText() + "'"
                     + ")";
             System.out.println(query);
-            /*try {
+            try {
                 Statement statement = null;
                 statement = this.connection.createStatement();
                 statement.executeUpdate(query);
@@ -251,7 +251,7 @@ public class DBWriter {
             } catch (SQLException e) {
                 System.out.println(query);
                 e.printStackTrace();
-            }*/
+            }
         }
     }
 
@@ -276,7 +276,5 @@ public class DBWriter {
             }
         }
     }
-
-
 
 }
