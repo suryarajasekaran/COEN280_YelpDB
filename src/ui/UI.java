@@ -109,6 +109,17 @@ public class UI {
         return to;
     }
 
+    public String[][] getSearch() {
+        DBReader dbReader = new DBReader(Helper.getDBConnection());
+        ArrayList<ArrayList<String>> search = dbReader.getSearch(this.selectedMainCategories, this.selectedSubCategories, this.selectedAttributes, this.selectedLocation, this.selectedDay, this.selectedFrom, this.selectedTo, this.selectedSearchFor);
+        String[][] array = new String[search.size()][];
+        for (int i = 0; i < search.size(); i++) {
+            ArrayList<String> row = search.get(i);
+            array[i] = row.toArray(new String[row.size()]);
+        }
+        return array;
+    }
+
     public void createAndShowGUI() {
         // create and set up the window.
         JFrame frame = new JFrame("Yelp Tool");
@@ -196,6 +207,12 @@ public class UI {
 
         // add button for search
         searchB.setText("search");
+        searchB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadSearch();
+            }
+        });
         controls.add(searchB);
 
         // add display into main
@@ -350,4 +367,37 @@ public class UI {
         this.toCB.setModel(model);
     }
 
+    public void loadSearch() {
+        String[][] arrays = this.getSearch();
+        JLabel tableJLabel = new JLabel("Search Results");
+        String[] columns = new String[] {
+                "Id", "Name", "Hourly Rate", "Part Time", "Name", "Name", "Name", "Name"
+        };
+        JTable table = new JTable(arrays, columns);
+        this.outputJP.removeAll();
+        this.outputJP.setLayout(new BoxLayout(this.outputJP, BoxLayout.Y_AXIS));
+        this.outputJP.add(tableJLabel);
+        this.outputJP.add(new JScrollPane(table));
+        this.outputJP.validate();
+        this.outputJP.repaint();
+        /*
+        JPanel tempTableJP = new JPanel();
+        tempTableJP.setLayout(new BoxLayout(tempTableJP, BoxLayout.Y_AXIS));
+        for (int i=0; i<arrays.size(); i++){
+            JPanel tempTempTableJP = new JPanel();
+            tempTempTableJP.setLayout(new BoxLayout(tempTempTableJP, BoxLayout.X_AXIS));
+            for (int j=0; j<arrays.get(i).size(); j++){
+                JTextField tempTempTF = new JTextField(arrays.get(i).get(j));
+                tempTempTableJP.add(tempTempTF);
+            }
+            tempTableJP.add(tempTempTableJP);
+        }
+
+        this.outputJP.removeAll();
+        this.outputJP.setLayout(new BoxLayout(this.outputJP, BoxLayout.X_AXIS));
+        this.outputJP.add(tableJLabel);
+        this.outputJP.add(tempTableJP);
+        this.outputJP.validate();
+        this.outputJP.repaint();*/
+    }
 }
