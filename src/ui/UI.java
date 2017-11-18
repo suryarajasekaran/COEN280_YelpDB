@@ -4,6 +4,8 @@ import db.DBReader;
 import helper.Helper;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -371,33 +373,51 @@ public class UI {
         String[][] arrays = this.getSearch();
         JLabel tableJLabel = new JLabel("Search Results");
         String[] columns = new String[] {
-                "Id", "Name", "Hourly Rate", "Part Time", "Name", "Name", "Name", "Name"
+                "BId", "Name", "Address", "City", "State", "Stars", "ReviewCount", "CheckinCount"
         };
         JTable table = new JTable(arrays, columns);
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                popupReviews(table.getValueAt(table.getSelectedRow(), 0).toString());
+                System.out.println(table.getValueAt(table.getSelectedRow(), 0).toString());
+            }
+        });
         this.outputJP.removeAll();
         this.outputJP.setLayout(new BoxLayout(this.outputJP, BoxLayout.Y_AXIS));
         this.outputJP.add(tableJLabel);
         this.outputJP.add(new JScrollPane(table));
         this.outputJP.validate();
         this.outputJP.repaint();
-        /*
-        JPanel tempTableJP = new JPanel();
-        tempTableJP.setLayout(new BoxLayout(tempTableJP, BoxLayout.Y_AXIS));
-        for (int i=0; i<arrays.size(); i++){
-            JPanel tempTempTableJP = new JPanel();
-            tempTempTableJP.setLayout(new BoxLayout(tempTempTableJP, BoxLayout.X_AXIS));
-            for (int j=0; j<arrays.get(i).size(); j++){
-                JTextField tempTempTF = new JTextField(arrays.get(i).get(j));
-                tempTempTableJP.add(tempTempTF);
-            }
-            tempTableJP.add(tempTempTableJP);
-        }
+    }
 
-        this.outputJP.removeAll();
-        this.outputJP.setLayout(new BoxLayout(this.outputJP, BoxLayout.X_AXIS));
-        this.outputJP.add(tableJLabel);
-        this.outputJP.add(tempTableJP);
-        this.outputJP.validate();
-        this.outputJP.repaint();*/
+    public void popupReviews(String BId) {
+        //headers for the table
+        String[] columns = new String[] {
+                "Date", "Stars", "Text", "UserId", "UserName"
+        };
+
+        //actual data for the table in a 2d array
+        Object[][] data = new Object[][] {
+                {1, "John", 40.0, false },
+                {2, "Rambo", 70.0, false },
+                {3, "Zorro", 60.0, true },
+        };
+        //create table with data
+        JTable table = new JTable(data, columns);
+
+        //create the pop-up
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame frameReviews = new JFrame("Reviews");
+                frameReviews.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frameReviews.setPreferredSize(new Dimension(1500,1000));
+                frameReviews.add(new JScrollPane(table));
+                // show the window.
+                frameReviews.pack();
+                frameReviews.setVisible(true);
+                frameReviews.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+        });
+
     }
 }
