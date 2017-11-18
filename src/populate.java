@@ -14,7 +14,7 @@ public class populate {
         DBWriter dbWriter = new DBWriter(Helper.getDBConnection());
 
         // cleanup
-        //dbWriter.cleanUpTables();
+        dbWriter.cleanUpTables();
 
         String business = args[0]; //"/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_business.json";
         String checkin = args[1]; //"/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_checkin.json";
@@ -22,16 +22,16 @@ public class populate {
         String user = args[3]; //"/Users/SuryaRajasekaran/scratch/code/Personal-Work/COEN280_YelpDB/YelpDataset/yelp_user.json";
 
         // insert data into main categories table
-        //dbWriter.writeMainCategoriesTable();
+        dbWriter.writeMainCategoriesTable();
 
         // insert data into business table
-        //dbWriter.writeBusinessTable(business);
+        dbWriter.writeBusinessTable(business);
 
         // insert data into checkin table
-        //dbWriter.writeCheckinTable(business, checkin);
+        dbWriter.writeCheckinTable(business, checkin);
 
         // insert data into user table
-        //dbWriter.writeUserTable(user);
+        dbWriter.writeUserTable(user);
 
         // insert data into review table
         dbWriter.writeReviewTable(review);

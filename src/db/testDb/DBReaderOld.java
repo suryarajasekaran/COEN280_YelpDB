@@ -1,4 +1,4 @@
-package db;
+package db.testDb;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
