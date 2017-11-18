@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/COEN280_YelpDB/populate.class" afterPath="$PROJECT_DIR$/out/production/COEN280_YelpDB/populate.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/COEN280_YelpDB/dbScripts/createdb.sql" afterPath="$PROJECT_DIR$/out/production/COEN280_YelpDB/dbScripts/createdb.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/DBReader.java" afterPath="$PROJECT_DIR$/src/db/DBReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dbScripts/createdb.sql" afterPath="$PROJECT_DIR$/src/dbScripts/createdb.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/populate.java" afterPath="$PROJECT_DIR$/src/populate.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,23 +23,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="populate.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/populate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="219" column="62" lean-forward="false" selection-start-line="219" selection-start-column="62" selection-end-line="219" selection-end-column="62" />
+            <state relative-caret-position="303">
+              <caret line="670" column="282" lean-forward="false" selection-start-line="670" selection-start-column="282" selection-end-line="670" selection-end-column="282" />
               <folding>
                 <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
                 <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
@@ -50,7 +42,6 @@
                 <element signature="e#5362#5370#0" expanded="true" />
                 <element signature="method#getTo#0;class#DBReader#0" expanded="false" />
                 <element signature="e#6467#6475#0" expanded="true" />
-                <element signature="method#getSearch#0;class#DBReader#0" expanded="false" />
                 <element signature="e#7614#7633#0" expanded="true" />
                 <element signature="e#8217#8225#0" expanded="true" />
                 <element signature="method#getReviews#0;class#DBReader#0" expanded="false" />
@@ -63,8 +54,35 @@
                 <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
                 <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
-                <marker date="1510988602000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-                <marker date="1510988602000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <marker date="1510999809000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <marker date="1510999809000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="426" column="0" lean-forward="false" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
+              <folding>
+                <element signature="method#UI#0;class#UI#0" expanded="false" />
+                <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
+                <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
+                <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
+                <element signature="method#getLocation#0;class#UI#0" expanded="false" />
+                <element signature="method#getDay#0;class#UI#0" expanded="false" />
+                <element signature="method#getFrom#0;class#UI#0" expanded="false" />
+                <element signature="method#getTo#0;class#UI#0" expanded="false" />
+                <element signature="method#getReviews#0;class#UI#0" expanded="false" />
+                <element signature="e#6597#6605#0" expanded="true" />
+                <element signature="e#9827#9828#0" expanded="true" />
+                <element signature="e#9871#9872#0" expanded="true" />
+                <element signature="method#loadDay#0;class#UI#0" expanded="false" />
+                <element signature="method#loadFrom#0;class#UI#0" expanded="false" />
+                <element signature="method#loadTo#0;class#UI#0" expanded="false" />
+                <element signature="method#popupReviews#0;class#UI#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -163,13 +181,13 @@
         <option value="$PROJECT_DIR$/src/dbScripts/deletedb.sql" />
         <option value="$PROJECT_DIR$/YelpDataset/yelp_review.json" />
         <option value="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" />
-        <option value="$PROJECT_DIR$/src/db/DBReader.java" />
-        <option value="$PROJECT_DIR$/src/dbScripts/createdb.sql" />
         <option value="$PROJECT_DIR$/src/dbScripts/dropdb.sql" />
         <option value="$PROJECT_DIR$/src/dbScripts/temp2.sql" />
-        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
         <option value="$PROJECT_DIR$/src/ui/UI.java" />
+        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
+        <option value="$PROJECT_DIR$/src/dbScripts/createdb.sql" />
         <option value="$PROJECT_DIR$/src/populate.java" />
+        <option value="$PROJECT_DIR$/src/db/DBReader.java" />
       </list>
     </option>
   </component>
@@ -218,39 +236,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="YelpDataset" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COEN280_YelpDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COEN280_YelpDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COEN280_YelpDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COEN280_YelpDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,7 +273,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.populate">
+  <component name="RunManager" selected="Application.hw3">
     <configuration default="false" name="hw3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="hw3" />
@@ -559,8 +545,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.populate" />
-        <item index="1" class="java.lang.String" itemvalue="Application.hw3" />
+        <item index="0" class="java.lang.String" itemvalue="Application.hw3" />
+        <item index="1" class="java.lang.String" itemvalue="Application.populate" />
       </list>
     </recent_temporary>
   </component>
@@ -682,24 +668,36 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/db/DBReader.java</url>
-          <line>189</line>
+          <line>671</line>
           <properties />
-          <option name="timeStamp" value="53" />
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ui/UI.java</url>
-          <line>353</line>
+          <url>file://$PROJECT_DIR$/src/db/DBReader.java</url>
+          <line>627</line>
           <properties />
-          <option name="timeStamp" value="59" />
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ui/UI.java</url>
-          <line>394</line>
+          <url>file://$PROJECT_DIR$/src/db/DBReader.java</url>
+          <line>640</line>
           <properties />
-          <option name="timeStamp" value="60" />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/db/DBReader.java</url>
+          <line>573</line>
+          <properties />
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/db/DBReader.java</url>
+          <line>655</line>
+          <properties />
+          <option name="timeStamp" value="88" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="61" />
+      <option name="time" value="89" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -990,40 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-71">
-          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeBusinessTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeCheckinTableEntries#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeCheckinTableUpdates#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeReviewTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
-            <marker date="1510991106000" expanded="true" signature="5190:5897" ph=" INSERT statement (BUSINESS)" />
-            <marker date="1510991106000" expanded="true" signature="6459:6605" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510991106000" expanded="true" signature="6459:6661" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510991106000" expanded="true" signature="6459:6665" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510991106000" expanded="true" signature="7273:7477" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510991106000" expanded="true" signature="8072:8265" ph=" INSERT statement (ATTRIB)" />
-            <marker date="1510991106000" expanded="true" signature="8716:8947" ph=" INSERT statement (LOCATON)" />
-            <marker date="1510991106000" expanded="true" signature="9470:9822" ph=" INSERT statement (HOURS)" />
-            <marker date="1510991106000" expanded="true" signature="10767:10902" ph=" INSERT statement (CHECKIN)" />
-            <marker date="1510991106000" expanded="true" signature="10767:10929" ph=" INSERT statement (CHECKIN)" />
-            <marker date="1510991106000" expanded="true" signature="11626:11656" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510991106000" expanded="true" signature="11626:11709" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510991106000" expanded="true" signature="11626:11749" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510991106000" expanded="true" signature="11626:11751" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510991106000" expanded="true" signature="12435:12634" ph=" INSERT statement (REVIEWS)" />
-            <marker date="1510991106000" expanded="true" signature="12435:12957" ph=" INSERT statement (REVIEWS)" />
-            <marker date="1510991106000" expanded="true" signature="12435:13171" ph=" INSERT statement (REVIEWS)" />
-            <marker date="1510991106000" expanded="true" signature="13888:14232" ph=" INSERT statement (USERS)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dbScripts/temp2.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -1048,33 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="229" column="29" lean-forward="false" selection-start-line="229" selection-start-column="29" selection-end-line="229" selection-end-column="29" />
-          <folding>
-            <element signature="method#UI#0;class#UI#0" expanded="false" />
-            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
-            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
-            <element signature="method#getDay#0;class#UI#0" expanded="false" />
-            <element signature="method#getFrom#0;class#UI#0" expanded="false" />
-            <element signature="method#getTo#0;class#UI#0" expanded="false" />
-            <element signature="method#getSearch#0;class#UI#0" expanded="false" />
-            <element signature="method#getReviews#0;class#UI#0" expanded="false" />
-            <element signature="e#6597#6605#0" expanded="true" />
-            <element signature="method#loadSubCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#loadAttributes#0;class#UI#0" expanded="false" />
-            <element signature="method#loadDay#0;class#UI#0" expanded="false" />
-            <element signature="method#loadFrom#0;class#UI#0" expanded="false" />
-            <element signature="method#loadTo#0;class#UI#0" expanded="false" />
-            <element signature="method#loadSearch#0;class#UI#0" expanded="false" />
-            <element signature="method#popupReviews#0;class#UI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_review.json">
       <provider editor-type-id="LargeFileEditor">
         <state relative-caret-position="-4129">
@@ -1088,18 +1025,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="269" column="12" lean-forward="false" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeBusinessTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeCheckinTableEntries#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeCheckinTableUpdates#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
+            <marker date="1510994322000" expanded="true" signature="5190:5897" ph=" INSERT statement (BUSINESS)" />
+            <marker date="1510994322000" expanded="true" signature="6459:6605" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510994322000" expanded="true" signature="6459:6661" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510994322000" expanded="true" signature="6459:6665" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510994322000" expanded="true" signature="7273:7477" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1510994322000" expanded="true" signature="8072:8265" ph=" INSERT statement (ATTRIB)" />
+            <marker date="1510994322000" expanded="true" signature="8716:8947" ph=" INSERT statement (LOCATON)" />
+            <marker date="1510994322000" expanded="true" signature="9470:9822" ph=" INSERT statement (HOURS)" />
+            <marker date="1510994322000" expanded="true" signature="10767:10902" ph=" INSERT statement (CHECKIN)" />
+            <marker date="1510994322000" expanded="true" signature="10767:10929" ph=" INSERT statement (CHECKIN)" />
+            <marker date="1510994322000" expanded="true" signature="11626:11656" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1510994322000" expanded="true" signature="11626:11709" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1510994322000" expanded="true" signature="11626:11749" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1510994322000" expanded="true" signature="11626:11751" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1510994322000" expanded="true" signature="12435:12634" ph=" INSERT statement (REVIEWS)" />
+            <marker date="1510994322000" expanded="true" signature="12435:12957" ph=" INSERT statement (REVIEWS)" />
+            <marker date="1510994322000" expanded="true" signature="12435:13171" ph=" INSERT statement (REVIEWS)" />
+            <marker date="1510994322000" expanded="true" signature="13849:14193" ph=" INSERT statement (USERS)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/dbScripts/createdb.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="82" column="25" lean-forward="false" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+        <state relative-caret-position="683">
+          <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/populate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="36" column="10" lean-forward="false" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="426" column="0" lean-forward="false" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
+          <folding>
+            <element signature="method#UI#0;class#UI#0" expanded="false" />
+            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
+            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
+            <element signature="method#getDay#0;class#UI#0" expanded="false" />
+            <element signature="method#getFrom#0;class#UI#0" expanded="false" />
+            <element signature="method#getTo#0;class#UI#0" expanded="false" />
+            <element signature="method#getReviews#0;class#UI#0" expanded="false" />
+            <element signature="e#6597#6605#0" expanded="true" />
+            <element signature="e#9827#9828#0" expanded="true" />
+            <element signature="e#9871#9872#0" expanded="true" />
+            <element signature="method#loadDay#0;class#UI#0" expanded="false" />
+            <element signature="method#loadFrom#0;class#UI#0" expanded="false" />
+            <element signature="method#loadTo#0;class#UI#0" expanded="false" />
+            <element signature="method#popupReviews#0;class#UI#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="219" column="62" lean-forward="false" selection-start-line="219" selection-start-column="62" selection-end-line="219" selection-end-column="62" />
+        <state relative-caret-position="303">
+          <caret line="670" column="282" lean-forward="false" selection-start-line="670" selection-start-column="282" selection-end-line="670" selection-end-column="282" />
           <folding>
             <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
             <element signature="method#getSubCategories#0;class#DBReader#0" expanded="false" />
@@ -1114,7 +1119,6 @@
             <element signature="e#5362#5370#0" expanded="true" />
             <element signature="method#getTo#0;class#DBReader#0" expanded="false" />
             <element signature="e#6467#6475#0" expanded="true" />
-            <element signature="method#getSearch#0;class#DBReader#0" expanded="false" />
             <element signature="e#7614#7633#0" expanded="true" />
             <element signature="e#8217#8225#0" expanded="true" />
             <element signature="method#getReviews#0;class#DBReader#0" expanded="false" />
@@ -1127,18 +1131,8 @@
             <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
-            <marker date="1510988602000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-            <marker date="1510988602000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/populate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="36" column="8" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1510999809000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+            <marker date="1510999809000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
           </folding>
         </state>
       </provider>

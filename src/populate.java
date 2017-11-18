@@ -34,7 +34,7 @@ public class populate {
         //dbWriter.writeUserTable(user);
 
         // insert data into review table
-        dbWriter.writeReviewTable(review);
+        //dbWriter.writeReviewTable(review);
 
     }
 }
