@@ -12,6 +12,10 @@ import java.util.ArrayList;
 public class DBReader {
 
     Connection connection;
+    Boolean OP_CL = Boolean.FALSE;
+    // TRUE => business is OPEN
+    // FALSE => business is CLOSED
+    // (not to be confused with OPENHRS/CLOSEHRS)
 
     public DBReader(Connection connection){
         this.connection = connection;
@@ -584,7 +588,11 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid in ( " + section + ")";
+                if (this.OP_CL){
+                    query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid in ( " + section + ")";
+                } else {
+                    query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.Bid in ( " + section + ")";
+                }
             } else {
                 String section = "";
                 for (int i = 0; i < mainCategories.size(); i++) {
@@ -594,7 +602,11 @@ public class DBReader {
                         section = "'" + mainCategories.get(i) + "'";
                     }
                 }
-                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, MAIN_cATEGORIES M, CHECKIN C  where B.BID = C.BID and B.OP_CL = 'open' and m.mcat in ( " + section + " ) AND B.BID = M.BID";
+                if (this.OP_CL){
+                    query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, MAIN_cATEGORIES M, CHECKIN C  where B.BID = C.BID and B.OP_CL = 'open' and m.mcat in ( " + section + " ) AND B.BID = M.BID";
+                } else {
+                    query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, MAIN_cATEGORIES M, CHECKIN C  where B.BID = C.BID and m.mcat in ( " + section + " ) AND B.BID = M.BID";
+                }
             }
         } else if (attributes.size() == 0 || attributes.isEmpty()) {
             String section = "";
@@ -608,7 +620,13 @@ public class DBReader {
                     }
                 }
             }
-            query = "sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid in (" + section + " )";
+            if (this.OP_CL){
+                query = "sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid in (" + section + " )";
+            } else {
+                query = "sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.Bid in (" + section + " )";
+            }
+
+
         } else {
             String section = "";
             for (int i = 0; i < mainCategories.size(); i++) {
@@ -661,8 +679,12 @@ public class DBReader {
             } else {
                 subQuery = "select distinct (H.BID) from HOURS H " + (hourTemplateSections+"and H.BID") + " IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE "+ locationTemplateSections+" L.BID IN (" + section + " ))";
             }
+            if (this.OP_CL) {
+                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid IN ("+subQuery+")";
+            } else {
+                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN ("+subQuery+")";
+            }
 
-            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid IN ("+subQuery+")";
         }
         return query;
     }
