@@ -26,7 +26,7 @@ public class DBWriter {
 
     public void cleanUpTables() {
 
-        String[] queries = new String[7];
+        String[] queries = new String[10];
 
         queries[0]  = "DELETE FROM BUSINESS_MAIN_CATEGORIES";
         queries[1]  = "DELETE FROM BUSINESS";
@@ -35,8 +35,11 @@ public class DBWriter {
         queries[4]  = "DELETE FROM SUB_CATEGORIES";
         queries[5]  = "DELETE FROM REVIEWS";
         queries[6]  = "DELETE FROM ATTRIB";
+        queries[7]  = "DELETE FROM CHECKIN";
+        queries[8]  = "DELETE FROM HOURS";
+        queries[9]  = "DELETE FROM LOCATON";
 
-        for (int i=0;i<queries.length-4;i++) {
+        for (int i=0;i<queries.length;i++) {
             try {
                 Statement statement = null;
                 statement = this.connection.createStatement();
@@ -207,14 +210,36 @@ public class DBWriter {
         }
     }
 
-    public void writeCheckinTable(String filePath) {
+    public void writeCheckinTable(String filePathBusiness, String filePathCheckin) {
+        writeCheckinTableEntries(filePathBusiness);
+        writeCheckinTableUpdates(filePathCheckin);
+    }
+
+    public void writeCheckinTableEntries(String filePath) {
+        JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
+        for (int i=0; i < jsonObjectArr.length; i++){
+            JsonReaderBusiness jsonReaderBusiness = new JsonReaderBusiness(jsonObjectArr[i]);
+            String query = "Insert into CHECKIN (BID , CHKINCOUNT) VALUES ("
+                    + "'" + jsonReaderBusiness.getBId() + "',"
+                    + "0"
+                    + ")";
+            try {
+                Statement statement = null;
+                statement = this.connection.createStatement();
+                statement.executeUpdate(query);
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println(query);
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void writeCheckinTableUpdates(String filePath) {
         JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
         for (int i=0; i < jsonObjectArr.length; i++){
             JsonReaderCheckin jsonReaderCheckin = new JsonReaderCheckin(jsonObjectArr[i]);
-            String query = "Insert into CHECKIN (BID , CHKINCOUNT) VALUES ("
-                    + "'" + jsonReaderCheckin.getBusinessId() + "',"
-                    + "" + jsonReaderCheckin.getCheckinCount() + ""
-                    + ")";
+            String query = "UPDATE CHECKIN SET CHKINCOUNT="+ jsonReaderCheckin.getCheckinCount() +" WHERE BID='"+ jsonReaderCheckin.getBusinessId() +"'";
             try {
                 Statement statement = null;
                 statement = this.connection.createStatement();
