@@ -655,7 +655,7 @@ public class DBReader {
             if (hourTemplateSections.equals("") && locationTemplateSections.equals("")){
                 subQuery = section;
             } else if (hourTemplateSections.equals("")) {
-                subQuery = "SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE "+ locationTemplateSections+" L.BID IN (" + section + " ))";
+                subQuery = "SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE "+ locationTemplateSections+" L.BID IN (" + section + " )";
             } else if (locationTemplateSections.equals("")) {
                 subQuery = "select distinct (H.BID) from HOURS H " + (hourTemplateSections.equals("")?"WHERE H.BID":(hourTemplateSections+"and H.BID")) + " IN (" + section + " )";
             } else {
