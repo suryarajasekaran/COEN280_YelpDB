@@ -170,7 +170,7 @@ public class UI {
         // add combobox for controls
         JPanel locationControlBox = new JPanel();
         locationControlBox.setLayout(new BoxLayout(locationControlBox, BoxLayout.Y_AXIS));
-        locationControlBox.add(new JTextField("Location"));
+        locationControlBox.add(new JLabel("Location"));
         ArrayList<String> arrayList = new ArrayList<String>();
         arrayList = this.getLocation();
         arrayList.add(0, "");
@@ -187,7 +187,7 @@ public class UI {
 
         JPanel dayControlBox = new JPanel();
         dayControlBox.setLayout(new BoxLayout(dayControlBox, BoxLayout.Y_AXIS));
-        dayControlBox.add(new JTextField("Day"));
+        dayControlBox.add(new JLabel("Day"));
         arrayList = this.getDay();
         arrayList.add(0, "");
         dayCB = new JComboBox(arrayList.toArray());
@@ -202,7 +202,7 @@ public class UI {
 
         JPanel fromControlBox = new JPanel();
         fromControlBox.setLayout(new BoxLayout(fromControlBox, BoxLayout.Y_AXIS));
-        fromControlBox.add(new JTextField("From"));
+        fromControlBox.add(new JLabel("From"));
         arrayList = this.getFrom();
         arrayList.add(0, "");
         fromCB = new JComboBox(arrayList.toArray());
@@ -217,7 +217,7 @@ public class UI {
 
         JPanel toControlBox = new JPanel();
         toControlBox.setLayout(new BoxLayout(toControlBox, BoxLayout.Y_AXIS));
-        toControlBox.add(new JTextField("To"));
+        toControlBox.add(new JLabel("To"));
         arrayList = this.getTo();
         arrayList.add(0, "");
         toCB = new JComboBox(arrayList.toArray());
@@ -232,7 +232,7 @@ public class UI {
 
         JPanel searchForControlBox = new JPanel();
         searchForControlBox.setLayout(new BoxLayout(searchForControlBox, BoxLayout.Y_AXIS));
-        searchForControlBox.add(new JTextField("Search Condition"));
+        searchForControlBox.add(new JLabel("Search Condition"));
         searchForCB = new JComboBox<>(this.searchForOptions);
         searchForCB.addActionListener(new ActionListener() {
             @Override

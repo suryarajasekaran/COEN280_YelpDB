@@ -46,7 +46,8 @@ public class JsonReaderReview {
     }
 
     public String getText() {
-        return this.processString(this.jsonObject.getString("text"));
+        String s = this.processString(this.jsonObject.getString("text"));
+        return s.substring(0, Math.min(s.length(), 2000));
     }
 
     public String getType() {

@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54b83c6-d728-49df-974f-b8f0115f9ded" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/COEN280_YelpDB/populate.class" afterPath="$PROJECT_DIR$/out/production/COEN280_YelpDB/populate.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/DBReader.java" afterPath="$PROJECT_DIR$/src/db/DBReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/db/DBWriter.java" afterPath="$PROJECT_DIR$/src/db/DBWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helper/Helper.java" afterPath="$PROJECT_DIR$/src/helper/Helper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" afterPath="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/populate.java" afterPath="$PROJECT_DIR$/src/populate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/UI.java" afterPath="$PROJECT_DIR$/src/ui/UI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,48 +24,23 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DBReader.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
+      <file leaf-file-name="populate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/populate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="626" column="11" lean-forward="false" selection-start-line="611" selection-start-column="10" selection-end-line="626" selection-end-column="11" />
+            <state relative-caret-position="360">
+              <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
               <folding>
-                <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="e#1201#1209#0" expanded="true" />
-                <element signature="method#getAttributes#0;class#DBReader#0" expanded="false" />
-                <element signature="e#2161#2169#0" expanded="true" />
-                <element signature="method#getLocation#0;class#DBReader#0" expanded="false" />
-                <element signature="e#3208#3216#0" expanded="true" />
-                <element signature="method#getDay#0;class#DBReader#0" expanded="false" />
-                <element signature="e#4274#4282#0" expanded="true" />
-                <element signature="method#getFrom#0;class#DBReader#0" expanded="false" />
-                <element signature="e#5362#5370#0" expanded="true" />
-                <element signature="method#getTo#0;class#DBReader#0" expanded="false" />
-                <element signature="e#6467#6475#0" expanded="true" />
-                <element signature="e#7614#7633#0" expanded="true" />
-                <element signature="e#8217#8225#0" expanded="true" />
-                <element signature="method#getReviews#0;class#DBReader#0" expanded="false" />
-                <element signature="e#9673#9692#0" expanded="true" />
-                <element signature="e#10165#10173#0" expanded="true" />
-                <element signature="method#generateQuery4SubCategories#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4Attributes#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4Location#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4Day#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
-                <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
-                <marker date="1511007784000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-                <marker date="1511007784000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="426" column="0" lean-forward="false" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
+            <state relative-caret-position="-742">
+              <caret line="171" column="35" lean-forward="false" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
               <folding>
                 <element signature="method#UI#0;class#UI#0" expanded="false" />
                 <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
@@ -71,9 +51,7 @@
                 <element signature="method#getFrom#0;class#UI#0" expanded="false" />
                 <element signature="method#getTo#0;class#UI#0" expanded="false" />
                 <element signature="method#getReviews#0;class#UI#0" expanded="false" />
-                <element signature="e#6597#6605#0" expanded="true" />
-                <element signature="e#9827#9828#0" expanded="true" />
-                <element signature="e#9871#9872#0" expanded="true" />
+                <element signature="e#6593#6601#0" expanded="true" />
                 <element signature="method#loadDay#0;class#UI#0" expanded="false" />
                 <element signature="method#loadFrom#0;class#UI#0" expanded="false" />
                 <element signature="method#loadTo#0;class#UI#0" expanded="false" />
@@ -95,7 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>\&amp;</find>
       <find>');</find>
       <find>this.connection</find>
       <find>MAIN_CATEGORTY</find>
@@ -122,9 +99,10 @@
       <find>﻿JwUE5GmEO-sH1FuwJgKBlQ</find>
       <find>VOTES</find>
       <find>getLocation</find>
-      <find>))</find>
       <find>13</find>
       <find>100</find>
+      <find>))</find>
+      <find>JTextField(&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>&amp;amp;</replace>
@@ -133,6 +111,8 @@
       <replace>this.queries[</replace>
       <replace>﻿OPENHRS</replace>
       <replace>CLOSEHRS</replace>
+      <replace>JLabel(</replace>
+      <replace>JLabel(&quot;</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -178,14 +158,16 @@
         <option value="$PROJECT_DIR$/src/dbScripts/deleteindex.sql" />
         <option value="$PROJECT_DIR$/src/dbScripts/deletedb.sql" />
         <option value="$PROJECT_DIR$/YelpDataset/yelp_review.json" />
-        <option value="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" />
         <option value="$PROJECT_DIR$/src/dbScripts/dropdb.sql" />
         <option value="$PROJECT_DIR$/src/dbScripts/temp2.sql" />
-        <option value="$PROJECT_DIR$/src/ui/UI.java" />
-        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
         <option value="$PROJECT_DIR$/src/dbScripts/createdb.sql" />
-        <option value="$PROJECT_DIR$/src/populate.java" />
         <option value="$PROJECT_DIR$/src/db/DBReader.java" />
+        <option value="$PROJECT_DIR$/src/helper/StreamGobbler.java" />
+        <option value="$PROJECT_DIR$/src/helper/Helper.java" />
+        <option value="$PROJECT_DIR$/src/db/DBWriter.java" />
+        <option value="$PROJECT_DIR$/src/populate.java" />
+        <option value="$PROJECT_DIR$/src/parser/review/JsonReaderReview.java" />
+        <option value="$PROJECT_DIR$/src/ui/UI.java" />
       </list>
     </option>
   </component>
@@ -235,6 +217,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="COEN280_YelpDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="COEN280_YelpDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="COEN280_YelpDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="COEN280_YelpDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -587,7 +605,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33373493" sideWeight="0.4828326" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33373493" sideWeight="0.4828326" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.48569384" order="8" side_tool="false" content_ui="tabs" />
@@ -595,10 +613,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49427754" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3566265" sideWeight="0.6516452" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3048193" sideWeight="0.6516452" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.47711015" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23891273" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23891273" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49713877" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -710,7 +728,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/JsonReaderCheckin.java" />
     <entry file="file://$PROJECT_DIR$/src/create.sql" />
     <entry file="file://$PROJECT_DIR$/src/populate.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -840,17 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="42" column="9" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="42" selection-end-column="9" />
-          <folding>
-            <element signature="method#getDBConnection#0;class#Helper#0" expanded="false" />
-            <element signature="method#strArr2jsonArr#0;class#Helper#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/idea.vmoptions">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -910,14 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dbScripts/indexdb.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_checkin.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-253040">
@@ -930,20 +928,6 @@
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/review/JsonReaderReview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="48" column="68" lean-forward="false" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
-          <folding>
-            <element signature="e#1029#1030#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="method#processString#0;class#JsonReaderReview#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,14 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dbScripts/deleteindex.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hw3.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1000,115 +976,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dbScripts/deletedb.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dbScripts/dropdb.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_review.json">
-      <provider editor-type-id="LargeFileEditor">
-        <state relative-caret-position="-4129">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="590" lean-forward="false" selection-start-line="7" selection-start-column="568" selection-end-line="7" selection-end-column="590" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="269" column="12" lean-forward="false" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeBusinessTable#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeCheckinTableEntries#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeCheckinTableUpdates#0;class#DBWriter#0" expanded="false" />
-            <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
-            <marker date="1510994322000" expanded="true" signature="5190:5897" ph=" INSERT statement (BUSINESS)" />
-            <marker date="1510994322000" expanded="true" signature="6459:6605" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510994322000" expanded="true" signature="6459:6661" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510994322000" expanded="true" signature="6459:6665" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510994322000" expanded="true" signature="7273:7477" ph=" INSERT statement (MAIN_CATEGORIES)" />
-            <marker date="1510994322000" expanded="true" signature="8072:8265" ph=" INSERT statement (ATTRIB)" />
-            <marker date="1510994322000" expanded="true" signature="8716:8947" ph=" INSERT statement (LOCATON)" />
-            <marker date="1510994322000" expanded="true" signature="9470:9822" ph=" INSERT statement (HOURS)" />
-            <marker date="1510994322000" expanded="true" signature="10767:10902" ph=" INSERT statement (CHECKIN)" />
-            <marker date="1510994322000" expanded="true" signature="10767:10929" ph=" INSERT statement (CHECKIN)" />
-            <marker date="1510994322000" expanded="true" signature="11626:11656" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510994322000" expanded="true" signature="11626:11709" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510994322000" expanded="true" signature="11626:11749" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510994322000" expanded="true" signature="11626:11751" ph=" UPDATE statement (CHECKIN)" />
-            <marker date="1510994322000" expanded="true" signature="12435:12634" ph=" INSERT statement (REVIEWS)" />
-            <marker date="1510994322000" expanded="true" signature="12435:12957" ph=" INSERT statement (REVIEWS)" />
-            <marker date="1510994322000" expanded="true" signature="12435:13171" ph=" INSERT statement (REVIEWS)" />
-            <marker date="1510994322000" expanded="true" signature="13849:14193" ph=" INSERT statement (USERS)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dbScripts/createdb.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/populate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="36" column="10" lean-forward="false" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="426" column="0" lean-forward="false" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
-          <folding>
-            <element signature="method#UI#0;class#UI#0" expanded="false" />
-            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
-            <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
-            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
-            <element signature="method#getDay#0;class#UI#0" expanded="false" />
-            <element signature="method#getFrom#0;class#UI#0" expanded="false" />
-            <element signature="method#getTo#0;class#UI#0" expanded="false" />
-            <element signature="method#getReviews#0;class#UI#0" expanded="false" />
-            <element signature="e#6597#6605#0" expanded="true" />
-            <element signature="e#9827#9828#0" expanded="true" />
-            <element signature="e#9871#9872#0" expanded="true" />
-            <element signature="method#loadDay#0;class#UI#0" expanded="false" />
-            <element signature="method#loadFrom#0;class#UI#0" expanded="false" />
-            <element signature="method#loadTo#0;class#UI#0" expanded="false" />
-            <element signature="method#popupReviews#0;class#UI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/db/DBReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="626" column="11" lean-forward="false" selection-start-line="611" selection-start-column="10" selection-end-line="626" selection-end-column="11" />
+        <state relative-caret-position="1574">
+          <caret line="676" column="0" lean-forward="true" selection-start-line="676" selection-start-column="0" selection-end-line="676" selection-end-column="0" />
           <folding>
             <element signature="method#getMainCategories#0;class#DBReader#0" expanded="false" />
             <element signature="e#1201#1209#0" expanded="true" />
@@ -1134,8 +1005,156 @@
             <element signature="method#generateQuery4From#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4To#0;class#DBReader#0" expanded="false" />
             <element signature="method#generateQuery4Reviews#0;class#DBReader#0" expanded="false" />
-            <marker date="1511007784000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
-            <marker date="1511007784000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+            <marker date="1511007957000" expanded="true" signature="635:685" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+            <marker date="1511007957000" expanded="true" signature="635:708" ph=" SELECT statement (BUSINESS_MAIN_CATEGORIES)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/YelpDataset/yelp_review.json">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="7" column="590" lean-forward="false" selection-start-line="7" selection-start-column="568" selection-end-line="7" selection-end-column="590" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/StreamGobbler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper/Helper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="55" column="63" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="63" />
+          <folding>
+            <element signature="method#getDBConnection#0;class#Helper#0" expanded="false" />
+            <element signature="method#readFile#0;class#Helper#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dbScripts/deletedb.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dbScripts/deleteindex.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dbScripts/indexdb.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dbScripts/dropdb.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dbScripts/createdb.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/db/DBWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="258" column="50" lean-forward="false" selection-start-line="258" selection-start-column="50" selection-end-line="258" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#writeMainCategoriesTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeBusinessTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeCheckinTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeCheckinTableEntries#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeCheckinTableUpdates#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeReviewTable#0;class#DBWriter#0" expanded="false" />
+            <element signature="method#writeUserTable#0;class#DBWriter#0" expanded="false" />
+            <marker date="1511009606000" expanded="true" signature="5314:6021" ph=" INSERT statement (BUSINESS)" />
+            <marker date="1511009606000" expanded="true" signature="6583:6729" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1511009606000" expanded="true" signature="6583:6785" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1511009606000" expanded="true" signature="6583:6789" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1511009606000" expanded="true" signature="7397:7601" ph=" INSERT statement (MAIN_CATEGORIES)" />
+            <marker date="1511009606000" expanded="true" signature="8196:8389" ph=" INSERT statement (ATTRIB)" />
+            <marker date="1511009606000" expanded="true" signature="8840:9071" ph=" INSERT statement (LOCATON)" />
+            <marker date="1511009606000" expanded="true" signature="9594:9946" ph=" INSERT statement (HOURS)" />
+            <marker date="1511009606000" expanded="true" signature="10891:11026" ph=" INSERT statement (CHECKIN)" />
+            <marker date="1511009606000" expanded="true" signature="10891:11053" ph=" INSERT statement (CHECKIN)" />
+            <marker date="1511009606000" expanded="true" signature="11750:11780" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1511009606000" expanded="true" signature="11750:11833" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1511009606000" expanded="true" signature="11750:11873" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1511009606000" expanded="true" signature="11750:11875" ph=" UPDATE statement (CHECKIN)" />
+            <marker date="1511009606000" expanded="true" signature="12662:13438" ph=" INSERT statement (REVIEWS)" />
+            <marker date="1511009606000" expanded="true" signature="14310:14654" ph=" INSERT statement (USERS)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/review/JsonReaderReview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="56" column="16" lean-forward="true" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
+          <folding>
+            <element signature="method#processString#0;class#JsonReaderReview#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/populate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="10" lean-forward="true" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-742">
+          <caret line="171" column="35" lean-forward="false" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
+          <folding>
+            <element signature="method#UI#0;class#UI#0" expanded="false" />
+            <element signature="method#getMainCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getSubCategories#0;class#UI#0" expanded="false" />
+            <element signature="method#getAttributes#0;class#UI#0" expanded="false" />
+            <element signature="method#getLocation#0;class#UI#0" expanded="false" />
+            <element signature="method#getDay#0;class#UI#0" expanded="false" />
+            <element signature="method#getFrom#0;class#UI#0" expanded="false" />
+            <element signature="method#getTo#0;class#UI#0" expanded="false" />
+            <element signature="method#getReviews#0;class#UI#0" expanded="false" />
+            <element signature="e#6593#6601#0" expanded="true" />
+            <element signature="method#loadDay#0;class#UI#0" expanded="false" />
+            <element signature="method#loadFrom#0;class#UI#0" expanded="false" />
+            <element signature="method#loadTo#0;class#UI#0" expanded="false" />
+            <element signature="method#popupReviews#0;class#UI#0" expanded="false" />
           </folding>
         </state>
       </provider>

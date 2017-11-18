@@ -8,6 +8,10 @@ import parser.checkin.JsonReaderCheckin;
 import parser.review.JsonReaderReview;
 import parser.user.JsonReaderUser;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -253,29 +257,37 @@ public class DBWriter {
     }
 
     public void writeReviewTable(String filePath) {
-        JSONObject[] jsonObjectArr = Helper.strArr2jsonArr(Helper.str2Arr(Helper.readFile(filePath)));
-        for (int i=0; i < jsonObjectArr.length; i++){
-            JsonReaderReview jsonReaderReview = new JsonReaderReview(jsonObjectArr[i]);
-            String query = "Insert into REVIEWS (BID , VOTES_COOL, VOTES_FUNNY, VOTES_USEFUL, USERID, RID, STARS, REVIEW_DATE, TEXT) VALUES ("
-                    + "'" + jsonReaderReview.getBId() + "',"
-                    + "" + jsonReaderReview.getVotesCool() + ","
-                    + "" + jsonReaderReview.getVotesFunny() + ","
-                    + "" + jsonReaderReview.getVotesUseful() + ","
-                    + "'" + jsonReaderReview.getUserId() + "',"
-                    + "'" + jsonReaderReview.getRId() + "',"
-                    + "" + jsonReaderReview.getStars() + ","
-                    + "TO_DATE( '" + jsonReaderReview.getReviewDate() + "','yyyy-mm-dd'),"
-                    + "'" + jsonReaderReview.getText() + "'"
-                    + ")";
-            try {
-                Statement statement = null;
-                statement = this.connection.createStatement();
-                statement.executeUpdate(query);
-                statement.close();
-            } catch (SQLException e) {
-                System.out.println(query);
-                e.printStackTrace();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // process the line.
+                JSONObject jsonObject = new JSONObject(line);
+                JsonReaderReview jsonReaderReview = new JsonReaderReview(jsonObject);
+                String query = "Insert into REVIEWS (BID , VOTES_COOL, VOTES_FUNNY, VOTES_USEFUL, USERID, RID, STARS, REVIEW_DATE, TEXT) VALUES ("
+                        + "'" + jsonReaderReview.getBId() + "',"
+                        + "" + jsonReaderReview.getVotesCool() + ","
+                        + "" + jsonReaderReview.getVotesFunny() + ","
+                        + "" + jsonReaderReview.getVotesUseful() + ","
+                        + "'" + jsonReaderReview.getUserId() + "',"
+                        + "'" + jsonReaderReview.getRId() + "',"
+                        + "" + jsonReaderReview.getStars() + ","
+                        + "TO_DATE( '" + jsonReaderReview.getReviewDate() + "','yyyy-mm-dd'),"
+                        + "'" + jsonReaderReview.getText() + "'"
+                        + ")";
+                try {
+                    Statement statement = null;
+                    statement = this.connection.createStatement();
+                    statement.executeUpdate(query);
+                    statement.close();
+                } catch (SQLException e) {
+                    System.out.println(query);
+                    e.printStackTrace();
+                }
             }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
