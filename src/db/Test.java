@@ -492,7 +492,7 @@ public class Test {
                         section = subSection;
                     }
                 }
-                query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + ") orderby H.CLOSEHRS";
+                query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + ") order by H.CLOSEHRS";
             } else {
                 String section = "";
                 for (int i = 0; i < mainCategories.size(); i++) {
@@ -502,7 +502,7 @@ public class Test {
                         section = "'" + mainCategories.get(i) + "'";
                     }
                 }
-                query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid orderby H.CLOSEHRS";
+                query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid order by H.CLOSEHRS";
             }
         } else if (attributes.size() == 0 || attributes.isEmpty()) {
             String section = "";
@@ -516,7 +516,7 @@ public class Test {
                     }
                 }
             }
-            query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + " ) orderby H.CLOSEHRS";
+            query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + " ) order by H.CLOSEHRS";
         } else {
             String section = "";
             for (int i = 0; i<mainCategories.size(); i++){
@@ -531,7 +531,7 @@ public class Test {
                     }
                 }
             }
-            query = "select distinct (H.CLOSEHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " )) orderby H.CLOSEHRS";
+            query = "select distinct (H.CLOSEHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " )) order by H.CLOSEHRS";
         }
         return query;
     }

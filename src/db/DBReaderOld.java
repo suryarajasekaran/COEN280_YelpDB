@@ -9,11 +9,11 @@ import java.util.ArrayList;
 /**
  * Created by SuryaRajasekaran on 11/12/17.
  */
-public class DBReader {
+public class DBReaderOld {
 
     Connection connection;
 
-    public DBReader(Connection connection){
+    public DBReaderOld(Connection connection){
         this.connection = connection;
     }
 
@@ -265,7 +265,7 @@ public class DBReader {
             }
             if (section.isEmpty() || section.equals("")){
             } else {
-                outString = "SELECT DISTINCT(S.SCAT) from SUB_CATEGORIES S where S.Bid in ("+section+") order by S.scat";
+                outString = "SELECT DISTINCT(S.SCAT) from SUB_CATEGORIES S where S.Bid in ("+section+")";
             }
         } else {
             String section = "";
@@ -278,7 +278,7 @@ public class DBReader {
             }
             if (section.isEmpty() || section.equals("")){
             } else {
-                outString = "select distinct(SCAT) FROM SUB_CATEGORIES S, MAIN_CATEGORIES M WHERE M.MCAT IN ( " + section + ") and M.BID = S.BID order by S.scat";
+                outString = "select distinct(SCAT) FROM SUB_CATEGORIES S, MAIN_CATEGORIES M WHERE M.MCAT IN ( " + section + ") and M.BID = S.BID";
             }
         }
         System.out.print(outString);
@@ -298,7 +298,7 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "select distinct(ATTR) FROM attrib A, MAIN_CATEGORIES M WHERE M.MCAT IN ( "+section+" ) and M.BID = A.BID order by A.ATTR";
+                query = "select distinct(ATTR) FROM attrib A, MAIN_CATEGORIES M WHERE M.MCAT IN ( "+section+" ) and M.BID = A.BID";
             } else {
                 String section = "";
                 for (int i = 0; i<mainCategories.size(); i++){
@@ -309,7 +309,7 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "select distinct(ATTR) FROM attrib A, MAIN_CATEGORIES M WHERE M.MCAT IN ( "+section+" ) and M.BID = A.BID order by A.ATTR";
+                query = "select distinct(ATTR) FROM attrib A, MAIN_CATEGORIES M WHERE M.MCAT IN ( "+section+" ) and M.BID = A.BID";
             }
         } else {
             String section = "";
@@ -323,7 +323,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "SELECT DISTINCT(A.ATTR) from attrib A where A.Bid in (" + section + ") order by A.ATTR";
+            query = "SELECT DISTINCT(A.ATTR) from attrib A where A.Bid in (" + section + ")";
         }
         return query;
     }
@@ -344,7 +344,7 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "SELECT DISTINCT(l.loc) from locaton L where l.Bid in ( " + section + ") order by L.LOC";
+                query = "SELECT DISTINCT(l.loc) from locaton L where l.Bid in ( " + section + ")";
             } else {
                 String section = "";
                 for (int i = 0; i < mainCategories.size(); i++) {
@@ -354,7 +354,7 @@ public class DBReader {
                         section = "'" + mainCategories.get(i) + "'";
                     }
                 }
-                query = "select distinct(l.loc) from locaton L, main_Categories M where m.mcat in ( " + section + " ) and l.bid = m.bid order by L.LOC";
+                query = "select distinct(l.loc) from locaton L, main_Categories M where m.mcat in ( " + section + " ) and l.bid = m.bid";
             }
         } else if (attributes.size() == 0 || attributes.isEmpty()) {
                 String section = "";
@@ -368,7 +368,7 @@ public class DBReader {
                         }
                     }
                 }
-                query = "SELECT DISTINCT(L.loc) from locaton l where l.bid in ( " + section + " ) order by L.LOC";
+                query = "SELECT DISTINCT(L.loc) from locaton l where l.bid in ( " + section + " )";
         } else {
             String section = "";
             for (int i = 0; i<mainCategories.size(); i++){
@@ -383,7 +383,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "select distinct (l.loc) from BUSINESS B, LOCATON L WHERE B.BID = L.BID AND B.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " )) order by L.LOC";
+            query = "select distinct (l.loc) from BUSINESS B, LOCATON L WHERE B.BID = L.BID AND B.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
         }
         return query;
     }
@@ -404,7 +404,7 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "SELECT DISTINCT(H.WORKDAY) from HOURS H where H.Bid in ( " + section + ") order by H.WORKDAY";
+                query = "SELECT DISTINCT(H.WORKDAY) from HOURS H where H.Bid in ( " + section + ")";
             } else {
                 String section = "";
                 for (int i = 0; i < mainCategories.size(); i++) {
@@ -414,7 +414,7 @@ public class DBReader {
                         section = "'" + mainCategories.get(i) + "'";
                     }
                 }
-                query = "SELECT DISTINCT(H.WORKDAY) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid order by H.WORKDAY";
+                query = "SELECT DISTINCT(H.WORKDAY) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid";
             }
         } else if (attributes.size() == 0 || attributes.isEmpty()) {
             String section = "";
@@ -428,7 +428,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "SELECT DISTINCT(H.WORKDAY) from HOURS H where H.Bid in ( " + section + " ) order by H.WORKDAY";
+            query = "SELECT DISTINCT(H.WORKDAY) from HOURS H where H.Bid in ( " + section + " )";
         } else {
             String section = "";
             for (int i = 0; i<mainCategories.size(); i++){
@@ -443,7 +443,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "select distinct (H.WORKDAY) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " )) order by H.WORKDAY";
+            query = "select distinct (H.WORKDAY) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
         }
         return query;
     }
@@ -464,7 +464,7 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "SELECT DISTINCT(H.OPENHRS) from HOURS H where H.Bid in ( " + section + ") order by H.OPENHRS";
+                query = "SELECT DISTINCT(H.OPENHRS) from HOURS H where H.Bid in ( " + section + ")";
             } else {
                 String section = "";
                 for (int i = 0; i < mainCategories.size(); i++) {
@@ -474,7 +474,7 @@ public class DBReader {
                         section = "'" + mainCategories.get(i) + "'";
                     }
                 }
-                query = "SELECT DISTINCT(H.OPENHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid order by H.OPENHRS";
+                query = "SELECT DISTINCT(H.OPENHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid";
             }
         } else if (attributes.size() == 0 || attributes.isEmpty()) {
             String section = "";
@@ -488,7 +488,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "SELECT DISTINCT(H.OPENHRS) from HOURS H where H.Bid in ( " + section + " ) order by H.OPENHRS";
+            query = "SELECT DISTINCT(H.OPENHRS) from HOURS H where H.Bid in ( " + section + " )";
         } else {
             String section = "";
             for (int i = 0; i<mainCategories.size(); i++){
@@ -503,7 +503,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "select distinct (H.OPENHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " )) order by H.OPENHRS";
+            query = "select distinct (H.OPENHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
         }
         return query;
     }
@@ -512,7 +512,7 @@ public class DBReader {
         String query = "";
 
         if (mainCategories.size() == 0 || mainCategories.isEmpty()) {
-            query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H order by H.CLOSEHRS";
+            query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H";
         } else if (subCategories.size() == 0 || subCategories.isEmpty()) {
             if (searchFor.equals("AND")) {
                 String section = "";
@@ -524,7 +524,7 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + ") order by H.CLOSEHRS";
+                query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + ")";
             } else {
                 String section = "";
                 for (int i = 0; i < mainCategories.size(); i++) {
@@ -534,7 +534,7 @@ public class DBReader {
                         section = "'" + mainCategories.get(i) + "'";
                     }
                 }
-                query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid order by H.CLOSEHRS";
+                query = "SELECT DISTINCT(H.CLOSEHRS) FROM HOURS H, main_Categories M where m.mcat in ( " + section + " ) and H.bid = m.bid";
             }
         } else if (attributes.size() == 0 || attributes.isEmpty()) {
             String section = "";
@@ -548,7 +548,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + " ) order by H.CLOSEHRS";
+            query = "SELECT DISTINCT(H.CLOSEHRS) from HOURS H where H.Bid in ( " + section + " )";
         } else {
             String section = "";
             for (int i = 0; i<mainCategories.size(); i++){
@@ -563,7 +563,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "select distinct (H.CLOSEHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " )) order by H.CLOSEHRS";
+            query = "select distinct (H.CLOSEHRS) from HOURS H WHERE H.BID IN ( SELECT DISTINCT(B.BID) from BUSINESS B where B.Bid in (" + section + " ))";
         }
         return query;
     }
@@ -584,7 +584,7 @@ public class DBReader {
                         section = subSection;
                     }
                 }
-                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid in ( " + section + ")";
+                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.Bid in ( " + section + ")";
             } else {
                 String section = "";
                 for (int i = 0; i < mainCategories.size(); i++) {
@@ -594,7 +594,7 @@ public class DBReader {
                         section = "'" + mainCategories.get(i) + "'";
                     }
                 }
-                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, MAIN_cATEGORIES M, CHECKIN C  where B.BID = C.BID and B.OP_CL = 'open' and m.mcat in ( " + section + " ) AND B.BID = M.BID";
+                query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, MAIN_cATEGORIES M, CHECKIN C  where B.BID = C.BID and m.mcat in ( " + section + " ) AND B.BID = M.BID";
             }
         } else if (attributes.size() == 0 || attributes.isEmpty()) {
             String section = "";
@@ -608,7 +608,7 @@ public class DBReader {
                     }
                 }
             }
-            query = "sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid in (" + section + " )";
+            query = "sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.Bid in (" + section + " )";
         } else {
             String section = "";
             for (int i = 0; i < mainCategories.size(); i++) {
@@ -662,7 +662,7 @@ public class DBReader {
                 subQuery = "select distinct (H.BID) from HOURS H " + (hourTemplateSections+"and H.BID") + " IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE "+ locationTemplateSections+" L.BID IN (" + section + " ))";
             }
 
-            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.OP_CL = 'open' and B.Bid IN ("+subQuery+")";
+            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN ("+subQuery+")";
         }
         return query;
     }
