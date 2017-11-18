@@ -609,7 +609,74 @@ public class DBReader {
                 }
             }
             query = "sELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B , CHECKIN C where B.BID = C.BID and B.Bid in (" + section + " )";
-        } else if (location == null || location.equals("") ||location.isEmpty()) {
+        } else {
+            String section = "";
+            for (int i = 0; i < mainCategories.size(); i++) {
+                for (int j = 0; j < subCategories.size(); j++) {
+                    for (int k = 0; k < attributes.size(); k++) {
+                        String subSection = "select DISTINCT(M.BID) FROM MAIN_CATEGORIES M, sub_categories S, attrib A WHERE M.MCAT = '" + mainCategories.get(i) + "' AND S.SCAT = '" + subCategories.get(j) + "' AND A.ATTR = '" + attributes.get(k) + "' AND  M.BID = S.BID AND M.BID = A.BID";
+                        if (!section.equals("")) {
+                            section = section + (searchFor.equals("AND") ? " INTERSECT " : " UNION ") + subSection;
+                        } else {
+                            section = subSection;
+                        }
+                    }
+                }
+            }
+            String hourTemplateSections = "";
+            if (day != null && !day.equals("") && !day.isEmpty()) {
+                if (hourTemplateSections.equals("")){
+                    hourTemplateSections = "WHERE h.workday = '" + day + "'";
+                } else {
+                    hourTemplateSections = hourTemplateSections + " and " + "h.workday = '" + day + "'";
+                }
+            }
+            if (from != null && !from.equals("") && !from.isEmpty()) {
+                if (hourTemplateSections.equals("")){
+                    hourTemplateSections = "WHERE H.OPENHRS <='" + from + "'";
+                } else {
+                    hourTemplateSections = hourTemplateSections + " and " + "H.OPENHRS <='" + from + "'";
+                }
+            }
+            if (to != null && !to.equals("") && !to.isEmpty()) {
+                if (hourTemplateSections.equals("")){
+                    hourTemplateSections = "WHERE H.CLOSEHRS >= '"+to+"'";
+                } else {
+                    hourTemplateSections = hourTemplateSections + " and " + "H.CLOSEHRS >= '"+to+"'";
+                }
+            }
+
+            String locationTemplateSections = "";
+            if (location != null && !location.equals("") && !location.isEmpty()){
+                locationTemplateSections = "b.city = '" +location.split(", ")[0]+ "' and b.state = '" +location.split(", ")[1]+ "' and b.bid = l.bid and";
+            }
+
+            String subQuery = "";
+            if (hourTemplateSections.equals("") && locationTemplateSections.equals("")){
+                subQuery = section;
+            } else if (hourTemplateSections.equals("")) {
+                subQuery = "SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE "+ locationTemplateSections+" L.BID IN (" + section + " ))";
+            } else if (locationTemplateSections.equals("")) {
+                subQuery = "select distinct (H.BID) from HOURS H " + (hourTemplateSections.equals("")?"WHERE H.BID":(hourTemplateSections+"and H.BID")) + " IN (" + section + " )";
+            } else {
+                subQuery = "select distinct (H.BID) from HOURS H " + (hourTemplateSections+"and H.BID") + " IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE "+ locationTemplateSections+" L.BID IN (" + section + " ))";
+            }
+
+            query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN ("+subQuery+")";
+        }
+        return query;
+    }
+
+    public String generateQuery4Reviews(String bId) {
+        String query = "select R.review_Date, r.stars, r.text, r.userid, u.user_name from business b, reviews r, users u where r.userid = u.userid and b.bid = r.bid and b.bid = '" + bId + "'";
+        return query;
+    }
+
+}
+
+
+/*
+/*else if (location == null || location.equals("") ||location.isEmpty()) {
             String section = "";
             for (int i = 0; i < mainCategories.size(); i++) {
                 for (int j = 0; j < subCategories.size(); j++) {
@@ -624,7 +691,10 @@ public class DBReader {
                 }
             }
             query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (" + section + ")";
-        } else if (day == null || day.equals("") || day.isEmpty()) {
+        }*/
+
+
+/*else if (day == null || day.equals("") || day.isEmpty()) {
             String section = "";
             for (int i = 0; i < mainCategories.size(); i++) {
                 for (int j = 0; j < subCategories.size(); j++) {
@@ -683,17 +753,6 @@ public class DBReader {
                     }
                 }
             }
-            //query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (select distinct (H.BID) from HOURS H WHERE h.workday = '" + day + "' AND H.OPENHRS >='" + from + "'OR H.CLOSEHRS <= '"+to+"'and H.BID IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE b.city = '" + location + "' and b.bid = l.bid and L.BID IN (" + section + " )))";
             query = "SELECT DISTINCT(B.BID) ,B.BNAME, B.ADDRESS, B.CITY, B.STATE,B.STARS, B.REV_COUNT, C.chkincount FROM BUSINESS B, CHECKIN C where B.BID = C.BID and B.Bid IN (select distinct (H.BID) from HOURS H WHERE h.workday = '" + day + "' AND H.OPENHRS >='" + from + "'AND H.CLOSEHRS <= '"+to+"'and H.BID IN (SELECT DISTINCT(L.BID) FROM LOCATON L , business b WHERE b.city = '" +location.split(", ")[0]+ "' and b.state = '" +location.split(", ")[1]+ "' and b.bid = l.bid and L.BID IN (" + section + " )))";
-        }
-        return query;
-    }
-
-    public String generateQuery4Reviews(String bId) {
-        String query = "select R.review_Date, r.stars, r.text, r.userid, u.user_name from business b, reviews r, users u where r.userid = u.userid and b.bid = r.bid and b.bid = '" + bId + "'";
-        return query;
-    }
-
-}
-
+        }*/
 
